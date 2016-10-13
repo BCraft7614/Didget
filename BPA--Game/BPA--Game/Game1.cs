@@ -20,7 +20,7 @@ namespace BPA__Game
         Screen CurrentScreen = Screen.TitleScreen;
         mButton btnPlay;
 
-        int screenWidth = 800; int screenHeight = 600;
+        int screenWidth = 800; int screenHeight = 700;
 
         public Game1()
         {
