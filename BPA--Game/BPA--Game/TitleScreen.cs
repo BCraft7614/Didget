@@ -18,7 +18,7 @@ namespace BPA__Game
         public TitleScreen()
         {
             screenWidth = 700;
-            screenHeight = 600;
+            screenHeight = 800;
         }
 
         protected override void Update(GameTime gameTime)
