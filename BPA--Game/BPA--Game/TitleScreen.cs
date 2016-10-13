@@ -17,7 +17,7 @@ namespace BPA__Game
 
         public TitleScreen()
         {
-            screenWidth = 800;
+            screenWidth = 700;
             screenHeight = 600;
         }
 

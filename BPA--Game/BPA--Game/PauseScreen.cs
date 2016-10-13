@@ -23,7 +23,7 @@ namespace BPA__Game
 
         public PauseScreen()
         {
-            screenWidth = 800;
+            screenWidth = 700;
             screenHeight = 600;
         }
 
