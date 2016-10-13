@@ -58,3 +58,5 @@ C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.e
 C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb
 C:\Users\bcraft\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.exe
 C:\Users\bcraft\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb
+H:\DigitsReal\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.exe
+H:\DigitsReal\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb
