@@ -60,6 +60,10 @@
     <Content Include="Content\Blue Right Movement.png" />
     <Content Include="Content\Button.png" />
     <Content Include="Content\DownAnime.png" />
+    <Content Include="Content\Green Back Movement.png" />
+    <Content Include="Content\Green Front Movement.png" />
+    <Content Include="Content\Green Left Movement.png" />
+    <Content Include="Content\Green Right Movement.png" />
     <Content Include="Content\LeftAnime.png" />
     <Content Include="Content\R Back movement.png" />
     <Content Include="Content\R Front Movement.png" />
