@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>E:/BPA--Game/BPA--Game/Content/Button.png</SourceFile>
-  <SourceTime>2016-10-05T21:02:16-04:00</SourceTime>
-  <DestFile>E:/BPA--Game/BPA--Game/Content/bin/Windows/Button.xnb</DestFile>
-  <DestTime>2016-10-06T11:47:08-04:00</DestTime>
+  <SourceFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/Button.png</SourceFile>
+  <SourceTime>2016-10-13T13:03:01.40327-04:00</SourceTime>
+  <DestFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/bin/Windows/Button.xnb</DestFile>
+  <DestTime>2016-10-13T13:21:50.887645-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
