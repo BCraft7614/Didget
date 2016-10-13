@@ -54,3 +54,5 @@ E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\LeftAnime.xnb
 E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\RightAnime.xnb
 E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\DownAnime.xnb
 E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\UpAnime.xnb
+C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.exe
+C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb
