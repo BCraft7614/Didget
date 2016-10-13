@@ -1,0 +1,56 @@
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.exe
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.pdb
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.csprojResolveAssemblyReference.cache
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.exe
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb
+c:\users\aepps\documents\visual studio 2015\Projects\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Button.xnb
+E:\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.exe
+E:\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Button.xnb
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.exe
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.pdb
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+E:\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.csprojResolveAssemblyReference.cache
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\LeftAnime.xnb
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\RightAnime.xnb
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\DownAnime.xnb
+E:\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\UpAnime.xnb
