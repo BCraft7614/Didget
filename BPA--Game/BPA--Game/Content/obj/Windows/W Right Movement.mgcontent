@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/W Right Movement.png</SourceFile>
-  <SourceTime>2016-10-13T13:03:01.59077-04:00</SourceTime>
-  <DestFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/bin/Windows/W Right Movement.xnb</DestFile>
-  <DestTime>2016-10-13T13:21:51.46577-04:00</DestTime>
+  <SourceFile>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/W Right Movement.png</SourceFile>
+  <SourceTime>2016-10-13T12:25:03.137645-04:00</SourceTime>
+  <DestFile>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/bin/Windows/W Right Movement.xnb</DestFile>
+  <DestTime>2016-10-14T11:39:30.5404548-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
