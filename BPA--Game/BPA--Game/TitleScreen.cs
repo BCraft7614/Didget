@@ -1,33 +1,64 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
+
 
 namespace BPA__Game
 {
-    public class TitleScreen
+    public class TitleScreen : Game
     {
         mButton btnPlay;
+        mButton btnOp;
         Texture2D background;
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
+        int screenWidth;
+        int screenHeight;
 
-      
-        public void Update(GameTime gameTime)
+        public TitleScreen()
         {
+            screenWidth = 700;
+            screenHeight = 800;
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                Exit();
+            }
+            MouseState mouse = Mouse.GetState();
+            if (btnPlay.isClicked == true)
+            {
+                //CurrentScreen = Screen.PlayScreen;
+
+            }
+            else if (btnOp.isClicked == true)
+            {
+                //CurrentScreen = screenHeight.OptionScreen;
+            }
+            btnPlay.Update(mouse);
+            btnOp.Update(mouse);
 
         }
 
-        public void LoadContent()
+        protected override void LoadContent()
         {
-
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            graphics.PreferredBackBufferWidth = screenWidth;
+            graphics.PreferredBackBufferHeight = screenHeight;
+            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice);
+            btnPlay.setPosition(new Vector2(350, 300));
+            btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
+            this.IsMouseVisible = true;
         }
-        public void Draw(SpriteBatch spritebatch)
+        protected override void Draw(GameTime gameTime)
         {
-
+            btnPlay.Draw(spriteBatch);
         }
 
-    }   
+    }
 
 }
+
