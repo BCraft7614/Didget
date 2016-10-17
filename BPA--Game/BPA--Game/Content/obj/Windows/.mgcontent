@@ -21,5 +21,9 @@
     <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Front Movement.png</File>
     <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Left Movement.png</File>
     <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Right Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Back Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Front Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Left Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Right Movement.png</File>
   </SourceFiles>
 </SourceFileCollection>
