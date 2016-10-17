@@ -217,7 +217,7 @@
 /processorParam:TextureFormat=Color
 /build:Blue Right Movement.png
 
-#begin H:/Programming/BPA/Green Back Movement.png
+#begin Green Back Movement.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -227,9 +227,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:H:/Programming/BPA/Green Back Movement.png
+/build:Green Back Movement.png
 
-#begin H:/Programming/BPA/Green Front Movement.png
+#begin Green Front Movement.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -239,9 +239,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:H:/Programming/BPA/Green Front Movement.png
+/build:Green Front Movement.png
 
-#begin H:/Programming/BPA/Green Left Movement.png
+#begin Green Left Movement.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -251,9 +251,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:H:/Programming/BPA/Green Left Movement.png
+/build:Green Left Movement.png
 
-#begin H:/Programming/BPA/Green Right Movement.png
+#begin Green Right Movement.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -263,5 +263,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:H:/Programming/BPA/Green Right Movement.png
+/build:Green Right Movement.png
 
