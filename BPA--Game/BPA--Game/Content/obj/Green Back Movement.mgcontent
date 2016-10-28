@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/../Green Back Movement.png</SourceFile>
-  <SourceTime>2016-10-17T12:50:19.8316524-04:00</SourceTime>
-  <DestFile>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/bin/Windows/../Green Back Movement.xnb</DestFile>
-  <DestTime>2016-10-28T12:41:52.4428603-04:00</DestTime>
+  <SourceFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Back Movement.png</SourceFile>
+  <SourceTime>2016-10-13T13:14:12-04:00</SourceTime>
+  <DestFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/bin/Windows/../Green Back Movement.xnb</DestFile>
+  <DestTime>2016-10-17T12:43:43.54532-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

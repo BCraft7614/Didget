@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
 namespace BPA__Game
 {
-    public class PauseScreen:Game
+    public class OptionsScreen : Game
     {
-        mButton btnResume;
-        mButton btnOp;
-        mButton btnExit;
+        mButton btnSave;
+        mButton btnLoad;
+        mButton btnBack;
         GraphicsDeviceManager graphics;
-        Screen nextScreen;
         SpriteBatch spriteBatch;
+        Screen nextScreen;
         int screenWidth;
         int screenHeight;
 
@@ -25,12 +26,15 @@ namespace BPA__Game
             GameScreen,
             OptionsScreen,
             PauseScreen,
+            LoadScreen,
         }
-        public PauseScreen()
+
+        public OptionsScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
         }
+
         public Screen GetNextString()
         {
             return nextScreen;
@@ -43,10 +47,9 @@ namespace BPA__Game
                 Exit();
             }
             MouseState mouse = Mouse.GetState();
- 
-            btnResume.Update(mouse);
-            btnOp.Update(mouse);
-            btnExit.Update(mouse);
+            btnLoad.Update(mouse);
+            btnSave.Update(mouse);
+            btnBack.Update(mouse);
 
         }
 
@@ -55,41 +58,43 @@ namespace BPA__Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnResume = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice, "Resume");
-            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice, "Options");
-            btnExit = new mButton(Content.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice, "Exit");
-            btnResume.ButtonClicked += HandleButtonClicked;
-            btnOp.ButtonClicked += HandleButtonClicked;
-            btnExit.ButtonClicked += HandleButtonClicked;
-            btnResume.setPosition(new Vector2(350, 300));
-            btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
-            btnExit.setPosition(new Vector2(359, 300 + btnExit.size.Y * 2));
+            btnSave = new mButton(Content.Load<Texture2D>("btnSave"), graphics.GraphicsDevice, "Save");
+            btnLoad = new mButton(Content.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice, "Load");
+            btnBack = new mButton(Content.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice, "Back");
+            btnSave.ButtonClicked += HandleButtonClicked;
+            btnLoad.ButtonClicked += HandleButtonClicked;
+            btnBack.ButtonClicked += HandleButtonClicked;
+            btnSave.setPosition(new Vector2(350, 300));
+            btnLoad.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 2));
             this.IsMouseVisible = true;
         }
         protected override void Draw(GameTime gameTime)
         {
-            btnResume.Draw(spriteBatch);
-            btnOp.Draw(spriteBatch);
-            btnExit.Draw(spriteBatch);
+            btnSave.Draw(spriteBatch);
+            btnLoad.Draw(spriteBatch);
+            btnBack.Draw(spriteBatch);
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
-            if (sender == btnResume)
+            if (sender == btnSave)
             {
                 nextScreen = Screen.GameScreen;
             }
-            else if (sender == btnOp)
+            else if (sender == btnLoad)
             {
                 nextScreen = Screen.OptionsScreen;
             }
-            else if (sender == btnExit)
+            else if(sender == btnLoad)
             {
-                Exit();
+                nextScreen = Screen.LoadScreen;
             }
-            
+            else if (sender == btnBack)
+            {
+                nextScreen = Screen.PauseScreen;
+            }
+
             OnButtonClicked();
         }
-
         public event EventHandler ButtonClicked;
         public void OnButtonClicked()
         {
@@ -98,5 +103,7 @@ namespace BPA__Game
                 ButtonClicked(this, EventArgs.Empty);
             }
         }
+        
+        
     }
 }

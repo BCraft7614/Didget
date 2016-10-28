@@ -1,6 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BPA__Game
 {
@@ -15,7 +20,9 @@ namespace BPA__Game
         enum Screen
         {
             TitleScreen,
-            PlayScreen,
+            GameScreen,
+            OptionsScreen,
+            PauseScreen,
         }
         Screen CurrentScreen = Screen.TitleScreen;
         mButton btnPlay;
@@ -51,7 +58,7 @@ namespace BPA__Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice, "Play");
             rightanim = Content.Load<Texture2D>("RightAnime");
             btnPlay.setPosition(new Vector2(350, 300));
             this.IsMouseVisible = true;
@@ -66,6 +73,7 @@ namespace BPA__Game
         /// </summary>
         protected override void UnloadContent()
         {
+        
             // TODO: Unload any non ContentManager content here
         }
 
@@ -83,14 +91,10 @@ namespace BPA__Game
             {
                 case Screen.TitleScreen:
 
-                    if (btnPlay.isClicked == true)
-                    {
-                        CurrentScreen = Screen.PlayScreen;
-
-                    }
+                    
                     btnPlay.Update(mouse);
                     break;
-                case Screen.PlayScreen:
+                case Screen.GameScreen:
 
                     break;
             }
@@ -113,11 +117,24 @@ namespace BPA__Game
                 case Screen.TitleScreen:
                     btnPlay.Draw(spriteBatch);
                     break;
-                case Screen.PlayScreen:
+                case Screen.GameScreen:
                     spriteBatch.Draw(rightanim, new Vector2(100,100), Color.White);
                     break;
             }
             spriteBatch.End();
+        }
+
+        
+     public void HandleButtonClicked(object sender, EventArgs eventArgs)
+        {
+            if (sender == btnPlay)
+            {
+                CurrentScreen = Screen.TitleScreen;
+            }
+            else if (sender == btnPlay)
+            {
+                CurrentScreen = Screen.GameScreen;
+            }
         }
     }
 }

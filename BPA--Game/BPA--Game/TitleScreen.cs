@@ -1,61 +1,116 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BPA__Game
 {
     public class TitleScreen : Game
     {
         mButton btnPlay;
+        mButton btnLoad;
         mButton btnOp;
+        mButton btnExit;
         Texture2D background;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Screen nextScreen;
         int screenWidth;
         int screenHeight;
 
+        public enum Screen
+        {
+            TitleScreen,
+            GameScreen,
+            OptionsScreen,
+            PauseScreen, 
+            LoadScreen,           
+        }
         public TitleScreen()
         {
-            screenWidth = 700;
-            screenHeight = 800;
+            screenWidth = 800;
+            screenHeight = 700;
         }
 
-        protected override void Update(GameTime gameTime)
+        public Screen GetNextString()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-            {
-                Exit();
-            }
-            MouseState mouse = Mouse.GetState();
-            if (btnPlay.isClicked == true)
-            {
-                //CurrentScreen = Screen.PlayScreen;
-
-            }
-            else if (btnOp.isClicked == true)
-            {
-                //CurrentScreen = screenHeight.OptionScreen;
-            }
-            btnPlay.Update(mouse);
-            btnOp.Update(mouse);
-
+            return nextScreen;
         }
+
+       
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice);
+            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice, "Play");
+            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice, "Option");
+            btnLoad = new mButton(Content.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice, "Load");
+            btnExit = new mButton(Content.Load<Texture2D>("Exit"), graphics.GraphicsDevice, "Exit");
+            btnPlay.ButtonClicked += HandleButtonClicked;
+            btnOp.ButtonClicked += HandleButtonClicked;
+            btnLoad.ButtonClicked += HandleButtonClicked;
             btnPlay.setPosition(new Vector2(350, 300));
             btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
             this.IsMouseVisible = true;
         }
+        protected override void UnloadContent()
+        {
+            btnPlay.ButtonClicked -= HandleButtonClicked;
+            btnOp.ButtonClicked -= HandleButtonClicked;
+            btnLoad.ButtonClicked -= HandleButtonClicked;
+            base.UnloadContent();
+        }
+        protected override void Update(GameTime gameTime)
+        {
+
+            MouseState mouse = Mouse.GetState();
+            btnPlay.Update(mouse);
+            btnOp.Update(mouse);
+            btnLoad.Update(mouse);
+            btnExit.Update(mouse);
+
+        }
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             btnPlay.Draw(spriteBatch);
+            btnLoad.Draw(spriteBatch);
+            btnOp.Draw(spriteBatch);
+            btnLoad.Draw(spriteBatch);
+        }
+        public void HandleButtonClicked(object sender, EventArgs eventArgs)
+        {
+            if (sender == btnPlay)
+            {
+                nextScreen = Screen.GameScreen;
+            }
+            else if (sender == btnOp)
+            {
+                nextScreen = Screen.OptionsScreen;
+            }
+            else if(sender == btnLoad)
+            {
+                nextScreen = Screen.LoadScreen;
+            }
+            else if(sender == btnExit)
+            {
+                Exit();
+            }
+            OnButtonClicked();
+        }
+        public event EventHandler ButtonClicked;
+        public void OnButtonClicked()
+        {
+            if (ButtonClicked != null)
+            {
+                ButtonClicked(this, EventArgs.Empty);
+            }
         }
 
     }

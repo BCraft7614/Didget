@@ -39,11 +39,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GameScreen.cs" />
+    <Compile Include="LoadScreen.cs" />
     <Compile Include="mButton.cs" />
+    <Compile Include="OptionsScreen.cs" />
     <Compile Include="PauseScreen.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenManager.cs" />
     <Compile Include="TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -98,3 +98,45 @@ C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Sha
 C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\rtran\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.csprojResolveAssemblyReference.cache
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Back Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Front Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Left Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Right Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Button.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\DownAnime.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\LeftAnime.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Back movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Front Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Left Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Right Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\RightAnime.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\UpAnime.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Back Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Front movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Left Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Right Movement.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.exe
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.pdb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+H:\DigitsReal\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.csprojResolveAssemblyReference.cache
+H:\DigitsReal\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.exe
+H:\DigitsReal\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb

@@ -19,15 +19,15 @@ namespace BPA__Game
 
         public Vector2 size;
 
-        public mButton(Texture2D newTexture, GraphicsDevice graphics)
+        public mButton(Texture2D newTexture, GraphicsDevice graphics, string NextScreen)
         {
             texture = newTexture;
-
             size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 30);
 
         }
+
+
         bool down;
-       public bool isClicked;
         public void Update(MouseState mouse)
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
@@ -46,12 +46,14 @@ namespace BPA__Game
                 }
                 if (down) color.A += 3; else color.A -= 3;
 
-                if (mouse.LeftButton == ButtonState.Pressed) isClicked = true;          
+                if (mouse.LeftButton == ButtonState.Pressed) {
+                    OnButtonClicked();
+                }          
            }
             else if (color.A < 255)
             {
                 color.A += 3;
-                isClicked = false;
+                
             }
 
         }
@@ -63,7 +65,15 @@ namespace BPA__Game
         {
             sprtieBatch.Draw(texture, rectangle, color);
         }
-        
+
+        public event EventHandler ButtonClicked;
+        public void OnButtonClicked()
+        {
+            if(ButtonClicked != null)
+            {
+                ButtonClicked(this, EventArgs.Empty);
+            }
+        }
 
 
     }
