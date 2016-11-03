@@ -58,7 +58,7 @@ namespace BPA__Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice, "Play");
+            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
             rightanim = Content.Load<Texture2D>("RightAnime");
             btnPlay.setPosition(new Vector2(350, 300));
             this.IsMouseVisible = true;
@@ -89,9 +89,7 @@ namespace BPA__Game
             MouseState mouse = Mouse.GetState();
             switch (CurrentScreen)
             {
-                case Screen.TitleScreen:
-
-                    
+                case Screen.TitleScreen:   
                     btnPlay.Update(mouse);
                     break;
                 case Screen.GameScreen:
