@@ -9,34 +9,29 @@ using System.Threading.Tasks;
 
 namespace BPA__Game
 {
-    public class TitleScreen : Game
+    public class TitleScreen : Screen
     {
         mButton btnPlay;
         mButton btnLoad;
         mButton btnOp;
         mButton btnExit;
+        Texture2D rightanim;
         Texture2D background;
         GraphicsDeviceManager graphics;
+
         SpriteBatch spriteBatch;
-        Screen nextScreen;
+       private ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
 
-        public enum Screen
-        {
-            TitleScreen,
-            GameScreen,
-            OptionsScreen,
-            PauseScreen, 
-            LoadScreen,           
-        }
+      
         public TitleScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
         }
 
-        public Screen GetNextString()
+        public ScreenName GetNextScreen()
         {
             return nextScreen;
         }
@@ -48,10 +43,10 @@ namespace BPA__Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice, "Play");
-            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice, "Option");
-            btnLoad = new mButton(Content.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice, "Load");
-            btnExit = new mButton(Content.Load<Texture2D>("Exit"), graphics.GraphicsDevice, "Exit");
+            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice);
+            btnLoad = new mButton(Content.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
+            btnExit = new mButton(Content.Load<Texture2D>("Exit"), graphics.GraphicsDevice);
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
@@ -66,7 +61,7 @@ namespace BPA__Game
             btnLoad.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();
         }
-        protected override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
 
             MouseState mouse = Mouse.GetState();
@@ -76,7 +71,7 @@ namespace BPA__Game
             btnExit.Update(mouse);
 
         }
-        protected override void Draw(GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             btnPlay.Draw(spriteBatch);
@@ -88,18 +83,18 @@ namespace BPA__Game
         {
             if (sender == btnPlay)
             {
-                nextScreen = Screen.GameScreen;
+                nextScreen = ScreenName.GameScreen;
             }
             else if (sender == btnOp)
             {
-                nextScreen = Screen.OptionsScreen;
+                nextScreen = ScreenName.OptionsScreen;
             }
             else if(sender == btnLoad)
             {
-                nextScreen = Screen.LoadScreen;
+                nextScreen = ScreenName.LoadScreen;
             }
             else if(sender == btnExit)
-            {
+            { 
                 Exit();
             }
             OnButtonClicked();
@@ -110,6 +105,7 @@ namespace BPA__Game
             if (ButtonClicked != null)
             {
                 ButtonClicked(this, EventArgs.Empty);
+                               
             }
         }
 

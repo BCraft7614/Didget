@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BPA__Game
 {
-    class mButton
+    public class mButton
     {
         Texture2D texture;
         Vector2 position;
@@ -19,7 +19,7 @@ namespace BPA__Game
 
         public Vector2 size;
 
-        public mButton(Texture2D newTexture, GraphicsDevice graphics, string NextScreen)
+        public mButton(Texture2D newTexture, GraphicsDevice graphics)
         {
             texture = newTexture;
             size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 30);

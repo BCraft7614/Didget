@@ -8,35 +8,29 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 namespace BPA__Game
 {
-    public class PauseScreen:Game
+    public class PauseScreen:Screen
     {
         mButton btnResume;
         mButton btnOp;
         mButton btnExit;
         GraphicsDeviceManager graphics;
-        Screen nextScreen;
+        ScreenName nextScreen;
         SpriteBatch spriteBatch;
         int screenWidth;
         int screenHeight;
 
-        public enum Screen
-        {
-            TitleScreen,
-            GameScreen,
-            OptionsScreen,
-            PauseScreen,
-        }
+ 
         public PauseScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
         }
-        public Screen GetNextString()
+        public ScreenName GetNextScreen()
         {
             return nextScreen;
         }
 
-        protected override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
@@ -55,18 +49,18 @@ namespace BPA__Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnResume = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice, "Resume");
-            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice, "Options");
-            btnExit = new mButton(Content.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice, "Exit");
+            btnResume = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice);
+            btnExit = new mButton(Content.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice);
             btnResume.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnExit.ButtonClicked += HandleButtonClicked;
-            btnResume.setPosition(new Vector2(350, 300));
+            btnResume.setPosition(new Vector2(350, 300));    
             btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
             btnExit.setPosition(new Vector2(359, 300 + btnExit.size.Y * 2));
             this.IsMouseVisible = true;
         }
-        protected override void Draw(GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             btnResume.Draw(spriteBatch);
             btnOp.Draw(spriteBatch);
@@ -76,11 +70,11 @@ namespace BPA__Game
         {
             if (sender == btnResume)
             {
-                nextScreen = Screen.GameScreen;
+                nextScreen = ScreenName.GameScreen;
             }
             else if (sender == btnOp)
             {
-                nextScreen = Screen.OptionsScreen;
+                nextScreen = ScreenName.OptionsScreen;
             }
             else if (sender == btnExit)
             {
