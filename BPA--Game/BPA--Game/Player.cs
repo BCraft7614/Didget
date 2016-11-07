@@ -11,11 +11,7 @@ namespace BPA__Game
 {
     public class Player
     {
-        Texture2D rightanim;
-        Texture2D leftanim;
-        Texture2D Upanim;
-        Texture2D Downanim;
-
+        
         public void LoadContent()
         {
         }

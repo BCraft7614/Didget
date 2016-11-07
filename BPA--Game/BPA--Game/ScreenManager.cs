@@ -21,7 +21,6 @@ namespace BPA__Game
         LoadScreen loadScreen;
 
         ScreenName CurrentScreen;
-        mButton btnPlay;
 
         int screenWidth = 800; int screenHeight = 700;
 
@@ -35,7 +34,8 @@ namespace BPA__Game
             pauseScreen = new PauseScreen();
             gameScreen = new GameScreen();
             loadScreen = new LoadScreen();
-
+            LoadContent();
+            Initialize();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace BPA__Game
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        protected override void LoadContent()
+        public override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -100,7 +100,6 @@ namespace BPA__Game
             switch (CurrentScreen)
             {
                 case ScreenName.TitleScreen:
-                    btnPlay.Update(mouse);
                     titleScreen.Update(gameTime);
                     break;
                 case ScreenName.GameScreen:
@@ -131,6 +130,7 @@ namespace BPA__Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             switch (CurrentScreen)
             {

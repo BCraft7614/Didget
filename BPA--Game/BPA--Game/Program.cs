@@ -14,7 +14,7 @@ namespace BPA__Game
         [STAThread]
         static void Main()
         {
-            using (var game = new ScreenManager())
+            using (var game = new Game1())
                 game.Run();
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/Blue Front Movement.png</SourceFile>
-  <SourceTime>2016-10-13T12:38:53.325145-04:00</SourceTime>
-  <DestFile>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/bin/Windows/Blue Front Movement.xnb</DestFile>
-  <DestTime>2016-11-03T12:36:11.8619328-04:00</DestTime>
+  <SourceFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Front Movement.png</SourceFile>
+  <SourceTime>2016-10-13T13:03:01.356395-04:00</SourceTime>
+  <DestFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/bin/Windows/Blue Front Movement.xnb</DestFile>
+  <DestTime>2016-10-17T12:53:41.279695-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

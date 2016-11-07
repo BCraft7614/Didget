@@ -4,26 +4,26 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/Button.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/LeftAnime.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/RightAnime.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/DownAnime.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/UpAnime.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/W Back Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/W Front movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/W Left Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/W Right Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/R Back movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/R Front Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/R Left Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/R Right Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/Blue Back Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/Blue Front Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/Blue Left Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/Blue Right Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/../Green Back Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/../Green Front Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/../Green Left Movement.png</File>
-    <File>C:/Users/rtran/Source/Repos/Didget/BPA--Game/BPA--Game/Content/../Green Right Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Button.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/LeftAnime.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/RightAnime.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/DownAnime.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/UpAnime.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/W Back Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/W Front movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/W Left Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/W Right Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/R Back movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/R Front Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/R Left Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/R Right Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Back Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Front Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Left Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Right Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Back Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Front Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Left Movement.png</File>
+    <File>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Right Movement.png</File>
   </SourceFiles>
 </SourceFileCollection>

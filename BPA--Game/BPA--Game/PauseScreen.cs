@@ -24,6 +24,8 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
+            LoadContent();
+            Initialize();
         }
         public ScreenName GetNextScreen()
         {
@@ -44,7 +46,7 @@ namespace BPA__Game
 
         }
 
-        protected override void LoadContent()
+        public override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;

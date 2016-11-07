@@ -14,18 +14,9 @@ namespace BPA__Game
     /// </summary>
     public class Game1 : Game
     {
-        Texture2D rightanim;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        enum Screen
-        {
-            TitleScreen,
-            GameScreen,
-            OptionsScreen,
-            PauseScreen,
-        }
-        Screen CurrentScreen = Screen.TitleScreen;
-        mButton btnPlay;
+        ScreenManager screenManager;
 
         int screenWidth = 800; int screenHeight = 700;
 
@@ -33,6 +24,7 @@ namespace BPA__Game
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            screenManager = new ScreenManager();
         }
 
         /// <summary>
@@ -58,10 +50,6 @@ namespace BPA__Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            rightanim = Content.Load<Texture2D>("RightAnime");
-            btnPlay.setPosition(new Vector2(350, 300));
-            this.IsMouseVisible = true;
             base.LoadContent();
 
             // TODO: use this.Content to load your game content here
@@ -84,19 +72,7 @@ namespace BPA__Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-            MouseState mouse = Mouse.GetState();
-            switch (CurrentScreen)
-            {
-                case Screen.TitleScreen:   
-                    btnPlay.Update(mouse);
-                    break;
-                case Screen.GameScreen:
-
-                    break;
-            }
-
+            screenManager.Update(gameTime);
             base.Update(gameTime);
         }
             // TODO: Add your update logic here
@@ -110,29 +86,10 @@ namespace BPA__Game
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            switch (CurrentScreen)
-            {
-                case Screen.TitleScreen:
-                    btnPlay.Draw(spriteBatch);
-                    break;
-                case Screen.GameScreen:
-                    spriteBatch.Draw(rightanim, new Vector2(100,100), Color.White);
-                    break;
-            }
+            screenManager.Draw(spriteBatch);
             spriteBatch.End();
         }
 
-        
-     public void HandleButtonClicked(object sender, EventArgs eventArgs)
-        {
-            if (sender == btnPlay)
-            {
-                CurrentScreen = Screen.TitleScreen;
-            }
-            else if (sender == btnPlay)
-            {
-                CurrentScreen = Screen.GameScreen;
-            }
-        }
+
     }
 }

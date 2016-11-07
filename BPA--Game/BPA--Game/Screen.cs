@@ -19,7 +19,10 @@ namespace BPA__Game
             PauseScreen,
             LoadScreen,
         }
+        public new virtual void LoadContent()
+        {
 
+        }
         //Update any information specific to the screen
         public new virtual void Update(GameTime theTime)
         {
