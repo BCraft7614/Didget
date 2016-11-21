@@ -9,22 +9,23 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BPA__Game
 {
-    public class Screen:Game
+    public class Screen
     {
-        public enum ScreenName
+        private string nextScreen;
+        public string GetNextScreen()
         {
-            TitleScreen,
-            GameScreen,
-            OptionsScreen,
-            PauseScreen,
-            LoadScreen,
+            return nextScreen;
         }
-        public new virtual void LoadContent()
+        public virtual void LoadContent()
+        {
+
+        }
+        public virtual void UnloadContent()
         {
 
         }
         //Update any information specific to the screen
-        public new virtual void Update(GameTime theTime)
+        public virtual void Update(GameTime theTime)
         {
 
         }

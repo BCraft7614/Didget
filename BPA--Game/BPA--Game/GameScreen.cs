@@ -27,8 +27,8 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
-            LoadContent();
-            Initialize();
+            //LoadContent();
+            //Initialize();
         }
 
         public ScreenName GetNextScreen()
@@ -81,6 +81,7 @@ namespace BPA__Game
         {
             if (sender == btnPlay)
             {
+
                 nextScreen = ScreenName.GameScreen;
             }
             else if (sender == btnOp)

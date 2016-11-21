@@ -6,27 +6,33 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 namespace BPA__Game
 {
     public class ScreenManager : Screen
     {
 
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public static GraphicsDeviceManager GraphicsDevceMgr;
+        public static SpriteBatch Sprites;
+        public static SpriteBatch spriteBatch;
+        public static Dictionary<string, Texture2D> Textures2D;
+        public static Dictionary<string, Screen> Screens;
+        public static ContentManager ContentMgr;
         TitleScreen titleScreen;
         OptionsScreen optionScreen;
         PauseScreen pauseScreen;
         GameScreen gameScreen;
         LoadScreen loadScreen;
 
-        ScreenName CurrentScreen;
 
-        int screenWidth = 800; int screenHeight = 700;
+        Screen CurrentScreen;
 
         public ScreenManager()
         {
-            graphics = new GraphicsDeviceManager(this);
+            GraphicsDevceMgr = new GraphicsDeviceManager(this);
+            GraphicsDevceMgr.PreferredBackBufferWidth = 800;
+            GraphicsDevceMgr.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
             CurrentScreen = ScreenName.TitleScreen;
             titleScreen = new TitleScreen();
@@ -47,7 +53,7 @@ namespace BPA__Game
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            Textures2D = new Dictionary<string, Texture2D>();
             base.Initialize();
         }
 
@@ -59,14 +65,15 @@ namespace BPA__Game
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            graphics.PreferredBackBufferWidth = screenWidth;
-            graphics.PreferredBackBufferHeight = screenHeight;
             titleScreen.ButtonClicked += HandleButtonClicked;
             gameScreen.ButtonClicked += HandleButtonClicked;
             optionScreen.ButtonClicked += HandleButtonClicked;
             loadScreen.ButtonClicked += HandleButtonClicked;
             pauseScreen.ButtonClicked += HandleButtonClicked;
 
+            ContentMgr = Content;
+            Screens.Add("TitleScreen", titleScreen);
+            titleScreen.LoadContent();
 
             this.IsMouseVisible = true;
             base.LoadContent();
@@ -95,30 +102,8 @@ namespace BPA__Game
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-
-            MouseState mouse = Mouse.GetState();
-            switch (CurrentScreen)
-            {
-                case ScreenName.TitleScreen:
-                    titleScreen.Update(gameTime);
-                    break;
-                case ScreenName.GameScreen:
-                    gameScreen.Update(gameTime);
-                    break;
-                case ScreenName.OptionsScreen:
-                    optionScreen.Update(gameTime);
-                    break;
-
-                case ScreenName.PauseScreen:
-                    pauseScreen.Update(gameTime);
-                    break;
-
-                case ScreenName.LoadScreen:
-                    loadScreen.Update(gameTime);
-                    break;
-
-            }
-
+            //MouseState mouse = Mouse.GetState();
+            CurrentScreen.Update(gameTime);
 
         }
         // TODO: Add your update logic here
@@ -132,55 +117,17 @@ namespace BPA__Game
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            switch (CurrentScreen)
-            {
-                case ScreenName.TitleScreen:
-                    titleScreen.Draw(spriteBatch);
-                    break;
-                case ScreenName.GameScreen:
-                    gameScreen.Draw(spriteBatch);
-                    break;
-                case ScreenName.OptionsScreen:
-                    optionScreen.Draw(spriteBatch);
-                    break;
-
-                case ScreenName.PauseScreen:
-                    pauseScreen.Draw(spriteBatch);
-                    break;
-
-                case ScreenName.LoadScreen:
-                    loadScreen.Draw(spriteBatch);
-                    break;
-            }
+            CurrentScreen.Draw(spriteBatch);
             spriteBatch.End();
         }
 
 
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
-            if (sender == titleScreen)
-            {
-                CurrentScreen = titleScreen.GetNextScreen();
-
-            }
-            else if (sender == gameScreen)
-            {
-                CurrentScreen = gameScreen.GetNextScreen();
-            }
-            else if (sender == optionScreen)
-            {
-                CurrentScreen = optionScreen.GetNextScreen();
-            }
-            else if (sender == loadScreen)
-            {
-                CurrentScreen = loadScreen.GetNextScreen();
-            }
-            else if (sender == pauseScreen)
-            {
-                CurrentScreen = pauseScreen.GetNextScreen();
-            }
-
+            Screens.TryGetValue(CurrentScreen.GetNextScreen(), out CurrentScreen);
         }
-
     }
 }
+
+        
+
