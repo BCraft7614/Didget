@@ -10,6 +10,7 @@ namespace BPA__Game
 {
     public class PauseScreen:Screen
     {
+        /*
         mButton btnResume;
         mButton btnOp;
         mButton btnExit;
@@ -94,5 +95,6 @@ namespace BPA__Game
                 ButtonClicked(this, EventArgs.Empty);
             }
         }
+        */
     }
 }

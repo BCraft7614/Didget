@@ -12,8 +12,8 @@ namespace BPA__Game
 {
     public class Screen
     {
-        private String nextScreen;
-        public string GetNextScreen()
+        protected String nextScreen;
+        public  string GetNextScreen()
         {
             return nextScreen;
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/Blue Back Movement.png</SourceFile>
-  <SourceTime>2016-10-13T13:03:01.34077-04:00</SourceTime>
+  <SourceTime>2016-11-21T13:09:03.5103064-05:00</SourceTime>
   <DestFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/bin/Windows/Blue Back Movement.xnb</DestFile>
-  <DestTime>2016-10-17T12:53:41.17032-04:00</DestTime>
+  <DestTime>2016-11-22T11:44:52.4089364-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

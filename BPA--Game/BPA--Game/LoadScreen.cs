@@ -11,6 +11,7 @@ namespace BPA__Game
 {
     public class LoadScreen:Screen
     {
+        /*
         mButton btnLoad1;
         mButton btnLoad2;
         mButton btnBack;
@@ -101,5 +102,6 @@ namespace BPA__Game
                 ButtonClicked(this, EventArgs.Empty);
             }
         }
+        */
     }
 }

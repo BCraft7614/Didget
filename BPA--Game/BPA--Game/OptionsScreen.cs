@@ -11,6 +11,7 @@ namespace BPA__Game
 {
     public class OptionsScreen : Screen
     {
+        /*
         mButton btnSave;
         mButton btnLoad;
         mButton btnBack;
@@ -98,6 +99,7 @@ namespace BPA__Game
                 ButtonClicked(this, EventArgs.Empty);
             }
         }
+        */
         
         
     }

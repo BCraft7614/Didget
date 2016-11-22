@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BPA__Game
 {
-    /// <summary>
+   //// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
-    {
+    {/*
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         ScreenManager screenManager;
@@ -90,6 +90,7 @@ namespace BPA__Game
             spriteBatch.End();
         }
 
-
+*/
     }
 }
+

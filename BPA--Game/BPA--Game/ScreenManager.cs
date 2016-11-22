@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace BPA__Game
 {
-    public class ScreenManager : Screen
+    public class ScreenManager : Game
     {
 
         public static GraphicsDeviceManager GraphicsDevceMgr;
@@ -18,7 +18,6 @@ namespace BPA__Game
         public static SpriteBatch spriteBatch;
         public static Dictionary<string, Texture2D> Textures2D;
         public static Dictionary<string, Screen> Screens;
-        public static ContentManager ContentMgr;
         TitleScreen titleScreen;
         OptionsScreen optionScreen;
         PauseScreen pauseScreen;
@@ -30,18 +29,20 @@ namespace BPA__Game
 
         public ScreenManager()
         {
+
             GraphicsDevceMgr = new GraphicsDeviceManager(this);
             GraphicsDevceMgr.PreferredBackBufferWidth = 800;
             GraphicsDevceMgr.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
-            CurrentScreen = ScreenName.TitleScreen;
+            CurrentScreen = titleScreen;
+            Screens = new Dictionary<string, Screen>();
             titleScreen = new TitleScreen();
             optionScreen = new OptionsScreen();
             pauseScreen = new PauseScreen();
             gameScreen = new GameScreen();
             loadScreen = new LoadScreen();
-            LoadContent();
-            Initialize();
+           // LoadContent();
+            //Initialize();
         }
 
         /// <summary>
@@ -61,19 +62,21 @@ namespace BPA__Game
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        public override void LoadContent()
+        protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             titleScreen.ButtonClicked += HandleButtonClicked;
             gameScreen.ButtonClicked += HandleButtonClicked;
-            optionScreen.ButtonClicked += HandleButtonClicked;
-            loadScreen.ButtonClicked += HandleButtonClicked;
-            pauseScreen.ButtonClicked += HandleButtonClicked;
+            //optionScreen.ButtonClicked += HandleButtonClicked;
+            //loadScreen.ButtonClicked += HandleButtonClicked;
+            //pauseScreen.ButtonClicked += HandleButtonClicked;
 
-            ContentMgr = Content;
+            Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
-            titleScreen.LoadContent();
+            Screens.Add("GameScreen", gameScreen);
+            //titleScreen.LoadContent();
+            //gameScreen.LoadContent();
 
             this.IsMouseVisible = true;
             base.LoadContent();
@@ -89,9 +92,9 @@ namespace BPA__Game
         {
             titleScreen.ButtonClicked -= HandleButtonClicked;
             gameScreen.ButtonClicked -= HandleButtonClicked;
-            optionScreen.ButtonClicked -= HandleButtonClicked;
-            loadScreen.ButtonClicked -= HandleButtonClicked;
-            pauseScreen.ButtonClicked -= HandleButtonClicked;
+            //optionScreen.ButtonClicked -= HandleButtonClicked;
+            //loadScreen.ButtonClicked -= HandleButtonClicked;
+           // pauseScreen.ButtonClicked -= HandleButtonClicked;
             // TODO: Unload any non ContentManager content here
         }
 
@@ -100,7 +103,7 @@ namespace BPA__Game
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
             //MouseState mouse = Mouse.GetState();
             CurrentScreen.Update(gameTime);
@@ -113,7 +116,7 @@ namespace BPA__Game
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();

@@ -19,7 +19,6 @@ namespace BPA__Game
         Texture2D rightanim;
         Texture2D background;
         GraphicsDeviceManager graphics;
-        String nextScreen;
         SpriteBatch spriteBatch;
 
         int screenWidth;
@@ -41,14 +40,17 @@ namespace BPA__Game
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
             btnPlay = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnOp = new mButton(ContentMgr.Load<Texture2D>("OpButton"), graphics.GraphicsDevice);
-            btnLoad = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
-            btnExit = new mButton(ContentMgr.Load<Texture2D>("Exit"), graphics.GraphicsDevice);
+            btnOp = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnLoad = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnExit = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
             btnPlay.setPosition(new Vector2(350, 300));
             btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
+            btnLoad.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 4));
+            btnExit.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 8));
+            
           //  this.IsMouseVisible = true;
         }
         public override void UnloadContent()
