@@ -19,7 +19,7 @@ namespace BPA__Game
         Texture2D rightanim;
         Texture2D background;
         GraphicsDeviceManager graphics;
-
+        String nextScreen;
         SpriteBatch spriteBatch;
 
         int screenWidth;
@@ -35,15 +35,15 @@ namespace BPA__Game
         }
  
 
-        public override void LoadContent(ContentManager Content, GraphicsDeviceManager graphics)
+        public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
         {
             //spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnPlay = new mButton(Content.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnOp = new mButton(Content.Load<Texture2D>("OpButton"), graphics.GraphicsDevice);
-            btnLoad = new mButton(Content.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
-            btnExit = new mButton(Content.Load<Texture2D>("Exit"), graphics.GraphicsDevice);
+            btnPlay = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnOp = new mButton(ContentMgr.Load<Texture2D>("OpButton"), graphics.GraphicsDevice);
+            btnLoad = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
+            btnExit = new mButton(ContentMgr.Load<Texture2D>("Exit"), graphics.GraphicsDevice);
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
@@ -80,19 +80,19 @@ namespace BPA__Game
         {
             if (sender == btnPlay)
             {
-                nextScreen = ScreenName.GameScreen;
+                nextScreen = "GameScreen"; //ScreenName.GameScreen;
             }
             else if (sender == btnOp)
             {
-                nextScreen = ScreenName.OptionsScreen;
+                nextScreen = "OptionsScreen";//ScreenName.OptionsScreen;
             }
             else if(sender == btnLoad)
             {
-                nextScreen = ScreenName.LoadScreen;
+                nextScreen = "LoadScreen"; //ScreenName.LoadScreen;
             }
             else if(sender == btnExit)
-            { 
-                Exit();
+            {
+                System.Environment.Exit(1);
             }
             OnButtonClicked();
         }
