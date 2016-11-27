@@ -13,7 +13,8 @@ namespace BPA__Game
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
-    {/*
+    {
+        /*
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         ScreenManager screenManager;

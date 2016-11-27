@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/LeftAnime.png</SourceFile>
-  <SourceTime>2016-11-21T13:09:03.6353064-05:00</SourceTime>
-  <DestFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/bin/Windows/LeftAnime.xnb</DestFile>
-  <DestTime>2016-11-22T11:44:51.4089364-05:00</DestTime>
+  <SourceFile>C:/Users/aepps/Source/Repos/Didget/BPA--Game/BPA--Game/Content/LeftAnime.png</SourceFile>
+  <SourceTime>2016-11-21T15:37:03.817582-05:00</SourceTime>
+  <DestFile>C:/Users/aepps/Source/Repos/Didget/BPA--Game/BPA--Game/Content/bin/Windows/LeftAnime.xnb</DestFile>
+  <DestTime>2016-11-22T17:00:00.9608849-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

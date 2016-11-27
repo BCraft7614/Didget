@@ -19,10 +19,10 @@ namespace BPA__Game
         public static Dictionary<string, Texture2D> Textures2D;
         public static Dictionary<string, Screen> Screens;
         TitleScreen titleScreen;
-        OptionsScreen optionScreen;
-        PauseScreen pauseScreen;
+        //OptionsScreen optionScreen;
+        //PauseScreen pauseScreen;
         GameScreen gameScreen;
-        LoadScreen loadScreen;
+       // LoadScreen loadScreen;
 
 
         Screen CurrentScreen;
@@ -35,12 +35,13 @@ namespace BPA__Game
             GraphicsDevceMgr.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
             CurrentScreen = titleScreen;
+            CurrentScreen = new Screen();
             Screens = new Dictionary<string, Screen>();
             titleScreen = new TitleScreen();
-            optionScreen = new OptionsScreen();
-            pauseScreen = new PauseScreen();
-            gameScreen = new GameScreen();
-            loadScreen = new LoadScreen();
+            //optionScreen = new OptionsScreen();
+            //pauseScreen = new PauseScreen();
+             gameScreen = new GameScreen();
+            //loadScreen = new LoadScreen();
            // LoadContent();
             //Initialize();
         }
@@ -69,7 +70,7 @@ namespace BPA__Game
             titleScreen.ButtonClicked += HandleButtonClicked;
             gameScreen.ButtonClicked += HandleButtonClicked;
             //optionScreen.ButtonClicked += HandleButtonClicked;
-            //loadScreen.ButtonClicked += HandleButtonClicked;
+            //oadScreen.ButtonClicked += HandleButtonClicked;
             //pauseScreen.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
@@ -94,7 +95,8 @@ namespace BPA__Game
             gameScreen.ButtonClicked -= HandleButtonClicked;
             //optionScreen.ButtonClicked -= HandleButtonClicked;
             //loadScreen.ButtonClicked -= HandleButtonClicked;
-           // pauseScreen.ButtonClicked -= HandleButtonClicked;
+            // pauseScreen.ButtonClicked -= HandleButtonClicked;
+            base.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }
 

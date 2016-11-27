@@ -32,7 +32,7 @@ namespace BPA__Game
             //Initialize();
         }
 
-        public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
+        public override void LoadContent(ContentManager ContentMgr,GraphicsDeviceManager graphics)
         {
             //spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
@@ -53,7 +53,7 @@ namespace BPA__Game
             btnPlay.ButtonClicked -= HandleButtonClicked;
             btnOp.ButtonClicked -= HandleButtonClicked;
             btnLoad.ButtonClicked -= HandleButtonClicked;
-            base.UnloadContent();
+            
         }
         public override void Update(GameTime gameTime)
         {

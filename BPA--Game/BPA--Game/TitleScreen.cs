@@ -18,8 +18,8 @@ namespace BPA__Game
         mButton btnExit;
         Texture2D rightanim;
         Texture2D background;
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        // graphics;
+       // SpriteBatch spriteBatch;
 
         int screenWidth;
         int screenHeight;
@@ -29,6 +29,7 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
+         
            // LoadContent();
            // Initialize();
         }
