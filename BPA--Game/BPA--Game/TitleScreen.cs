@@ -41,8 +41,8 @@ namespace BPA__Game
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
             btnPlay = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnOp = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnLoad = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnOp = new mButton(ContentMgr.Load<Texture2D>("OPbtn"), graphics.GraphicsDevice);
+            btnLoad = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
             btnExit = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;

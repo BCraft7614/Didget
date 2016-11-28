@@ -63,6 +63,7 @@
     <Content Include="Content\Blue Front Movement.png" />
     <Content Include="Content\Blue Left Movement.png" />
     <Content Include="Content\Blue Right Movement.png" />
+    <Content Include="Content\BtnLoad.png" />
     <Content Include="Content\Button.png" />
     <Content Include="Content\DownAnime.png" />
     <Content Include="Content\Green Back Movement.png" />
@@ -70,6 +71,7 @@
     <Content Include="Content\Green Left Movement.png" />
     <Content Include="Content\Green Right Movement.png" />
     <Content Include="Content\LeftAnime.png" />
+    <Content Include="Content\OPbtn.png" />
     <Content Include="Content\R Back movement.png" />
     <Content Include="Content\R Front Movement.png" />
     <Content Include="Content\R Left Movement.png" />

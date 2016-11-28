@@ -182,3 +182,5 @@ C:\Users\aepps\Source\Repos\Didget\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Sha
 C:\Users\aepps\Source\Repos\Didget\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.xml
 C:\Users\aepps\Source\Repos\Didget\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\aepps\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.csprojResolveAssemblyReference.cache
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\OPbtn.xnb
+H:\DigitsReal\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\BtnLoad.xnb
