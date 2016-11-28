@@ -34,16 +34,16 @@ namespace BPA__Game
             GraphicsDevceMgr.PreferredBackBufferWidth = 800;
             GraphicsDevceMgr.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
-            CurrentScreen = titleScreen;
-            CurrentScreen = new Screen();
+            
             Screens = new Dictionary<string, Screen>();
             titleScreen = new TitleScreen();
+            gameScreen = new GameScreen();
             //optionScreen = new OptionsScreen();
             //pauseScreen = new PauseScreen();
-             gameScreen = new GameScreen();
             //loadScreen = new LoadScreen();
-           // LoadContent();
+            // LoadContent();
             //Initialize();
+            CurrentScreen = titleScreen;
         }
 
         /// <summary>
@@ -76,8 +76,8 @@ namespace BPA__Game
             Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
             Screens.Add("GameScreen", gameScreen);
-            //titleScreen.LoadContent();
-            //gameScreen.LoadContent();
+            titleScreen.LoadContent(Content, GraphicsDevceMgr);
+            gameScreen.LoadContent(Content, GraphicsDevceMgr);
 
             this.IsMouseVisible = true;
             base.LoadContent();

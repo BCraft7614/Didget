@@ -81,6 +81,7 @@ namespace BPA__Game
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
+            sender = btnPlay;
             if (sender == btnPlay)
             {
                 nextScreen = "GameScreen"; //ScreenName.GameScreen;
