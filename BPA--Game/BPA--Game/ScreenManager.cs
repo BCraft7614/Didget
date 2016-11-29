@@ -78,7 +78,6 @@ namespace BPA__Game
             Screens.Add("GameScreen", gameScreen);
             Screens.Add("PauseScreen", pauseScreen);
             Screens.Add("OptionsScreen", optionScreen);
-
             titleScreen.LoadContent(Content, GraphicsDevceMgr);
             gameScreen.LoadContent(Content, GraphicsDevceMgr);
             pauseScreen.LoadContent(Content, GraphicsDevceMgr);

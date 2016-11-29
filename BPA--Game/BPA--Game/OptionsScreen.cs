@@ -17,7 +17,7 @@ namespace BPA__Game
         mButton btnLoad;
         mButton btnBack;
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        //SpriteBatch spriteBatch;
         int screenWidth;
         int screenHeight;
 
@@ -51,8 +51,9 @@ namespace BPA__Game
             btnSave.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
             btnBack.ButtonClicked += HandleButtonClicked;
-            btnSave.setPosition(new Vector2(350, 300));
-            btnLoad.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 2));
+            btnSave.setPosition(new Vector2(350, 100));
+            btnLoad.setPosition(new Vector2(350, 200 + btnLoad.size.Y * 2));
+            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 4));
             
             
         }
