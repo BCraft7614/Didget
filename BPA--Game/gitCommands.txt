@@ -1,0 +1,7 @@
+git pull
+
+if no merge conflicts:
+git status
+git add "files that you want to push"
+git commit -m "commit messages"
+git push
