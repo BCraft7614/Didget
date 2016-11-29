@@ -36,7 +36,7 @@ namespace BPA__Game
             if (state.IsKeyDown(Keys.W))
             {
                 texture = upAnime;
-                position += new Vector2(0, -1);
+                position += new Vector2(0, -2);
             }
             else if (state.IsKeyDown(Keys.D))
             {
