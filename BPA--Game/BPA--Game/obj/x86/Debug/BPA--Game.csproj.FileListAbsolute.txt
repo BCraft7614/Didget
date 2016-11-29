@@ -184,3 +184,43 @@ C:\Users\aepps\Source\Repos\Didget\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Sha
 C:\Users\aepps\Source\Repos\Didget\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.csprojResolveAssemblyReference.cache
 H:\DidgetReall\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.exe
 H:\DidgetReall\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.pdb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Back Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Front Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Left Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Blue Right Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\Button.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\DownAnime.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\LeftAnime.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Back movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Front Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Left Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\R Right Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\RightAnime.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\UpAnime.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Back Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Front movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Left Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\Content\W Right Movement.xnb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.exe
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\BPA--Game.pdb
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\MonoGame.Framework.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.XInput.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+H:\DidgetReall\BPA--Game\BPA--Game\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+H:\DidgetReall\BPA--Game\BPA--Game\obj\x86\Debug\BPA--Game.csprojResolveAssemblyReference.cache

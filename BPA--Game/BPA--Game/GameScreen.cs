@@ -12,6 +12,7 @@ namespace BPA__Game
 {
     public class GameScreen:Screen
     {
+        // Work Here Ryan. Add Player and Battle Scene
         mButton btnPlay;
         mButton btnLoad;
         mButton btnOp;

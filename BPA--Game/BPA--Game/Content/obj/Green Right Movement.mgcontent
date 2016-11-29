@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/../Green Right Movement.png</SourceFile>
-  <SourceTime>2016-10-13T13:14:00-04:00</SourceTime>
-  <DestFile>H:/DigitsReal/BPA--Game/BPA--Game/Content/bin/Windows/../Green Right Movement.xnb</DestFile>
-  <DestTime>2016-11-28T11:52:49.2777964-05:00</DestTime>
+  <SourceFile>H:/DidgetReall/BPA--Game/BPA--Game/Content/../Green Right Movement.png</SourceFile>
+  <SourceTime>2016-11-28T13:37:51.6684214-05:00</SourceTime>
+  <DestFile>H:/DidgetReall/BPA--Game/BPA--Game/Content/bin/Windows/../Green Right Movement.xnb</DestFile>
+  <DestTime>2016-11-28T14:02:58.9027964-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
