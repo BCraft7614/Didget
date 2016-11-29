@@ -41,9 +41,9 @@ namespace BPA__Game
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
             btnPlay = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnOp = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnLoad = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnExit = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnOp = new mButton(ContentMgr.Load<Texture2D>("OPBtn"), graphics.GraphicsDevice);
+            btnLoad = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
+            btnExit = new mButton(ContentMgr.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice);
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
@@ -59,6 +59,7 @@ namespace BPA__Game
             btnPlay.ButtonClicked -= HandleButtonClicked;
             btnOp.ButtonClicked -= HandleButtonClicked;
             btnLoad.ButtonClicked -= HandleButtonClicked;
+            btnExit.ButtonClicked -= HandleButtonClicked;
            // base.UnloadContent();
         }
         public override void Update(GameTime gameTime)
@@ -78,10 +79,11 @@ namespace BPA__Game
             btnLoad.Draw(spriteBatch);
             btnOp.Draw(spriteBatch);
             btnLoad.Draw(spriteBatch);
+            btnExit.Draw(spriteBatch);
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
-            sender = btnPlay;
+            
             if (sender == btnPlay)
             {
                 nextScreen = "GameScreen"; //ScreenName.GameScreen;

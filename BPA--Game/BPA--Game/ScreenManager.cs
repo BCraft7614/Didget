@@ -19,7 +19,7 @@ namespace BPA__Game
         public static Dictionary<string, Texture2D> Textures2D;
         public static Dictionary<string, Screen> Screens;
         TitleScreen titleScreen;
-        //OptionsScreen optionScreen;
+        OptionsScreen optionScreen;
         PauseScreen pauseScreen;
         GameScreen gameScreen;
        // LoadScreen loadScreen;
@@ -38,7 +38,7 @@ namespace BPA__Game
             Screens = new Dictionary<string, Screen>();
             titleScreen = new TitleScreen();
             gameScreen = new GameScreen();
-            //optionScreen = new OptionsScreen();
+            optionScreen = new OptionsScreen();
             pauseScreen = new PauseScreen();
             //loadScreen = new LoadScreen();
             // LoadContent();
@@ -69,17 +69,20 @@ namespace BPA__Game
             spriteBatch = new SpriteBatch(GraphicsDevice);
             titleScreen.ButtonClicked += HandleButtonClicked;
             gameScreen.ButtonClicked += HandleButtonClicked;
-            //optionScreen.ButtonClicked += HandleButtonClicked;
+            optionScreen.ButtonClicked += HandleButtonClicked;
             //oadScreen.ButtonClicked += HandleButtonClicked;
-            //pauseScreen.ButtonClicked += HandleButtonClicked;
+            pauseScreen.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
             Screens.Add("GameScreen", gameScreen);
             Screens.Add("PauseScreen", pauseScreen);
+            Screens.Add("OptionsScreen", optionScreen);
+
             titleScreen.LoadContent(Content, GraphicsDevceMgr);
             gameScreen.LoadContent(Content, GraphicsDevceMgr);
             pauseScreen.LoadContent(Content, GraphicsDevceMgr);
+            optionScreen.LoadContent(Content, GraphicsDevceMgr);
 
             this.IsMouseVisible = true;
             base.LoadContent();
@@ -95,7 +98,7 @@ namespace BPA__Game
         {
             titleScreen.ButtonClicked -= HandleButtonClicked;
             gameScreen.ButtonClicked -= HandleButtonClicked;
-            //optionScreen.ButtonClicked -= HandleButtonClicked;
+            optionScreen.ButtonClicked -= HandleButtonClicked;
             //loadScreen.ButtonClicked -= HandleButtonClicked;
             pauseScreen.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();

@@ -1,2 +1,8 @@
 BPA--Game/.vs/BPA--Game/v14/.suo
 BPA--Game/BPA--Game/bin/Windows/x86/Debug/BPA--Game.vshost.exe.manifest
+BPA--Game/BPA--Game/obj
+BPA--Game/BPA--Game/bin
+BPA--Game/BPA--Game/Content/obj
+*.exe
+*.pdb
+*.xnb
