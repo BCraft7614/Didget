@@ -15,7 +15,7 @@ namespace BPA__Game
     {
         public virtual void UnloadContent()
         {
-            UnloadContent();
+
         }
 
         public virtual void Update(GameTime gameTime)
