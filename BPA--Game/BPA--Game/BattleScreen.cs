@@ -21,7 +21,20 @@ namespace BPA__Game
         public BattleScreen()
             : base()
         {
+        }
 
+        public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
+        {
+            fightButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = fightButton);
+
+            itemButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = itemButton);
+
+            specialButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = specialButton);
+
+            runButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = runButton);
+
+
+            base.LoadContent(ContentMgr, graphics);
         }
 
         public override void Update(GameTime theTime)
@@ -43,8 +56,7 @@ namespace BPA__Game
             {
                 MouseState mouseState = Mouse.GetState();
 
-                if (mouseState.LeftButton == ButtonState.Pressed && fightButton.rectangle.Contains(mouseState.Position))
-                    selected = fightButton;
+                fightButton.Update(mouseState);
 
 
 

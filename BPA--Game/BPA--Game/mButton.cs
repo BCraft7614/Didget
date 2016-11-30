@@ -19,11 +19,11 @@ namespace BPA__Game
 
         public Vector2 size;
 
-        public mButton(Texture2D newTexture, GraphicsDevice graphics)
+        public mButton(Texture2D newTexture, GraphicsDevice graphics, EventHandler onClick = null)
         {
             texture = newTexture;
             size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 30);
-
+            ButtonClicked = onClick;
         }
 
 
@@ -32,9 +32,7 @@ namespace BPA__Game
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
 
-            Rectangle mouseRectangle = new Rectangle(mouse.X, mouse.Y, 1, 1);
-
-            if (mouseRectangle.Intersects(rectangle))
+            if (rectangle.Contains(mouse.Position))
             {
                 if(color.A == 225)
                 {
@@ -69,10 +67,7 @@ namespace BPA__Game
         public event EventHandler ButtonClicked;
         public void OnButtonClicked()
         {
-            if(ButtonClicked != null)
-            {
-                ButtonClicked(this, EventArgs.Empty);
-            }
+            ButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
 
