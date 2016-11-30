@@ -11,9 +11,9 @@ namespace BPA__Game
 {
     public class mButton
     {
-        Texture2D texture;
-        Vector2 position;
-        Rectangle rectangle;
+        public Texture2D texture;
+        public Vector2 position;
+        public Rectangle rectangle;
 
         Color color = new Color(255, 255, 255, 255);
 
