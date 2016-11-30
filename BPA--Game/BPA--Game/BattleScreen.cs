@@ -13,7 +13,7 @@ namespace BPA__Game
     class BattleScreen : Screen
     {
         mButton fightButton;
-        mButton runButton;
+        mButton FleeButton;
         mButton specialButton;
         mButton itemButton;
         mButton selected;
@@ -31,7 +31,7 @@ namespace BPA__Game
 
             specialButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = specialButton);
 
-            runButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = runButton);
+            FleeButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = FleeButton);
 
 
             base.LoadContent(ContentMgr, graphics);
@@ -49,8 +49,8 @@ namespace BPA__Game
             else if (selected == specialButton)
                 SpecialUpdate(theTime);
             //Run Button
-            else if (selected == runButton)
-                RunUpdate(theTime);
+            else if (selected == FleeButton)
+                FleeUpdate(theTime);
             //Shows Screen
             else
             {
@@ -87,45 +87,9 @@ namespace BPA__Game
 
 
         //Should load RunClass but it doesnt work
-        private void RunUpdate(GameTime theTime)
+        private void FleeUpdate(GameTime theTime)
         {
 
-        }
-
-
-        //Event Handler
-
-        public void HandleButtonClicked(object sender, EventArgs eventArgs)
-        {
-            /*
-            sender = btnPlay;
-            if (sender == btnPlay)
-            {
-
-                nextScreen = "TitleScreen"; //ScreenName.GameScreen;
-            }
-            else if (sender == btnOp)
-            {
-                nextScreen = "OptionsScreen"; //ScreenName.OptionsScreen;
-            }
-            else if (sender == btnLoad)
-            {
-                nextScreen = "LoadScreen"; //ScreenName.LoadScreen;
-            }
-           // else if (sender == btnExit)
-          //  {
-           //     System.Environment.Exit(1);
-          //  }
-          */
-            OnButtonClicked();
-        }
-        public event EventHandler ButtonClicked;
-        public void OnButtonClicked()
-        {
-            if (ButtonClicked != null)
-            {
-                ButtonClicked(this, EventArgs.Empty);
-            }
         }
     }
 }

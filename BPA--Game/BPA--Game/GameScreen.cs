@@ -20,6 +20,7 @@ namespace BPA__Game
         Texture2D background;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Player player;
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
@@ -31,6 +32,8 @@ namespace BPA__Game
             screenHeight = 700;
             //LoadContent();
             //Initialize();
+
+            player = new Player();
         }
 
         public override void LoadContent(ContentManager ContentMgr,GraphicsDeviceManager graphics)
@@ -38,7 +41,8 @@ namespace BPA__Game
             //spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-           
+
+            player.LoadContent(ContentMgr);
            
            
             //this.IsMouseVisible = true;
@@ -55,10 +59,12 @@ namespace BPA__Game
                 nextScreen = "PauseScreen";
             }
             MouseState mouse = Mouse.GetState();
+            player.Update(gameTime);
 
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            player.Draw(spriteBatch);
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)

@@ -18,6 +18,10 @@ namespace BPA__Game
         Texture2D leftAnime;
         Texture2D upAnime;
         Texture2D downAnime;
+        Rectangle soruceRect;
+        float elapsed;
+        float delay = 200f;
+        int frames = 0;
 
         Vector2 position;
         public void LoadContent(ContentManager content)
@@ -25,7 +29,7 @@ namespace BPA__Game
             rightAnime = content.Load<Texture2D>("Blue Right Movement");
             leftAnime = content.Load<Texture2D>("Blue Left Movement");
             upAnime = content.Load<Texture2D>("Blue Back Movement");
-            downAnime = content.Load<Texture2D>("Blue Frount Movement");
+            downAnime = content.Load<Texture2D>("Blue Front Movement");
             texture = downAnime;
 
             position = Vector2.Zero;
@@ -36,28 +40,53 @@ namespace BPA__Game
             if (state.IsKeyDown(Keys.W))
             {
                 texture = upAnime;
-                position += new Vector2(0, -1);
+                position += new Vector2(0, -3);
+                MovementAnimation(gameTime);
             }
             else if (state.IsKeyDown(Keys.D))
             {
                 texture = rightAnime;
-                position += new Vector2(1, 0);
+                position += new Vector2(3, 0);
+                MovementAnimation(gameTime);
             }
             else if (state.IsKeyDown(Keys.A))
             {
                 texture = leftAnime;
-                position += new Vector2(-1, 0);
+                position += new Vector2(-3, 0);
+                MovementAnimation(gameTime);
             }
             else if (state.IsKeyDown(Keys.S))
             {
                 texture = downAnime;
-                position += new Vector2(0, 1);
+                position += new Vector2(0, 3);
+                MovementAnimation(gameTime);
             }
+            soruceRect = new Rectangle(32 * frames, 0, texture.Width / 3, texture.Height);
             base.Update(gameTime);
         }
+
+        public void MovementAnimation(GameTime gameTime)
+        {
+            elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (elapsed >= delay)
+            {
+                if (frames >= 2)
+                {
+                    frames = 0;
+                }
+                else
+                {
+                    frames++;
+                }
+                elapsed = 0;
+                
+                //Something is wrong here
+            }
+        }
+        //fix this part Ryan
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            spriteBatch.Draw(texture, position, soruceRect, Color.White);
         }
     }
 
