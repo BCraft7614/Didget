@@ -83,6 +83,7 @@
     <Content Include="Content\R Left Movement.png" />
     <Content Include="Content\R Right Movement.png" />
     <Content Include="Content\RightAnime.png" />
+    <Content Include="Content\TitleScreenBg.png" />
     <Content Include="Content\UpAnime.png" />
     <Content Include="Content\W Back Movement.png" />
     <Content Include="Content\W Front movement.png" />

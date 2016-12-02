@@ -13,6 +13,9 @@ namespace BPA__Game
 {
     public class Entity
     {
+
+        public Vector2 position;
+
         public virtual void UnloadContent()
         {
 

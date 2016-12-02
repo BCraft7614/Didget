@@ -51,6 +51,7 @@ namespace BPA__Game
             btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
             btnLoad.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 4));
             btnExit.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 8));
+            background = ContentMgr.Load<Texture2D>("TitleScreenBg");
             
           //  this.IsMouseVisible = true;
         }
@@ -75,11 +76,13 @@ namespace BPA__Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             //GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             btnPlay.Draw(spriteBatch);
             btnLoad.Draw(spriteBatch);
             btnOp.Draw(spriteBatch);
             btnLoad.Draw(spriteBatch);
             btnExit.Draw(spriteBatch);
+            
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {

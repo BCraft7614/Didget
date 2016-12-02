@@ -24,6 +24,7 @@ namespace BPA__Game
         int frames = 0;
 
         Vector2 position;
+
         public void LoadContent(ContentManager content)
         {
             rightAnime = content.Load<Texture2D>("Blue Right Movement");
