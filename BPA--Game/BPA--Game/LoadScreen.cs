@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,14 @@ namespace BPA__Game
 {
     public class LoadScreen:Screen
     {
-        /*
+        
         mButton btnLoad1;
         mButton btnLoad2;
         mButton btnBack;
         Texture2D background;
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        ScreenName nextScreen;
+       // GraphicsDeviceManager graphics;
+        //SpriteBatch spriteBatch;
+        //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
 
@@ -27,37 +28,30 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
-            LoadContent();
-            Initialize();
+           // LoadContent();
+            //Initialize();
         }
-
-        public ScreenName GetNextScreen()
+        public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
         {
-            return nextScreen;
-        }
-
-
-
-        public override void LoadContent()
-        {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            //spriteBatch = new SpriteBatch(GraphicsDevice);
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            btnLoad2 = new mButton(Content.Load<Texture2D>("BtnLoad2"), graphics.GraphicsDevice);
-            btnLoad1 = new mButton(Content.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
-            btnBack = new mButton(Content.Load<Texture2D>("BtnBack"), graphics.GraphicsDevice);
+            btnLoad2 = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
+            btnLoad1 = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
+            btnBack = new mButton(ContentMgr.Load<Texture2D>("BtnBack2"), graphics.GraphicsDevice);
             btnLoad2.ButtonClicked += HandleButtonClicked;
             btnLoad1.ButtonClicked += HandleButtonClicked;
             btnBack.ButtonClicked += HandleButtonClicked;
             btnLoad2.setPosition(new Vector2(350, 300));
             btnLoad1.setPosition(new Vector2(350, 300 + btnLoad1.size.Y * 2));
-            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 4));
-            this.IsMouseVisible = true;
+            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 6));
+            //this.IsMouseVisible = true;
         }
-        protected override void UnloadContent()
+        public override void UnloadContent()
         {
             btnLoad2.ButtonClicked -= HandleButtonClicked;
             btnLoad1.ButtonClicked -= HandleButtonClicked;
+            btnBack.ButtonClicked -= HandleButtonClicked;
 
             base.UnloadContent();
         }
@@ -67,13 +61,15 @@ namespace BPA__Game
             MouseState mouse = Mouse.GetState();
             btnLoad2.Update(mouse);
             btnLoad1.Update(mouse);
+            btnBack.Update(mouse);
 
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            //GraphicsDevice.Clear(Color.CornflowerBlue);
             btnLoad2.Draw(spriteBatch);
             btnLoad1.Draw(spriteBatch);
+            btnBack.Draw(spriteBatch);
 
         }
 
@@ -82,15 +78,15 @@ namespace BPA__Game
         {
             if (sender == btnLoad1)
             {
-                nextScreen = ScreenName.GameScreen;
+                nextScreen = "GameScreen"; //ScreenName.GameScreen;
             }
             else if (sender == btnLoad2)
             {
-                nextScreen = ScreenName.GameScreen;
+                nextScreen = "GameScreen"; //ScreenName.GameScreen;
             }
             else if (sender == btnBack)
             {
-                nextScreen = ScreenName.OptionsScreen;
+                nextScreen = "TitleScreen"; //ScreenName.OptionsScreen;
             }
             OnButtonClicked();
         }
@@ -102,6 +98,6 @@ namespace BPA__Game
                 ButtonClicked(this, EventArgs.Empty);
             }
         }
-        */
+        
     }
 }

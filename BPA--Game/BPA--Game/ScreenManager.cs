@@ -22,7 +22,7 @@ namespace BPA__Game
         OptionsScreen optionScreen;
         PauseScreen pauseScreen;
         GameScreen gameScreen;
-       // LoadScreen loadScreen;
+        LoadScreen loadScreen;
 
 
         Screen CurrentScreen;
@@ -40,7 +40,7 @@ namespace BPA__Game
             gameScreen = new GameScreen();
             optionScreen = new OptionsScreen();
             pauseScreen = new PauseScreen();
-            //loadScreen = new LoadScreen();
+            loadScreen = new LoadScreen();
             // LoadContent();
             //Initialize();
             CurrentScreen = titleScreen;
@@ -70,7 +70,7 @@ namespace BPA__Game
             titleScreen.ButtonClicked += HandleButtonClicked;
             gameScreen.ButtonClicked += HandleButtonClicked;
             optionScreen.ButtonClicked += HandleButtonClicked;
-            //oadScreen.ButtonClicked += HandleButtonClicked;
+            loadScreen.ButtonClicked += HandleButtonClicked;
             pauseScreen.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
@@ -78,10 +78,12 @@ namespace BPA__Game
             Screens.Add("GameScreen", gameScreen);
             Screens.Add("PauseScreen", pauseScreen);
             Screens.Add("OptionsScreen", optionScreen);
+            Screens.Add("LoadScreen", loadScreen);
             titleScreen.LoadContent(Content, GraphicsDevceMgr);
             gameScreen.LoadContent(Content, GraphicsDevceMgr);
             pauseScreen.LoadContent(Content, GraphicsDevceMgr);
             optionScreen.LoadContent(Content, GraphicsDevceMgr);
+            loadScreen.LoadContent(Content, GraphicsDevceMgr);
 
             this.IsMouseVisible = true;
             base.LoadContent();
@@ -98,7 +100,7 @@ namespace BPA__Game
             titleScreen.ButtonClicked -= HandleButtonClicked;
             gameScreen.ButtonClicked -= HandleButtonClicked;
             optionScreen.ButtonClicked -= HandleButtonClicked;
-            //loadScreen.ButtonClicked -= HandleButtonClicked;
+            loadScreen.ButtonClicked -= HandleButtonClicked;
             pauseScreen.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();
             // TODO: Unload any non ContentManager content here
