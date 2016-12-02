@@ -24,7 +24,7 @@ namespace BPA__Game
 
         public void Enemy(Player player, int posX, int posY, int enemySeed)
         {
-            
+
             position.X = posX;
             position.Y = posY;
         }
