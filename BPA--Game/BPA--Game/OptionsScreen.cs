@@ -17,6 +17,7 @@ namespace BPA__Game
         mButton btnLoad;
         mButton btnBack;
         GraphicsDeviceManager graphics;
+        Texture2D background;
         //SpriteBatch spriteBatch;
         int screenWidth;
         int screenHeight;
@@ -54,11 +55,13 @@ namespace BPA__Game
             btnSave.setPosition(new Vector2(350, 100));
             btnLoad.setPosition(new Vector2(350, 200 + btnLoad.size.Y * 2));
             btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 4));
-            
-            
+            background = ContentMgr.Load<Texture2D>("CellRoom");
+
+
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             btnSave.Draw(spriteBatch);
             btnLoad.Draw(spriteBatch);
             btnBack.Draw(spriteBatch);
