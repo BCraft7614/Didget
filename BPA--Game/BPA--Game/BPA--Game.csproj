@@ -71,7 +71,6 @@
     <Content Include="Content\BtnLoad.png" />
     <Content Include="Content\BtnSave.png" />
     <Content Include="Content\Button.png" />
-    <Content Include="Content\CellRoom.png" />
     <Content Include="Content\DownAnime.png" />
     <Content Include="Content\Green Back Movement.png" />
     <Content Include="Content\Green Front Movement.png" />
@@ -85,6 +84,7 @@
     <Content Include="Content\R Right Movement.png" />
     <Content Include="Content\RightAnime.png" />
     <Content Include="Content\TitleScreenBg.png" />
+    <Content Include="Content\TownGameScreen.png" />
     <Content Include="Content\UpAnime.png" />
     <Content Include="Content\W Back Movement.png" />
     <Content Include="Content\W Front movement.png" />

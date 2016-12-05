@@ -24,6 +24,8 @@ namespace BPA__Game
         int frames = 0;
 
         Vector2 position;
+        
+        
 
         public void LoadContent(ContentManager content)
         {
@@ -38,25 +40,25 @@ namespace BPA__Game
         public override void Update(GameTime gameTime)
         {
             KeyboardState state = Keyboard.GetState();
-            if (state.IsKeyDown(Keys.W))
+            if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
             {
                 texture = upAnime;
                 position += new Vector2(0, -3);
                 MovementAnimation(gameTime);
             }
-            else if (state.IsKeyDown(Keys.D))
+            else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
             {
                 texture = rightAnime;
                 position += new Vector2(3, 0);
                 MovementAnimation(gameTime);
             }
-            else if (state.IsKeyDown(Keys.A))
+            else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
             {
                 texture = leftAnime;
                 position += new Vector2(-3, 0);
                 MovementAnimation(gameTime);
             }
-            else if (state.IsKeyDown(Keys.S))
+            else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
             {
                 texture = downAnime;
                 position += new Vector2(0, 3);
