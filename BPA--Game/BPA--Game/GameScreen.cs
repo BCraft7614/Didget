@@ -47,6 +47,7 @@ namespace BPA__Game
         public override void LoadContent(ContentManager ContentMgr,GraphicsDeviceManager graphics)
         {
             //spriteBatch = new SpriteBatch(GraphicsDevice);
+            background = ContentMgr.Load<Texture2D>("TownGameScreen");
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
 
@@ -72,6 +73,7 @@ namespace BPA__Game
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             player.Draw(spriteBatch);
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }
