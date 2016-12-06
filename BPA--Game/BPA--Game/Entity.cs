@@ -15,6 +15,7 @@ namespace BPA__Game
     {
 
         public Vector2 position;
+        protected ContentManager Content;
 
         public virtual void UnloadContent()
         {
@@ -32,6 +33,10 @@ namespace BPA__Game
         }
 
         public virtual void Initialize()
+        {
+
+        }
+        public virtual void LoadContent(ContentManager Content)
         {
 
         }
