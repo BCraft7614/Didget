@@ -14,6 +14,8 @@ namespace BPA__Game
         public Texture2D texture;
         public Vector2 position;
         public Rectangle rectangle;
+        private ButtonState oldState;
+        private ButtonState newState;
 
         Color color = new Color(255, 255, 255, 255);
 
@@ -24,14 +26,19 @@ namespace BPA__Game
             texture = newTexture;
             size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 30);
             ButtonClicked = onClick;
+            oldState = ButtonState.Released;
+            newState = ButtonState.Released;
+
         }
 
 
         bool down;
-        public void Update(MouseState mouse)
+        public void Update()
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
-
+            MouseState mouse = Mouse.GetState();
+            oldState = newState;
+            newState = mouse.LeftButton;
             if (rectangle.Contains(mouse.Position))
             {
                 if(color.A == 225)
@@ -44,7 +51,7 @@ namespace BPA__Game
                 }
                 if (down) color.A += 3; else color.A -= 3;
 
-                if (mouse.LeftButton == ButtonState.Pressed) {
+                if (oldState ==ButtonState.Released && newState ==ButtonState.Pressed) {
                     OnButtonClicked();
                 }          
            }
@@ -53,7 +60,7 @@ namespace BPA__Game
                 color.A += 3;
                 
             }
-
+            
         }
         public void setPosition(Vector2 newPosition)
         {

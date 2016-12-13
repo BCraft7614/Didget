@@ -66,12 +66,10 @@ namespace BPA__Game
         }
         public override void Update(GameTime gameTime)
         {
-
-            MouseState mouse = Mouse.GetState();
-            btnPlay.Update(mouse);
-            btnOp.Update(mouse);
-            btnLoad.Update(mouse);
-            btnExit.Update(mouse);
+            btnPlay.Update();
+            btnOp.Update();
+            btnLoad.Update();
+            btnExit.Update();
 
         }
         public override void Draw(SpriteBatch spriteBatch)

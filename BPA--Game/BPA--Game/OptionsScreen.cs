@@ -34,10 +34,9 @@ namespace BPA__Game
 
         public override void Update(GameTime gameTime)
         {
-            MouseState mouse = Mouse.GetState();
-            btnLoad.Update(mouse);
-            btnSave.Update(mouse);
-            btnBack.Update(mouse);
+            btnLoad.Update();
+            btnSave.Update();
+            btnBack.Update();
 
         }
 

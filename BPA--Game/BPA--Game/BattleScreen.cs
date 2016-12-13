@@ -54,9 +54,7 @@ namespace BPA__Game
             //Shows Screen
             else
             {
-                MouseState mouseState = Mouse.GetState();
-
-                fightButton.Update(mouseState);
+                fightButton.Update();
 
 
 
