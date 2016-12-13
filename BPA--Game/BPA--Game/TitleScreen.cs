@@ -47,6 +47,7 @@ namespace BPA__Game
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
+            btnExit.ButtonClicked += HandleButtonClicked;
             btnPlay.setPosition(new Vector2(350, 300));
             btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
             btnLoad.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 4));
@@ -101,7 +102,7 @@ namespace BPA__Game
             }
             else if(sender == btnExit)
             {
-                System.Environment.Exit(1);
+                Environment.Exit(1);
             }
             OnButtonClicked();
         }
