@@ -105,7 +105,7 @@ namespace BPA__Game
         {
             if(Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                nextScreen = "PauseScreen";
+                ChangeScreen("PauseScreen");
             }
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);

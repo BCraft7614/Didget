@@ -25,8 +25,8 @@ namespace BPA__Game
 
         public override void LoadContent(ContentManager content)
         {
-            rightAnime = content.Load<Texture2D>("Blue Right Movement");
-            leftAnime = content.Load<Texture2D>("Blue Left Movement");
+            rightAnime = content.Load<Texture2D>("DidgetRight");
+            leftAnime = content.Load<Texture2D>("DidgetLeft");
             upAnime = content.Load<Texture2D>("Blue Back Movement");
             downAnime = content.Load<Texture2D>("Blue Front Movement");
             image = downAnime;
@@ -61,7 +61,7 @@ namespace BPA__Game
                 position += new Vector2(0, 3);
                 MovementAnimation(gameTime);
             }
-            soruceRect = new Rectangle(32 * frames, 0, image.Width / 3, image.Height);
+            soruceRect = new Rectangle(32 * frames, 0, image.Width / 5, image.Height);
             base.Update(gameTime);
         }
 
