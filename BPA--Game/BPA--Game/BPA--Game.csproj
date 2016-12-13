@@ -84,6 +84,7 @@
     <Content Include="Content\R Right Movement.png" />
     <Content Include="Content\RightAnime.png" />
     <Content Include="Content\TitleScreenBg.png" />
+    <Content Include="Content\TowerBuilding.png" />
     <Content Include="Content\TownGameScreen.png" />
     <Content Include="Content\UpAnime.png" />
     <Content Include="Content\W Back Movement.png" />

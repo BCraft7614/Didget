@@ -26,6 +26,9 @@ namespace BPA__Game
         mButton btnOp;
         mButton btnExit;
         Texture2D background;
+        Texture2D towerBuilding;
+        Texture2D waterFountain;
+        Texture2D shopStore;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private List<EnemyAI> enemies;
@@ -49,6 +52,7 @@ namespace BPA__Game
         {
             //spriteBatch = new SpriteBatch(GraphicsDevice);
             background = ContentMgr.Load<Texture2D>("TownGameScreen");
+            towerBuilding = ContentMgr.Load<Texture2D>("TowerBuilding");
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
 
@@ -124,6 +128,7 @@ namespace BPA__Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
+            spriteBatch.Draw(towerBuilding, new Vector2(0,0), Color.White);
             player.Draw(spriteBatch);
             foreach(EnemyAI enemy in enemies)
             {
