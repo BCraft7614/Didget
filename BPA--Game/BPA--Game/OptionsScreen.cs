@@ -54,7 +54,7 @@ namespace BPA__Game
             btnBack.ButtonClicked += HandleButtonClicked;
             btnSave.setPosition(new Vector2(350, 100));
             btnLoad.setPosition(new Vector2(350, 200 + btnLoad.size.Y * 2));
-            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 8));
+            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 7));
             background = ContentMgr.Load<Texture2D>("CellRoom");
 
 
