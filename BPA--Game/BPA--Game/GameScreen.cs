@@ -53,6 +53,7 @@ namespace BPA__Game
             //spriteBatch = new SpriteBatch(GraphicsDevice);
             background = ContentMgr.Load<Texture2D>("TownGameScreen");
             towerBuilding = ContentMgr.Load<Texture2D>("TowerBuilding");
+            waterFountain = ContentMgr.Load<Texture2D>("WaterFountain");
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
 
@@ -129,6 +130,7 @@ namespace BPA__Game
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             spriteBatch.Draw(towerBuilding, new Vector2(0,0), Color.White);
+            spriteBatch.Draw(waterFountain, new Vector2(0, 0), Color.White);
             player.Draw(spriteBatch);
             foreach(EnemyAI enemy in enemies)
             {
