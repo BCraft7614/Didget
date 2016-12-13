@@ -93,6 +93,7 @@
     <Content Include="Content\W Front movement.png" />
     <Content Include="Content\W Left Movement.png" />
     <Content Include="Content\W Right Movement.png" />
+    <Content Include="Content\WaterFountain.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
