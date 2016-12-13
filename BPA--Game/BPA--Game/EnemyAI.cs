@@ -13,39 +13,39 @@ namespace BPA__Game
     class EnemyAI : Entity
     {
         public Direction direction;
-        Texture2D rightWalk, leftWalk, upWalk, downWalk, currentWalk, texture;
-        Rectangle destRect;
+        Texture2D rightWalk, leftWalk, upWalk, downWalk;
         Rectangle sourceRect;
         Random rand;
-        Player player;
         float elapsed;
         float delay = 200f;
         int frames = 0;
         int randTime = 0;
         int randDirection = 0;
 
-        public void Enemy(Player player, int posX, int posY, int enemySeed)
+        public EnemyAI(Player player, int posX, int posY, int enemySeed)
         {
             rand = new Random(enemySeed);
             position.X = posX;
             position.Y = posY;
+            
+            
         }
-        public override void LoadContent(ContentManager Content)
+        public override void LoadContent(ContentManager content)
         {
 
-            base.LoadContent(Content);
-            rightWalk = Content.Load<Texture2D>("R Right Movement");
-            leftWalk = Content.Load<Texture2D>("R Left Movement");
-            upWalk = Content.Load<Texture2D>("R Back Movement");
-            downWalk = Content.Load<Texture2D>("R Front Movement");
-            currentWalk = downWalk;
+            base.LoadContent(content);
+            rightWalk = content.Load<Texture2D>("Blue Right Movement");
+            leftWalk = content.Load<Texture2D>("Blue Left Movement");
+            upWalk = content.Load<Texture2D>("Blue Back Movement");
+            downWalk = content.Load<Texture2D>("Blue Front Movement");
+            image = downWalk;
         }
         public void Animate(GameTime gameTime)
         {
             elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (elapsed >= delay)
             {
-                if (frames > 2)
+                if (frames > 1)
                 {
                     frames = 0;
                 }
@@ -55,7 +55,7 @@ namespace BPA__Game
                 }
                 elapsed = 0;
             }
-            sourceRect = new Rectangle(32 * frames, 0, texture.Width / 3, texture.Height);
+            sourceRect = new Rectangle(32 * frames, 0, image.Width / 3, image.Height);
         }
         public override void Initialize()
         {
@@ -65,7 +65,7 @@ namespace BPA__Game
         {
             base.UnloadContent();
         }
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime,Player player)
         {
             if (randTime <= 0)
             {
@@ -81,13 +81,13 @@ namespace BPA__Game
                 {
                     position.X += 1.5f;
                     direction = Direction.right;
-                    currentWalk = rightWalk;
+                    image = rightWalk;
                 }
                 else
                 {
                     position.Y += 1.5f;
                     direction = Direction.down;
-                    currentWalk = downWalk;
+                    image = downWalk;
                 }
             }
             else if (Math.Round(player.position.X) < Math.Round(position.X) && Math.Round(player.position.Y) > Math.Round(position.Y))
@@ -96,13 +96,13 @@ namespace BPA__Game
                 {
                     position.X -= 1.5f;
                     direction = Direction.left;
-                    currentWalk = leftWalk;
+                    image = leftWalk;
                 }
                 else
                 {
                     position.Y += 1.5f;
                     direction = Direction.down;
-                    currentWalk = downWalk;
+                    image = downWalk;
                 }
             }
             else if (Math.Round(player.position.X) > Math.Round(position.X) && Math.Round(player.position.Y) < Math.Round(position.Y))
@@ -111,13 +111,13 @@ namespace BPA__Game
                 {
                     position.X += 1.5f;
                     direction = Direction.right;
-                    currentWalk = rightWalk;
+                    image = rightWalk;
                 }
                 else
                 {
                     position.Y -= 1.5f;
                     direction = Direction.up;
-                    currentWalk = upWalk;
+                    image = upWalk;
                 }
             }
             else if (Math.Round(player.position.X) < Math.Round(position.X) && Math.Round(player.position.Y) < Math.Round(position.Y))
@@ -126,46 +126,53 @@ namespace BPA__Game
                 {
                     position.X -= 1.5f;
                     direction = Direction.left;
-                    currentWalk = leftWalk;
+                    image = leftWalk;
                 }
                 else
                 {
                     position.Y -= 1.5f;
                     direction = Direction.up;
-                    currentWalk = upWalk;
+                    image = upWalk;
                 }
             }
             else if (Math.Round(player.position.X) > Math.Round(position.X))
             {
                 position.X += 1.5f;
                 direction = Direction.right;
-                currentWalk = rightWalk;
+                image = rightWalk;
             }
             else if (Math.Round(player.position.Y) > Math.Round(position.Y))
             {
                 position.Y += 1.5f;
                 direction = Direction.down;
-                currentWalk = downWalk;
+                image = downWalk;
             }
             else if (Math.Round(player.position.X) < Math.Round(position.X))
             {
                 position.X -= 1.5f;
                 direction = Direction.left;
-                currentWalk = leftWalk;
+                image = leftWalk;
             }
             else if (Math.Round(player.position.Y) < Math.Round(position.Y))
             {
                 position.Y -= 1.5f;
                 direction = Direction.up;
-                currentWalk = upWalk;
+                image = upWalk;
             }
 
             Animate(gameTime);
-            destRect = new Rectangle((int)position.X, (int)position.Y, 31, 32);
+          
             base.Update(gameTime);
 
         }
-
-           
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(image, position, sourceRect, Color.White);
+            base.Draw(spriteBatch);
         }
+
+
     }
+
+    }
+

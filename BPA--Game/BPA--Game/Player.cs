@@ -13,7 +13,6 @@ namespace BPA__Game
 {
     public class Player : Entity
     {
-        Texture2D texture;
         Texture2D rightAnime;
         Texture2D leftAnime;
         Texture2D upAnime;
@@ -23,48 +22,46 @@ namespace BPA__Game
         float delay = 200f;
         int frames = 0;
 
-        Vector2 position;
-        
-        
 
-        public void LoadContent(ContentManager content)
+        public override void LoadContent(ContentManager content)
         {
             rightAnime = content.Load<Texture2D>("Blue Right Movement");
             leftAnime = content.Load<Texture2D>("Blue Left Movement");
             upAnime = content.Load<Texture2D>("Blue Back Movement");
             downAnime = content.Load<Texture2D>("Blue Front Movement");
-            texture = downAnime;
+            image = downAnime;
 
             position = Vector2.Zero;
+
         }
         public override void Update(GameTime gameTime)
         {
             KeyboardState state = Keyboard.GetState();
             if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
             {
-                texture = upAnime;
+                image = upAnime;
                 position += new Vector2(0, -3);
                 MovementAnimation(gameTime);
             }
             else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
             {
-                texture = rightAnime;
+                image = rightAnime;
                 position += new Vector2(3, 0);
                 MovementAnimation(gameTime);
             }
             else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
             {
-                texture = leftAnime;
+                image = leftAnime;
                 position += new Vector2(-3, 0);
                 MovementAnimation(gameTime);
             }
             else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
             {
-                texture = downAnime;
+                image = downAnime;
                 position += new Vector2(0, 3);
                 MovementAnimation(gameTime);
             }
-            soruceRect = new Rectangle(32 * frames, 0, texture.Width / 3, texture.Height);
+            soruceRect = new Rectangle(32 * frames, 0, image.Width / 3, image.Height);
             base.Update(gameTime);
         }
 
@@ -89,7 +86,7 @@ namespace BPA__Game
         //fix this part Ryan
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, soruceRect, Color.White);
+            spriteBatch.Draw(image, position, soruceRect, Color.White);
         }
     }
 

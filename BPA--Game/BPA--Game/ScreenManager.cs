@@ -79,11 +79,11 @@ namespace BPA__Game
             Screens.Add("PauseScreen", pauseScreen);
             Screens.Add("OptionsScreen", optionScreen);
             Screens.Add("LoadScreen", loadScreen);
-            titleScreen.LoadContent(Content, GraphicsDevceMgr);
-            gameScreen.LoadContent(Content, GraphicsDevceMgr);
+            CurrentScreen.LoadContent(Content, GraphicsDevceMgr);
+          /*  gameScreen.LoadContent(Content, GraphicsDevceMgr);
             pauseScreen.LoadContent(Content, GraphicsDevceMgr);
             optionScreen.LoadContent(Content, GraphicsDevceMgr);
-            loadScreen.LoadContent(Content, GraphicsDevceMgr);
+            loadScreen.LoadContent(Content, GraphicsDevceMgr);*/
 
             this.IsMouseVisible = true;
             base.LoadContent();
@@ -135,7 +135,10 @@ namespace BPA__Game
 
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
+            Screen previousScreen = CurrentScreen;
             Screens.TryGetValue(CurrentScreen.GetNextScreen(), out CurrentScreen);
+           // previousScreen.UnloadContent();
+            CurrentScreen.LoadContent(Content,GraphicsDevceMgr);
         }
     }
 }

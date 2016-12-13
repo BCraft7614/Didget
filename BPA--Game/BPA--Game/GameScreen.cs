@@ -28,6 +28,7 @@ namespace BPA__Game
         Texture2D background;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private List<EnemyAI> enemies;
         Player player;
         //ScreenName nextScreen;
         int screenWidth;
@@ -52,12 +53,51 @@ namespace BPA__Game
             graphics.PreferredBackBufferHeight = screenHeight;
 
             player.LoadContent(ContentMgr);
-           
+            Random rand = new Random();
+
+            enemies = new List<EnemyAI>();
+            for(int i = 0; i < 2; i++)
+            {
+                bool goodStart = false;
+                int startX =0;
+                int startY =0;
+                while (!goodStart)
+                {
+                    startX = rand.Next(10, 600);
+                    startY = rand.Next(10, 600);
+
+                    float playerRight = player.position.X + player.Width + 100;
+                    float playerLeft = player.position.X;
+                    float playerTop = player.position.Y;
+                    float playerBottom = player.position.Y + player.Height + 100;
+                    float enemyRight = startX + 120;
+                    float enemyLeft = startX;
+                    float enemyTop = startY;
+                    float enemyBottom = startY + 120;
+
+                    if((enemyRight < playerLeft ||
+                        enemyLeft > playerRight ||
+                        enemyTop > playerBottom ||
+                        enemyBottom < playerTop))
+                    {
+                        goodStart = true;
+                    }
+                }
+                int enemySeed = rand.Next(0, 5000);
+                enemies.Add(new EnemyAI(player, startX, startY, enemySeed));
+                enemies[i].LoadContent(ContentMgr);
+               
+            }
            
             //this.IsMouseVisible = true;
         }
         public override void UnloadContent()
         {
+            player.UnloadContent();
+            foreach(EnemyAI enemy in enemies)
+            {
+                enemy.UnloadContent();
+            }
           
             
         }
@@ -70,35 +110,31 @@ namespace BPA__Game
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);
 
+            foreach (EnemyAI enemy in enemies)
+            {
+                enemy.Update(gameTime,player);
+                if (enemy.Collision(player))
+                {
+                    ChangeScreen("TitleScreen");
+                }
+
+            }
+
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             player.Draw(spriteBatch);
+            foreach(EnemyAI enemy in enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
+            
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }
-        public void HandleButtonClicked(object sender, EventArgs eventArgs)
+        public void ChangeScreen(string NextScreen)
         {
-            /*
-            sender = btnPlay;
-            if (sender == btnPlay)
-            {
-
-                nextScreen = "TitleScreen"; //ScreenName.GameScreen;
-            }
-            else if (sender == btnOp)
-            {
-                nextScreen = "OptionsScreen"; //ScreenName.OptionsScreen;
-            }
-            else if (sender == btnLoad)
-            {
-                nextScreen = "LoadScreen"; //ScreenName.LoadScreen;
-            }
-           // else if (sender == btnExit)
-          //  {
-           //     System.Environment.Exit(1);
-          //  }
-          */
+            nextScreen = NextScreen;
             OnButtonClicked();
         }
         public event EventHandler ButtonClicked;

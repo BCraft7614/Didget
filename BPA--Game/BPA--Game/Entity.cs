@@ -15,11 +15,13 @@ namespace BPA__Game
     {
 
         public Vector2 position;
-        protected ContentManager Content;
-
+        protected Texture2D image;
+        protected ContentManager content;
+        public int Width { get; set; }
+        public int Height { get; set; }
         public virtual void UnloadContent()
         {
-
+            content.Unload();
         }
 
         public virtual void Update(GameTime gameTime)
@@ -36,9 +38,15 @@ namespace BPA__Game
         {
 
         }
-        public virtual void LoadContent(ContentManager Content)
+        public virtual void LoadContent(ContentManager content)
         {
-
+            this.content = new ContentManager(content.ServiceProvider, "Content");
+        }
+        public bool Collision(Entity OtherEntity)
+        {
+            Rectangle boundingBox = new Rectangle((int)position.X, (int)position.Y, image.Width, image.Height);
+            Rectangle boundingBox2 = new Rectangle((int)OtherEntity.position.X, (int)OtherEntity.position.Y, OtherEntity.image.Width, OtherEntity.image.Height);
+            return boundingBox.Contains(boundingBox2);
         }
     }
 }
