@@ -46,7 +46,14 @@ namespace BPA__Game
         {
             Rectangle boundingBox = new Rectangle((int)position.X, (int)position.Y, image.Width, image.Height);
             Rectangle boundingBox2 = new Rectangle((int)OtherEntity.position.X, (int)OtherEntity.position.Y, OtherEntity.image.Width, OtherEntity.image.Height);
-            return boundingBox.Contains(boundingBox2);
+            if(boundingBox.Contains(boundingBox2))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

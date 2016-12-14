@@ -18,6 +18,7 @@ namespace BPA__Game
         Texture2D upAnime;
         Texture2D downAnime;
         Rectangle soruceRect;
+        Texture2D idleAnime;
         float elapsed;
         float delay = 200f;
         int frames = 0;
@@ -28,8 +29,9 @@ namespace BPA__Game
             rightAnime = content.Load<Texture2D>("DidgetRight");
             leftAnime = content.Load<Texture2D>("DidgetLeft");
             upAnime = content.Load<Texture2D>("Blue Back Movement");
-            downAnime = content.Load<Texture2D>("Blue Front Movement");
-            image = downAnime;
+            downAnime = content.Load<Texture2D>("DigetDown");
+            idleAnime = content.Load<Texture2D>("IdleLeft");
+            image = idleAnime;
 
             position = Vector2.Zero;
 
@@ -48,6 +50,7 @@ namespace BPA__Game
                 image = rightAnime;
                 position += new Vector2(3, 0);
                 MovementAnimation(gameTime);
+
             }
             else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
             {
@@ -61,7 +64,11 @@ namespace BPA__Game
                 position += new Vector2(0, 3);
                 MovementAnimation(gameTime);
             }
-            soruceRect = new Rectangle(32 * frames, 0, image.Width / 5, image.Height);
+            else
+            {
+                image = downAnime;
+            }
+            soruceRect = new Rectangle(32 * frames, 0, image.Width / 3, image.Height);
             base.Update(gameTime);
         }
 
@@ -87,6 +94,7 @@ namespace BPA__Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(image, position, soruceRect, Color.White);
+            
         }
     }
 
