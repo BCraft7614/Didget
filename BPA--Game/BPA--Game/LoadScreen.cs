@@ -44,8 +44,10 @@ namespace BPA__Game
             btnBack.ButtonClicked += HandleButtonClicked;
             btnLoad2.setPosition(new Vector2(350, 300));
             btnLoad1.setPosition(new Vector2(350, 300 + btnLoad1.size.Y * 2));
-            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 6));
+            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 8));
             //this.IsMouseVisible = true;
+
+
         }
         public override void UnloadContent()
         {

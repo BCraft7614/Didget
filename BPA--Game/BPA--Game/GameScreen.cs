@@ -33,6 +33,7 @@ namespace BPA__Game
         SpriteBatch spriteBatch;
         private List<EnemyAI> enemies;
         Player player;
+        Entity mainTower;
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
@@ -46,6 +47,7 @@ namespace BPA__Game
             //Initialize();
 
             player = new Player();
+           
         }
 
         public override void LoadContent(ContentManager ContentMgr,GraphicsDeviceManager graphics)
@@ -59,7 +61,7 @@ namespace BPA__Game
 
             player.LoadContent(ContentMgr);
             Random rand = new Random();
-
+            mainTower = new Entity(towerBuilding, new Vector2(0,0));
             enemies = new List<EnemyAI>();
             for(int i = 0; i < 2; i++)
             {
@@ -129,14 +131,14 @@ namespace BPA__Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-            spriteBatch.Draw(towerBuilding, new Vector2(0,0), Color.White);
+            spriteBatch.Draw(towerBuilding, new Vector2(0, 0), Color.White);
             spriteBatch.Draw(waterFountain, new Vector2(0, 0), Color.White);
             player.Draw(spriteBatch);
             foreach(EnemyAI enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
-            
+            mainTower.Draw(spriteBatch);
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }
         public void ChangeScreen(string NextScreen)

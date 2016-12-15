@@ -23,7 +23,17 @@ namespace BPA__Game
         {
             content.Unload();
         }
+        public Entity(Texture2D Image,Vector2 Position)
+        {
+            image = Image;
+            position = Position;
+            Width = image.Width;
+            Height = image.Height;
+        }
+        public Entity()
+        {
 
+        }
         public virtual void Update(GameTime gameTime)
         {
 
