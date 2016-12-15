@@ -23,6 +23,7 @@ namespace BPA__Game
         {
             content.Unload();
         }
+        //For Collsions Pictures
         public Entity(Texture2D Image,Vector2 Position)
         {
             image = Image;
@@ -30,6 +31,7 @@ namespace BPA__Game
             Width = image.Width;
             Height = image.Height;
         }
+        //For Enemies and players
         public Entity()
         {
 
@@ -56,14 +58,7 @@ namespace BPA__Game
         {
             Rectangle boundingBox = new Rectangle((int)position.X, (int)position.Y, image.Width, image.Height);
             Rectangle boundingBox2 = new Rectangle((int)OtherEntity.position.X, (int)OtherEntity.position.Y, OtherEntity.image.Width, OtherEntity.image.Height);
-            if(boundingBox.Contains(boundingBox2))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return boundingBox.Contains(boundingBox2);
         }
     }
 }
