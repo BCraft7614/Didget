@@ -19,6 +19,7 @@ namespace BPA__Game
         SpriteBatch spriteBatch;
         int screenWidth;
         int screenHeight;
+        Player player;
 
  
         public PauseScreen()
@@ -34,7 +35,7 @@ namespace BPA__Game
             btnResume.Update();
             btnOp.Update();
             btnExit.Update();
-
+            
         }
 
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)

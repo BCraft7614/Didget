@@ -110,9 +110,10 @@ namespace BPA__Game
         }
         public override void Update(GameTime gameTime)
         {
-            if(Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 ChangeScreen("PauseScreen");
+
             }
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);

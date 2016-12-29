@@ -21,7 +21,7 @@ namespace BPA__Game
         int frames = 0;
         int randTime = 0;
         int randDirection = 0;
-
+        float oldDistance;
         public EnemyAI(Player player, int posX, int posY, int enemySeed)
         {
             rand = new Random(enemySeed);
@@ -79,6 +79,7 @@ namespace BPA__Game
             {
                 if (randDirection == 1)
                 {
+
                     position.X += 1.5f;
                     direction = Direction.right;
                     image = rightWalk;
