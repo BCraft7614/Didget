@@ -44,8 +44,8 @@ namespace BPA__Game
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
             btnResume = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnOp = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
-            btnExit = new mButton(ContentMgr.Load<Texture2D>("Button"), graphics.GraphicsDevice);
+            btnOp = new mButton(ContentMgr.Load<Texture2D>("OPbtn"), graphics.GraphicsDevice);
+            btnExit = new mButton(ContentMgr.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice);
             btnResume.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnExit.ButtonClicked += HandleButtonClicked;
@@ -53,6 +53,13 @@ namespace BPA__Game
             btnOp.setPosition(new Vector2(350, 400 + btnOp.size.Y * 2));
             btnExit.setPosition(new Vector2(359, 500 + btnExit.size.Y * 2));
             
+        }
+        public override void UnloadContent()
+        {
+            btnResume.ButtonClicked -= HandleButtonClicked;
+            btnOp.ButtonClicked -= HandleButtonClicked;
+            btnExit.ButtonClicked -= HandleButtonClicked;
+            base.UnloadContent();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

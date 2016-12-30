@@ -39,10 +39,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BattleScreen.cs" />
+    <Compile Include="ErrorHandler.cs" />
     <Compile Include="EnemyAI.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameScreen.cs" />
+    <Compile Include="InventoryScreen.cs" />
     <Compile Include="LoadScreen.cs" />
     <Compile Include="mButton.cs" />
     <Compile Include="OptionsScreen.cs" />

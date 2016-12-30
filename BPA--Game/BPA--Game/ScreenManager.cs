@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using BPA__Game.Content;
 
 namespace BPA__Game
 {
@@ -23,6 +24,8 @@ namespace BPA__Game
         PauseScreen pauseScreen;
         GameScreen gameScreen;
         LoadScreen loadScreen;
+        InventoryScreen inventoryScreen;
+        
 
 
         Screen CurrentScreen;
@@ -41,6 +44,7 @@ namespace BPA__Game
             optionScreen = new OptionsScreen();
             pauseScreen = new PauseScreen();
             loadScreen = new LoadScreen();
+            inventoryScreen = new InventoryScreen();
             // LoadContent();
             //Initialize();
             CurrentScreen = titleScreen;
@@ -72,6 +76,7 @@ namespace BPA__Game
             optionScreen.ButtonClicked += HandleButtonClicked;
             loadScreen.ButtonClicked += HandleButtonClicked;
             pauseScreen.ButtonClicked += HandleButtonClicked;
+            inventoryScreen.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
@@ -79,6 +84,7 @@ namespace BPA__Game
             Screens.Add("PauseScreen", pauseScreen);
             Screens.Add("OptionsScreen", optionScreen);
             Screens.Add("LoadScreen", loadScreen);
+            Screens.Add("InventoryScreen", inventoryScreen);
             CurrentScreen.LoadContent(Content, GraphicsDevceMgr);
           /*  gameScreen.LoadContent(Content, GraphicsDevceMgr);
             pauseScreen.LoadContent(Content, GraphicsDevceMgr);
@@ -102,6 +108,7 @@ namespace BPA__Game
             optionScreen.ButtonClicked -= HandleButtonClicked;
             loadScreen.ButtonClicked -= HandleButtonClicked;
             pauseScreen.ButtonClicked -= HandleButtonClicked;
+            inventoryScreen.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }

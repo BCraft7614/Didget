@@ -115,6 +115,10 @@ namespace BPA__Game
                 ChangeScreen("PauseScreen");
 
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.CapsLock))
+            {
+                ChangeScreen("InventoryScreen");
+            }
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BPA__Game.Content;
+using System;
 
 namespace BPA__Game
 {
@@ -14,9 +15,22 @@ namespace BPA__Game
         [STAThread]
         static void Main()
         {
-            using (var game = new ScreenManager())
-                game.Run();
+            try
+            {
+                using (var game = new ScreenManager())
+                    game.Run();
+            }
+            catch (Exception e)
+            {
+                using (ErrorHandler errorHandler = new ErrorHandler())
+                {
+                    errorHandler.ErrorText = e.Message;
+                    errorHandler.Run();
+                }
+            }
+
         }
     }
-#endif
 }
+#endif
+
