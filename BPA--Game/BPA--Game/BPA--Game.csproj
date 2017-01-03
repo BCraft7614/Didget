@@ -39,11 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BattleScreen.cs" />
-<<<<<<< Updated upstream
     <Compile Include="ErrorHandler.cs" />
-=======
     <Compile Include="Buildings.cs" />
->>>>>>> Stashed changes
+
     <Compile Include="EnemyAI.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />
