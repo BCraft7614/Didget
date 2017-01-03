@@ -41,26 +41,28 @@ namespace BPA__Game
             newState = mouse.LeftButton;
             if (rectangle.Contains(mouse.Position))
             {
-                if(color.A == 225)
+                if (color.A == 225)
                 {
                     down = false;
                 }
-                if(color.A == 0)
+                if (color.A == 0)
                 {
                     down = true;
                 }
                 if (down) color.A += 3; else color.A -= 3;
 
-                if (oldState ==ButtonState.Released && newState ==ButtonState.Pressed) {
+                if (oldState == ButtonState.Released && newState == ButtonState.Pressed)
+                {
                     OnButtonClicked();
-                }          
-           }
-            else if (color.A < 255)
-            {
-                color.A += 3;
-                
+                }
+
+                else if (color.A < 255)
+                {
+                    color.A += 3;
+
+                }
+
             }
-            
         }
         public void setPosition(Vector2 newPosition)
         {
