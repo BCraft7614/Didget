@@ -35,6 +35,8 @@ namespace BPA__Game
         //private List<Health> health;
         Player player;
         Buildings mainTower;
+
+        Buildings waterPool;
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
@@ -70,12 +72,10 @@ namespace BPA__Game
 
             player.LoadContent(ContentMgr);
             Random rand = new Random();
-
-            mainTower = new Buildings(towerBuilding, new Vector2(0,0));
+            waterPool = new Buildings(waterFountain, new Vector2(474, 300));
+            mainTower = new Buildings(towerBuilding, new Vector2(474,0));
            // health = new List<Health>();
-           
-
-            mainTower = new Buildings(towerBuilding, new Vector2(0,0));
+         
 
             enemies = new List<EnemyAI>();
             for(int i = 0; i < 2; i++)
@@ -147,7 +147,11 @@ namespace BPA__Game
             }
             if (player.Collision(mainTower))
             {
-               //player.position = player.oldPosition;
+               player.position = player.oldPosition;
+            }
+            if (player.Collision(waterPool))
+            {
+                player.position = player.oldPosition;
             }
 
             foreach (EnemyAI enemy in enemies)
@@ -165,7 +169,7 @@ namespace BPA__Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-            spriteBatch.Draw(waterFountain, new Vector2(0, 0), Color.White);
+           waterPool.Draw(spriteBatch);
             mainTower.Draw(spriteBatch);
             player.Draw(spriteBatch);
           
