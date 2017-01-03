@@ -12,6 +12,7 @@ namespace BPA__Game
 {
     class BattleScreen : Screen
     {
+        Texture2D background;
         mButton fightButton;
         mButton FleeButton;
         mButton specialButton;
@@ -33,7 +34,7 @@ namespace BPA__Game
 
             FleeButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = FleeButton);
 
-
+            background = ContentMgr.Load<Texture2D>("BattleScreen");
             base.LoadContent(ContentMgr, graphics);
         }
 
@@ -89,5 +90,6 @@ namespace BPA__Game
         {
 
         }
+        EventHandler
     }
 }
