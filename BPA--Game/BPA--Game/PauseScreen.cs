@@ -69,7 +69,7 @@ namespace BPA__Game
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
-            sender = btnResume;
+            //sender = btnResume;
             if (sender == btnResume)
             {
                 nextScreen = "GameScreen";//ScreenNaem.GameScreen;

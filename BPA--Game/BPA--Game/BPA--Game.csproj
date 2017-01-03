@@ -82,6 +82,7 @@
     <Content Include="Content\Green Front Movement.png" />
     <Content Include="Content\Green Left Movement.png" />
     <Content Include="Content\Green Right Movement.png" />
+    <Content Include="Content\Heart.png" />
     <Content Include="Content\IdleLeft.png" />
     <Content Include="Content\LeftAnime.png" />
     <Content Include="Content\OPbtn.png" />

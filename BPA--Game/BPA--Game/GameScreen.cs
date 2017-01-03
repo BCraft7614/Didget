@@ -32,6 +32,7 @@ namespace BPA__Game
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private List<EnemyAI> enemies;
+        //private List<Health> health;
         Player player;
         Entity mainTower;
         //ScreenName nextScreen;
@@ -56,12 +57,15 @@ namespace BPA__Game
             background = ContentMgr.Load<Texture2D>("TownGameScreen");
             towerBuilding = ContentMgr.Load<Texture2D>("TowerBuilding");
             waterFountain = ContentMgr.Load<Texture2D>("WaterFountain");
+            
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
 
             player.LoadContent(ContentMgr);
             Random rand = new Random();
             mainTower = new Entity(towerBuilding, new Vector2(0,0));
+           // health = new List<Health>();
+           
             enemies = new List<EnemyAI>();
             for(int i = 0; i < 2; i++)
             {
@@ -101,6 +105,7 @@ namespace BPA__Game
         public override void UnloadContent()
         {
             player.UnloadContent();
+            
             foreach(EnemyAI enemy in enemies)
             {
                 enemy.UnloadContent();
@@ -139,6 +144,7 @@ namespace BPA__Game
             spriteBatch.Draw(towerBuilding, new Vector2(0, 0), Color.White);
             spriteBatch.Draw(waterFountain, new Vector2(0, 0), Color.White);
             player.Draw(spriteBatch);
+          
             foreach(EnemyAI enemy in enemies)
             {
                 enemy.Draw(spriteBatch);

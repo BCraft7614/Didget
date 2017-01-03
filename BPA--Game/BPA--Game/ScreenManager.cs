@@ -25,9 +25,6 @@ namespace BPA__Game
         GameScreen gameScreen;
         LoadScreen loadScreen;
         InventoryScreen inventoryScreen;
-        
-
-
         Screen CurrentScreen;
 
         public ScreenManager()
