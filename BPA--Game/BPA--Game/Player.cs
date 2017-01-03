@@ -43,7 +43,8 @@ namespace BPA__Game
             image = idleAnime;
             Height = image.Height;
             Width = image.Width / 3;
-            position = Vector2.Zero;
+            position.X = 20;
+            position.Y = 20;
 
         }
         public override void Update(GameTime gameTime)
@@ -63,6 +64,12 @@ namespace BPA__Game
                 image = rightAnime;
                 position += new Vector2(3, 0);
                 MovementAnimation(gameTime);
+                if (state.IsKeyDown(Keys.Space))
+                {
+                    image = swordAnimeRight;
+                    SwordAnimation(gameTime);
+
+                }
 
             }
             else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
@@ -84,13 +91,7 @@ namespace BPA__Game
                 position += new Vector2(0, 3);
                 MovementAnimation(gameTime);
             }
-            else if (state.IsKeyDown(Keys.Space))
-            {
 
-                image = swordAnimeRight;
-                SwordAnimation(gameTime);
-
-            }
             else
             {
                 image = downAnime;
@@ -123,7 +124,7 @@ namespace BPA__Game
             elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if(elapsed >= delay)
             {
-                if(frames >= 2)
+                if(frames >= 1)
                 {
                     frames = 0;
                 }

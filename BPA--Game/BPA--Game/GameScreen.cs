@@ -20,7 +20,7 @@ namespace BPA__Game
     public class GameScreen:Screen
     {
         // Work Here Ryan. Add Player and Battle Scene
-        
+       
         mButton btnPlay;
         mButton btnLoad;
         mButton btnOp;
@@ -38,6 +38,8 @@ namespace BPA__Game
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
+        Entity leftTransitionRect;
+        Entity rightTransitionRect;
 
   
         public GameScreen()
@@ -60,6 +62,11 @@ namespace BPA__Game
             
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
+            leftTransitionRect = new Entity(5, 0, 1, screenHeight);
+            rightTransitionRect = new Entity(screenWidth - 5, 0, 1, screenHeight);
+      
+            
+            
 
             player.LoadContent(ContentMgr);
             Random rand = new Random();
@@ -130,10 +137,17 @@ namespace BPA__Game
             }
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);
-
+            if (player.Collision(leftTransitionRect))
+            {
+                ChangeScreen("TitleScreen");
+            }
+            if (player.Collision(rightTransitionRect))
+            {
+                ChangeScreen("PauseScreen");
+            }
             if (player.Collision(mainTower))
             {
-               // player.position = player.oldPosition;
+               //player.position = player.oldPosition;
             }
 
             foreach (EnemyAI enemy in enemies)

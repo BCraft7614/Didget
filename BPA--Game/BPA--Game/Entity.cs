@@ -33,6 +33,13 @@ namespace BPA__Game
         {
 
         }
+        //for trigger rectangles
+        public Entity(int X, int Y, int width, int height)
+        {
+            position = new Vector2(X,Y);
+            Width = width;
+            Height = height;
+        }
         public virtual void Update(GameTime gameTime)
         {
 
