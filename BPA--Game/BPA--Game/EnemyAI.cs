@@ -27,7 +27,7 @@ namespace BPA__Game
             rand = new Random(enemySeed);
             position.X = posX;
             position.Y = posY;
-            
+
             
         }
         public override void LoadContent(ContentManager content)
@@ -39,6 +39,8 @@ namespace BPA__Game
             upWalk = content.Load<Texture2D>("Blue Back Movement");
             downWalk = content.Load<Texture2D>("Blue Front Movement");
             image = downWalk;
+            Height = image.Height;
+            Width = image.Width / 3;
         }
         public void Animate(GameTime gameTime)
         {
@@ -55,7 +57,7 @@ namespace BPA__Game
                 }
                 elapsed = 0;
             }
-            sourceRect = new Rectangle(32 * frames, 0, image.Width / 3, image.Height);
+            sourceRect = new Rectangle(21 * frames, 0, image.Width / 3, image.Height);
         }
         public override void Initialize()
         {

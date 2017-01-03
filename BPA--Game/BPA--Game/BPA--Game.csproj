@@ -39,7 +39,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BattleScreen.cs" />
+<<<<<<< Updated upstream
     <Compile Include="ErrorHandler.cs" />
+=======
+    <Compile Include="Buildings.cs" />
+>>>>>>> Stashed changes
     <Compile Include="EnemyAI.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />
@@ -64,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BattleScreen.png" />
     <Content Include="Content\Blue Back Movement.png" />
     <Content Include="Content\Blue Front Movement.png" />
     <Content Include="Content\Blue Left Movement.png" />
@@ -85,6 +90,7 @@
     <Content Include="Content\Heart.png" />
     <Content Include="Content\IdleLeft.png" />
     <Content Include="Content\LeftAnime.png" />
+    <Content Include="Content\LoadScreen.png" />
     <Content Include="Content\OPbtn.png" />
     <Content Include="Content\R Back movement.png" />
     <Content Include="Content\R Front Movement.png" />

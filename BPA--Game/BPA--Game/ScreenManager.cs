@@ -32,7 +32,7 @@ namespace BPA__Game
 
             GraphicsDevceMgr = new GraphicsDeviceManager(this);
             GraphicsDevceMgr.PreferredBackBufferWidth = 800;
-            GraphicsDevceMgr.PreferredBackBufferHeight = 600;
+            GraphicsDevceMgr.PreferredBackBufferHeight = 700;
             Content.RootDirectory = "Content";
             
             Screens = new Dictionary<string, Screen>();

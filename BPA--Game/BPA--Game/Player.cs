@@ -26,6 +26,10 @@ namespace BPA__Game
         float delay = 200f;
         int frames = 0;
 
+        public Player()
+        {
+
+        }
 
         public override void LoadContent(ContentManager content)
         {
@@ -37,12 +41,14 @@ namespace BPA__Game
             swordAnimeRight = content.Load<Texture2D>("SwordAnime");
             swordAnimeL = content.Load<Texture2D>("SwordAnimeL");
             image = idleAnime;
-
+            Height = image.Height;
+            Width = image.Width / 3;
             position = Vector2.Zero;
 
         }
         public override void Update(GameTime gameTime)
         {
+            oldPosition = position;
             KeyboardState state = Keyboard.GetState();
             if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
             {

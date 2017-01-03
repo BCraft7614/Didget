@@ -15,6 +15,7 @@ namespace BPA__Game
     {
 
         public Vector2 position;
+        public Vector2 oldPosition;
         protected Texture2D image;
         protected ContentManager content;
         public int Width { get; set; }
@@ -22,14 +23,6 @@ namespace BPA__Game
         public virtual void UnloadContent()
         {
             content.Unload();
-        }
-        //For Collsions Pictures
-        public Entity(Texture2D Image,Vector2 Position)
-        {
-            image = Image;
-            position = Position;
-            Width = image.Width;
-            Height = image.Height;
         }
         //For Enemies and players
         public Entity()
@@ -43,7 +36,7 @@ namespace BPA__Game
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-
+            
         }
 
         public virtual void Initialize()
@@ -56,9 +49,9 @@ namespace BPA__Game
         }
         public bool Collision(Entity OtherEntity)
         {
-            Rectangle boundingBox = new Rectangle((int)position.X, (int)position.Y, image.Width, image.Height);
-            Rectangle boundingBox2 = new Rectangle((int)OtherEntity.position.X, (int)OtherEntity.position.Y, OtherEntity.image.Width, OtherEntity.image.Height);
-            return boundingBox.Contains(boundingBox2);
+            Rectangle boundingBox = new Rectangle((int)position.X, (int)position.Y, Width, Height);
+            Rectangle boundingBox2 = new Rectangle((int)OtherEntity.position.X, (int)OtherEntity.position.Y, OtherEntity.Width, OtherEntity.Height);
+            return boundingBox.Intersects(boundingBox2);
         }
     }
 }

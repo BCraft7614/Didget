@@ -34,7 +34,7 @@ namespace BPA__Game
         private List<EnemyAI> enemies;
         //private List<Health> health;
         Player player;
-        Entity mainTower;
+        Buildings mainTower;
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
@@ -63,9 +63,13 @@ namespace BPA__Game
 
             player.LoadContent(ContentMgr);
             Random rand = new Random();
+<<<<<<< Updated upstream
             mainTower = new Entity(towerBuilding, new Vector2(0,0));
            // health = new List<Health>();
            
+=======
+            mainTower = new Buildings(towerBuilding, new Vector2(0,0));
+>>>>>>> Stashed changes
             enemies = new List<EnemyAI>();
             for(int i = 0; i < 2; i++)
             {
@@ -127,6 +131,11 @@ namespace BPA__Game
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);
 
+            if (player.Collision(mainTower))
+            {
+               // player.position = player.oldPosition;
+            }
+
             foreach (EnemyAI enemy in enemies)
             {
                 enemy.Update(gameTime,player);
@@ -134,6 +143,7 @@ namespace BPA__Game
                 {
                     ChangeScreen("TitleScreen");
                 }
+          
 
             }
 
@@ -141,15 +151,15 @@ namespace BPA__Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-            spriteBatch.Draw(towerBuilding, new Vector2(0, 0), Color.White);
             spriteBatch.Draw(waterFountain, new Vector2(0, 0), Color.White);
+            mainTower.Draw(spriteBatch);
             player.Draw(spriteBatch);
           
             foreach(EnemyAI enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
-            mainTower.Draw(spriteBatch);
+           
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }
         public void ChangeScreen(string NextScreen)
