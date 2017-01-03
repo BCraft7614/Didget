@@ -63,13 +63,13 @@ namespace BPA__Game
 
             player.LoadContent(ContentMgr);
             Random rand = new Random();
-<<<<<<< Updated upstream
-            mainTower = new Entity(towerBuilding, new Vector2(0,0));
+
+            mainTower = new Buildings(towerBuilding, new Vector2(0,0));
            // health = new List<Health>();
            
-=======
+
             mainTower = new Buildings(towerBuilding, new Vector2(0,0));
->>>>>>> Stashed changes
+
             enemies = new List<EnemyAI>();
             for(int i = 0; i < 2; i++)
             {

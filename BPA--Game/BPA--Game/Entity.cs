@@ -29,6 +29,10 @@ namespace BPA__Game
         {
 
         }
+        public Entity(Texture2D image , Vector2 position )
+        {
+
+        }
         public virtual void Update(GameTime gameTime)
         {
 
