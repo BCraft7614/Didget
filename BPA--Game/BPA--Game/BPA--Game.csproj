@@ -41,7 +41,6 @@
     <Compile Include="BattleScreen.cs" />
     <Compile Include="ErrorHandler.cs" />
     <Compile Include="Buildings.cs" />
-
     <Compile Include="EnemyAI.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />
@@ -89,6 +88,7 @@
     <Content Include="Content\IdleLeft.png" />
     <Content Include="Content\LeftAnime.png" />
     <Content Include="Content\LoadScreen.png" />
+    <Content Include="Content\Menu and Town.png" />
     <Content Include="Content\OPbtn.png" />
     <Content Include="Content\R Back movement.png" />
     <Content Include="Content\R Front Movement.png" />

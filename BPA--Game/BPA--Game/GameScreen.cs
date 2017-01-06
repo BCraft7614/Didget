@@ -24,7 +24,7 @@ namespace BPA__Game
     {
         // Work Here Ryan. Add Player and Battle Scene
         const int NUMCOL = 2;
-        
+        const int NUMROW = 1;
         Level[,] levelArray = new Level[1, 2];
         mButton btnPlay;
         mButton btnLoad;
@@ -44,16 +44,20 @@ namespace BPA__Game
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
+        Entity upTransitionRect;
         Entity leftTransitionRect;
         Entity rightTransitionRect;
+        Entity downTransitionRect;
         List<Buildings> buildings = new List<Buildings>();
         List<Texture2D> buildingTextures = new List<Texture2D>();
+        ContentManager content;
         bool inLevelDescription;
 
         int currentRow;
         int currentCol;
         public struct Level
         {
+
             public string background;
             public List<string> buildingName;
             public List<int> buildingX, buildingY;
@@ -105,6 +109,7 @@ namespace BPA__Game
                         myLevel.buildingName.Add(line);
                         myLevel.buildingX.Add(Convert.ToInt32(file.ReadLine()));
                         myLevel.buildingY.Add(Convert.ToInt32(file.ReadLine()));
+                        
                     }
                     levelArray[Row, Col] = myLevel;
                 }
@@ -112,27 +117,31 @@ namespace BPA__Game
         }
         public override void LoadContent(ContentManager ContentMgr,GraphicsDeviceManager graphics)
         {
-        
+            content = ContentMgr;
             //spriteBatch = new SpriteBatch(GraphicsDevice);
           
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
-            leftTransitionRect = new Entity(5, 0, 1, screenHeight);
-            rightTransitionRect = new Entity(screenWidth - 5, 0, 1, screenHeight);
-            
+            leftTransitionRect = new Entity(0, 0, 1, screenHeight);
+            rightTransitionRect = new Entity(screenWidth - 1, 0, 1, screenHeight);
+            upTransitionRect = new Entity(0,0,screenWidth, 1);
+            downTransitionRect = new Entity(0, screenHeight - 1, screenWidth, 1);
+            player.LoadContent(content);
 
-            player.LoadContent(ContentMgr);
-            Random rand = new Random();
-
+            LoadLevel(content);
            // health = new List<Health>();
-         
-
+ 
+            //this.IsMouseVisible = true;
+        }
+        public void LoadLevel(ContentManager content)
+        {
+            Random rand = new Random();
             enemies = new List<EnemyAI>();
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 bool goodStart = false;
-                int startX =0;
-                int startY =0;
+                int startX = 0;
+                int startY = 0;
                 while (!goodStart)
                 {
                     startX = rand.Next(10, 600);
@@ -147,7 +156,7 @@ namespace BPA__Game
                     float enemyTop = startY;
                     float enemyBottom = startY + 120;
 
-                    if((enemyRight < playerLeft ||
+                    if ((enemyRight < playerLeft ||
                         enemyLeft > playerRight ||
                         enemyTop > playerBottom ||
                         enemyBottom < playerTop))
@@ -158,17 +167,16 @@ namespace BPA__Game
 
                 int enemySeed = rand.Next(0, 5000);
                 enemies.Add(new EnemyAI(player, startX, startY, enemySeed));
-                enemies[i].LoadContent(ContentMgr);
-               
+                enemies[i].LoadContent(content);
+
             }
-            background = ContentMgr.Load<Texture2D>(levelArray[currentRow, currentCol].background);
+            background = content.Load<Texture2D>(levelArray[currentRow, currentCol].background);
 
             for (int i = 0; i < levelArray[currentRow, currentCol].buildingName.Count; i++)
             {
-                buildingTextures.Add(ContentMgr.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
+                buildingTextures.Add(content.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
                 buildings.Add(new Buildings(buildingTextures[0], new Vector2(levelArray[currentRow, currentCol].buildingX[currentRow * NUMCOL + currentCol], levelArray[currentRow, currentCol].buildingY[currentRow * NUMCOL + currentCol])));
             }
-            //this.IsMouseVisible = true;
         }
         public override void UnloadContent()
         {
@@ -180,17 +188,21 @@ namespace BPA__Game
             }
             foreach (Buildings building in buildings)
             {
-                building.UnloadContent();
-               
+                building.UnloadContent();              
             }
             buildings.Clear();
             buildingTextures.Clear();
             enemies.Clear();
+            
+
+            
         }
         public void ScreenTransfer(int currentCol, int currentRow)
         {
             UnloadContent();
-            //LoadContent();
+            LoadLevel(content);
+
+            
 
         }
         public override void Update(GameTime gameTime)
@@ -211,16 +223,41 @@ namespace BPA__Game
                 currentCol = currentCol - 1;
                 if (currentCol < 0)
                 {
-                    currentCol = NUMCOL;
+                    currentCol = NUMCOL -1;
                 }
+                player.position.X = 740;
                 ScreenTransfer(currentRow, currentCol);
-                
             }
             if (player.Collision(rightTransitionRect))
             {
-                ChangeScreen("PauseScreen");
+                currentCol = currentCol + 1;
+                if (currentCol >= NUMCOL)
+                {
+                    currentCol = 0;
+                }
+                player.position.X = 1;
+                ScreenTransfer(currentRow, currentCol);
             }
-
+            if (player.Collision(upTransitionRect))
+            {
+                currentRow = currentRow - 1;
+                if (currentRow < 0)
+                {
+                    currentRow = NUMROW - 1;
+                }
+                player.position.Y = 630;
+                ScreenTransfer(currentRow, currentCol);
+            }
+            if (player.Collision(downTransitionRect))
+            {
+                currentRow = currentRow + 1;
+                if (currentRow >= NUMROW)
+                {
+                    currentRow = 0;
+                }
+                player.position.Y = 1;
+                ScreenTransfer(currentRow, currentCol);
+            }
             for (int i = 0; i < buildings.Count; i++)
             {
                 if (player.Collision(buildings[i]))

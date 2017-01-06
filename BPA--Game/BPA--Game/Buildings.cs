@@ -23,6 +23,7 @@ namespace BPA__Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(image, position, Color.White);
+     
 
         }
         public override void UnloadContent()
