@@ -4,9 +4,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace BPA__Game
 {
@@ -20,7 +23,9 @@ namespace BPA__Game
     public class GameScreen:Screen
     {
         // Work Here Ryan. Add Player and Battle Scene
-       
+        const int NUMCOL = 2;
+        
+        Level[,] levelArray = new Level[1, 2];
         mButton btnPlay;
         mButton btnLoad;
         mButton btnOp;
@@ -35,45 +40,90 @@ namespace BPA__Game
         //private List<Health> health;
         Player player;
         Buildings mainTower;
-
         Buildings waterPool;
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
         Entity leftTransitionRect;
         Entity rightTransitionRect;
+        List<Buildings> buildings = new List<Buildings>();
+        List<Texture2D> buildingTextures = new List<Texture2D>();
+        bool inLevelDescription;
 
-  
+        int currentRow;
+        int currentCol;
+        public struct Level
+        {
+            public string background;
+            public List<string> buildingName;
+            public List<int> buildingX, buildingY;
+            
+        }
+
         public GameScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
             //LoadContent();
             //Initialize();
-
+            inLevelDescription = false;
             player = new Player();
-           
+            ReadFile();
+            currentRow = 0;
+            currentCol = 0;
+
         }
 
+        public void ReadFile()
+        {
+            string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            System.IO.StreamReader file = new System.IO.StreamReader(currentDirectory + "/Levels.txt");
+            string line;
+            Level myLevel;
+            myLevel.buildingName = new List<string>();
+            myLevel.buildingX = new List<int>();
+            myLevel.buildingY = new List<int>();
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.StartsWith("Start"))
+                {
+                    inLevelDescription = true;
+                }
+
+                if (inLevelDescription)
+                {
+                    int Row = Convert.ToInt32(file.ReadLine());
+                    int Col = Convert.ToInt32(file.ReadLine());
+                    myLevel.background = file.ReadLine();
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (line.StartsWith("End"))
+                        {
+                            inLevelDescription = false;
+                            break;
+                        }
+                        myLevel.buildingName.Add(line);
+                        myLevel.buildingX.Add(Convert.ToInt32(file.ReadLine()));
+                        myLevel.buildingY.Add(Convert.ToInt32(file.ReadLine()));
+                    }
+                    levelArray[Row, Col] = myLevel;
+                }
+            }
+        }
         public override void LoadContent(ContentManager ContentMgr,GraphicsDeviceManager graphics)
         {
+        
             //spriteBatch = new SpriteBatch(GraphicsDevice);
-            background = ContentMgr.Load<Texture2D>("TownGameScreen");
-            towerBuilding = ContentMgr.Load<Texture2D>("TowerBuilding");
-            waterFountain = ContentMgr.Load<Texture2D>("WaterFountain");
-            
+          
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
             leftTransitionRect = new Entity(5, 0, 1, screenHeight);
             rightTransitionRect = new Entity(screenWidth - 5, 0, 1, screenHeight);
-      
-            
             
 
             player.LoadContent(ContentMgr);
             Random rand = new Random();
-            waterPool = new Buildings(waterFountain, new Vector2(474, 300));
-            mainTower = new Buildings(towerBuilding, new Vector2(474,0));
+
            // health = new List<Health>();
          
 
@@ -105,24 +155,43 @@ namespace BPA__Game
                         goodStart = true;
                     }
                 }
+
                 int enemySeed = rand.Next(0, 5000);
                 enemies.Add(new EnemyAI(player, startX, startY, enemySeed));
                 enemies[i].LoadContent(ContentMgr);
                
             }
-           
+            background = ContentMgr.Load<Texture2D>(levelArray[currentRow, currentCol].background);
+
+            for (int i = 0; i < levelArray[currentRow, currentCol].buildingName.Count; i++)
+            {
+                buildingTextures.Add(ContentMgr.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
+                buildings.Add(new Buildings(buildingTextures[0], new Vector2(levelArray[currentRow, currentCol].buildingX[currentRow * NUMCOL + currentCol], levelArray[currentRow, currentCol].buildingY[currentRow * NUMCOL + currentCol])));
+            }
             //this.IsMouseVisible = true;
         }
         public override void UnloadContent()
         {
-            player.UnloadContent();
+        
             
             foreach(EnemyAI enemy in enemies)
             {
                 enemy.UnloadContent();
             }
-          
-            
+            foreach (Buildings building in buildings)
+            {
+                building.UnloadContent();
+               
+            }
+            buildings.Clear();
+            buildingTextures.Clear();
+            enemies.Clear();
+        }
+        public void ScreenTransfer(int currentCol, int currentRow)
+        {
+            UnloadContent();
+            //LoadContent();
+
         }
         public override void Update(GameTime gameTime)
         {
@@ -139,19 +208,26 @@ namespace BPA__Game
             player.Update(gameTime);
             if (player.Collision(leftTransitionRect))
             {
-                ChangeScreen("TitleScreen");
+                currentCol = currentCol - 1;
+                if (currentCol < 0)
+                {
+                    currentCol = NUMCOL;
+                }
+                ScreenTransfer(currentRow, currentCol);
+                
             }
             if (player.Collision(rightTransitionRect))
             {
                 ChangeScreen("PauseScreen");
             }
-            if (player.Collision(mainTower))
+
+            for (int i = 0; i < buildings.Count; i++)
             {
-               player.position = player.oldPosition;
-            }
-            if (player.Collision(waterPool))
-            {
-                player.position = player.oldPosition;
+                if (player.Collision(buildings[i]))
+                {
+                    player.position = player.oldPosition;
+
+                }
             }
 
             foreach (EnemyAI enemy in enemies)
@@ -159,18 +235,18 @@ namespace BPA__Game
                 enemy.Update(gameTime,player);
                 if (enemy.Collision(player))
                 {
-                    ChangeScreen("TitleScreen");
+                    ChangeScreen("BattleScreen");
                 }
-          
-
             }
 
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-           waterPool.Draw(spriteBatch);
-            mainTower.Draw(spriteBatch);
+            for(int i = 0; i < buildings.Count; i++)
+            {
+                 buildings[i].Draw(spriteBatch);
+            }
             player.Draw(spriteBatch);
           
             foreach(EnemyAI enemy in enemies)

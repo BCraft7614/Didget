@@ -20,6 +20,7 @@ namespace BPA__Game
         public static Dictionary<string, Texture2D> Textures2D;
         public static Dictionary<string, Screen> Screens;
         TitleScreen titleScreen;
+        BattleScreen battleScreen;
         OptionsScreen optionScreen;
         PauseScreen pauseScreen;
         GameScreen gameScreen;
@@ -42,6 +43,8 @@ namespace BPA__Game
             pauseScreen = new PauseScreen();
             loadScreen = new LoadScreen();
             inventoryScreen = new InventoryScreen();
+            battleScreen = new BattleScreen();
+            
             // LoadContent();
             //Initialize();
             CurrentScreen = titleScreen;
@@ -74,6 +77,7 @@ namespace BPA__Game
             loadScreen.ButtonClicked += HandleButtonClicked;
             pauseScreen.ButtonClicked += HandleButtonClicked;
             inventoryScreen.ButtonClicked += HandleButtonClicked;
+            battleScreen.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
@@ -82,6 +86,8 @@ namespace BPA__Game
             Screens.Add("OptionsScreen", optionScreen);
             Screens.Add("LoadScreen", loadScreen);
             Screens.Add("InventoryScreen", inventoryScreen);
+            Screens.Add("BattleScreen", battleScreen);
+            
             CurrentScreen.LoadContent(Content, GraphicsDevceMgr);
           /*  gameScreen.LoadContent(Content, GraphicsDevceMgr);
             pauseScreen.LoadContent(Content, GraphicsDevceMgr);
@@ -106,6 +112,7 @@ namespace BPA__Game
             loadScreen.ButtonClicked -= HandleButtonClicked;
             pauseScreen.ButtonClicked -= HandleButtonClicked;
             inventoryScreen.ButtonClicked -= HandleButtonClicked;
+            battleScreen.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }

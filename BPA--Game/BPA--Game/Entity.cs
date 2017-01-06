@@ -22,7 +22,7 @@ namespace BPA__Game
         public int Height { get; set; }
         public virtual void UnloadContent()
         {
-            content.Unload();
+            
         }
         //For Enemies and players
         public Entity()

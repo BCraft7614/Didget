@@ -25,5 +25,9 @@ namespace BPA__Game
             spriteBatch.Draw(image, position, Color.White);
 
         }
+        public override void UnloadContent()
+        {
+            base.UnloadContent();
+        }
     }
 }

@@ -1,0 +1,12 @@
+//level 1
+Start
+0
+0
+TownGameScreen
+TowerBuilding
+474
+0
+WaterFountain
+474
+300
+End
