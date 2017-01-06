@@ -124,7 +124,7 @@ namespace BPA__Game
             elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if(elapsed >= delay)
             {
-                if(frames >= 1)
+                if(frames >= 3)
                 {
                     frames = 0;
                 }

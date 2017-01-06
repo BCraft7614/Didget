@@ -17,6 +17,7 @@ namespace BPA__Game
         public Vector2 position;
         public Vector2 oldPosition;
         protected Texture2D image;
+        protected Texture2D attackimage;
         protected ContentManager content;
         public int Width { get; set; }
         public int Height { get; set; }
