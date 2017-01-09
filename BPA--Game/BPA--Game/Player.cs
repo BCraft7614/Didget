@@ -25,7 +25,7 @@ namespace BPA__Game
         float elapsed;
         float delay = 200f;
         int frames = 0;
-
+        
         public Player()
         {
 

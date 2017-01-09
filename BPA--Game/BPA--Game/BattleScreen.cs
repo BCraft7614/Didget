@@ -18,11 +18,13 @@ namespace BPA__Game
         mButton specialButton;
         mButton itemButton;
         mButton selected;
-
+        int playerHealth = 100;
+        SpriteFont HealthFont;
         public BattleScreen()
             : base()
         {
         }
+        
 
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
         {
@@ -33,6 +35,7 @@ namespace BPA__Game
             specialButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = specialButton);
 
             FleeButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = FleeButton);
+            HealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             fightButton.ButtonClicked += HandleButtonClicked;
             itemButton.ButtonClicked += HandleButtonClicked;
             specialButton.ButtonClicked += HandleButtonClicked;
@@ -42,7 +45,9 @@ namespace BPA__Game
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
+            spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(0, 100), Color.Red);
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
@@ -50,27 +55,10 @@ namespace BPA__Game
 
         public override void Update(GameTime theTime)
         {
-            //Fight Button
-            if (selected == fightButton)
-                FightUpdate(theTime);
-            //Item Button
-            else if (selected == itemButton)
-                ItemUpdate(theTime);
-            //Special Button
-            else if (selected == specialButton)
-                SpecialUpdate(theTime);
-            //Run Button
-            else if (selected == FleeButton)
-                FleeUpdate(theTime);
-            //Shows Screen
-            else
-            {
-                fightButton.Update();
-
-
-
-
-            }
+            fightButton.Update();
+            itemButton.Update();
+            specialButton.Update();
+            FleeButton.Update();
 
 
             base.Update(theTime);
@@ -113,18 +101,20 @@ namespace BPA__Game
             sender = fightButton;
             if (sender == fightButton)
             {
-                nextScreen = "GameScreen"; //ScreenName.GameScreen;
+                playerHealth--; //ScreenName.GameScreen;
             }
             else if (sender == itemButton)
             {
                 nextScreen = "LoadScreen"; //ScreenName.LoadScreen;
+                OnButtonClicked();
             }
             else if (sender == specialButton)
             {
                 nextScreen = "TitleScreen"; //ScreenName.TitleScreen
+                OnButtonClicked();
             }
 
-            OnButtonClicked();
+            
         }
 
         public event EventHandler ButtonClicked;

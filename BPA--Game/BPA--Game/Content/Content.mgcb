@@ -523,3 +523,9 @@
 /processorParam:TextureFormat=Color
 /build:Menu and Town.png
 
+#begin HealthFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:HealthFont.spritefont
+
