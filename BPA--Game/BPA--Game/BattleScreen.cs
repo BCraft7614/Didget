@@ -18,7 +18,9 @@ namespace BPA__Game
         mButton specialButton;
         mButton itemButton;
         mButton selected;
+        int enemyHealth = 100;
         int playerHealth = 100;
+        SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
         public BattleScreen()
             : base()
@@ -35,6 +37,7 @@ namespace BPA__Game
             specialButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = specialButton);
 
             FleeButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = FleeButton);
+            enemyHealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             HealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             fightButton.ButtonClicked += HandleButtonClicked;
             itemButton.ButtonClicked += HandleButtonClicked;
@@ -47,7 +50,8 @@ namespace BPA__Game
         {
 
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-            spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(0, 100), Color.Red);
+            spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(240, 530), Color.Green);
+            spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(0, 500), Color.Red);
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
@@ -101,7 +105,7 @@ namespace BPA__Game
             sender = fightButton;
             if (sender == fightButton)
             {
-                playerHealth--; //ScreenName.GameScreen;
+                enemyHealth--; //ScreenName.GameScreen;
             }
             else if (sender == itemButton)
             {
