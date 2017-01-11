@@ -4,9 +4,45 @@ Start
 0
 TownGameScreen
 TowerBuilding
-474
-0
+420
+50
 WaterFountain
 474
 300
+End
+//level 2
+Start
+0
+1
+TownGameScreen
+TowerBuilding
+474
+300
+WaterFountain
+474
+0
+End
+//level 1
+Start
+0
+0
+TownGameScreen
+TowerBuilding
+420
+50
+WaterFountain
+474
+300
+End
+//level 2
+Start
+0
+1
+TownGameScreen
+TowerBuilding
+474
+300
+WaterFountain
+474
+0
 End
