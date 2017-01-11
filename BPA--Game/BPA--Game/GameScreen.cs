@@ -80,8 +80,8 @@ namespace BPA__Game
 
         public void ReadFile()
         {
-            string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-            System.IO.StreamReader file = new System.IO.StreamReader(currentDirectory + "/Levels.txt");
+           // string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt");
             string line;
             Level myLevel;
             myLevel.buildingName = new List<string>();
