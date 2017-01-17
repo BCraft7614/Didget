@@ -23,12 +23,7 @@ namespace BPA__Game.Content
             Content.RootDirectory = "Content";
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+       
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -47,7 +42,7 @@ namespace BPA__Game.Content
 
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -56,7 +51,6 @@ namespace BPA__Game.Content
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }

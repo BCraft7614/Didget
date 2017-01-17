@@ -216,6 +216,7 @@ namespace BPA__Game
             {
                 ChangeScreen("InventoryScreen");
             }
+            
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);
             if (player.Collision(leftTransitionRect))
@@ -274,6 +275,14 @@ namespace BPA__Game
                 {
                     ChangeScreen("BattleScreen");
                 }
+                foreach(Buildings building in buildings)
+                {
+                    if (enemy.Collision(building))
+                    {
+                        enemy.position = enemy.oldPosition;
+                    }
+                }
+                
             }
 
         }
