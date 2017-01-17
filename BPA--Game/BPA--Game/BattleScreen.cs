@@ -12,6 +12,8 @@ namespace BPA__Game
 {
     class BattleScreen : Screen
     {
+        int screenWidth;
+        int screenHeight;
         Texture2D background;
         mButton fightButton;
         mButton FleeButton;
@@ -20,12 +22,27 @@ namespace BPA__Game
         mButton selected;
         int enemyHealth = 100;
         int playerHealth = 100;
+        
         SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
         public BattleScreen()
-            : base()
         {
+            screenWidth = 800;
+            screenHeight = 700;
         }
+          
+        public struct SaveData
+        {
+            public int playerHealth;
+            public Vector2 playerPosition;
+            
+           
+        }
+        public void ReadSave()
+        {
+
+        }
+
         
 
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
@@ -64,8 +81,6 @@ namespace BPA__Game
             itemButton.Update();
             specialButton.Update();
             FleeButton.Update();
-            
-
             base.Update(theTime);
         }
      
@@ -98,6 +113,8 @@ namespace BPA__Game
         {
 
         }
+    
+
         public override void UnloadContent()
         {
             fightButton.ButtonClicked -= HandleButtonClicked;
@@ -123,8 +140,12 @@ namespace BPA__Game
                 nextScreen = "TitleScreen"; //ScreenName.TitleScreen
                 OnButtonClicked();
             }
-
-            
+           
+        }
+        public void ChangeScreen(string NextScreen)
+        {
+            nextScreen = NextScreen;
+            OnButtonClicked();
         }
         public void ChangeScreen(string NextScreen)
         {

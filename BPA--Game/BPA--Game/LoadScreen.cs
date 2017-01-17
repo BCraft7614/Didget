@@ -28,6 +28,7 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
+
            // LoadContent();
             //Initialize();
         }

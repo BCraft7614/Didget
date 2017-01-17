@@ -70,100 +70,156 @@ namespace BPA__Game
         }
         public void Update(GameTime gameTime,Player player)
         {
+            oldPosition = position;
             if (randTime <= 0)
             {
-                randTime = rand.Next(10, 60);
-                randDirection = rand.Next(0, 100);
-                //randDirection *= (int) position.X + (int) position.Y;
-                randDirection = randDirection % 2;
+
+                randTime = rand.Next(60, 160);
+                randDirection = rand.Next(0, 6);
+                //randDirection *= (int) position.X + (int) position.Y;    
+
             }
             randTime--;
-            if (Math.Round(player.position.X) > Math.Round(position.X) && Math.Round(player.position.Y) > Math.Round(position.Y))
+
+            
+              if(player.position.X> position.X && randDirection >3)
+              {
+                  position.X += 1.0f;
+                  image = rightWalk;
+
+              }
+              else if (player.position.X < position.X && randDirection >3)
+              {
+                  position.X -= 1.0f;
+                  image = leftWalk;
+
+              }
+              else if(player.position.Y > position.Y && randDirection >3)
+              {
+                  position.Y += 1.0f;
+                  image = downWalk;
+
+              }
+              else if(player.position.Y < position.Y && randDirection >3)
+              {
+                  position.Y -= 1.0f;
+                  image = upWalk;
+
+              }
+              else{
+                 if(randDirection == 0)
+                {
+                    position.X += 1.0f;
+                    image = rightWalk;
+                }
+                 else if (randDirection == 1)
+                {
+                    position.X -= 1.0f;
+                    image = leftWalk;
+                }
+                 else if (randDirection == 2)
+                {
+                    position.Y += 1.0f;
+                    image = downWalk;
+                }
+                 else
+                {
+                    position.Y -= 1.0f;
+                    image = upWalk;
+                }
+
+              }
+            /*
+
+
+            if ((player.position.X) >(position.X) && (player.position.Y) > (position.Y))
             {
                 if (randDirection == 1)
                 {
 
-                    position.X += 1.5f;
+                    position.X += 1f;
                     direction = Direction.right;
                     image = rightWalk;
                 }
                 else
                 {
-                    position.Y += 1.5f;
+                    position.Y += 1f;
                     direction = Direction.down;
                     image = downWalk;
                 }
             }
-            else if (Math.Round(player.position.X) < Math.Round(position.X) && Math.Round(player.position.Y) > Math.Round(position.Y))
+            else if ((player.position.X) < (position.X) && (player.position.Y) > (position.Y))
             {
                 if (randDirection == 1)
                 {
-                    position.X -= 1.5f;
+                    position.X -= 1f;
                     direction = Direction.left;
                     image = leftWalk;
                 }
                 else
                 {
-                    position.Y += 1.5f;
+                    position.Y += 1f;
                     direction = Direction.down;
                     image = downWalk;
                 }
             }
-            else if (Math.Round(player.position.X) > Math.Round(position.X) && Math.Round(player.position.Y) < Math.Round(position.Y))
+            else if ((player.position.X) > (position.X) && (player.position.Y) < (position.Y))
             {
                 if (randDirection == 1)
                 {
-                    position.X += 1.5f;
+                    position.X += 1f;
                     direction = Direction.right;
                     image = rightWalk;
                 }
                 else
                 {
-                    position.Y -= 1.5f;
+                    position.Y -= 1f;
                     direction = Direction.up;
                     image = upWalk;
                 }
             }
-            else if (Math.Round(player.position.X) < Math.Round(position.X) && Math.Round(player.position.Y) < Math.Round(position.Y))
+            else if ((player.position.X) < (position.X) && (player.position.Y) < (position.Y))
             {
                 if (randDirection == 1)
                 {
-                    position.X -= 1.5f;
+                    position.X -= 1f;
                     direction = Direction.left;
                     image = leftWalk;
                 }
                 else
                 {
-                    position.Y -= 1.5f;
+                    position.Y -= 1f;
                     direction = Direction.up;
                     image = upWalk;
                 }
+          
             }
             else if (Math.Round(player.position.X) > Math.Round(position.X))
             {
-                position.X += 1.5f;
+                position.X += 1f;
                 direction = Direction.right;
                 image = rightWalk;
             }
             else if (Math.Round(player.position.Y) > Math.Round(position.Y))
             {
-                position.Y += 1.5f;
+                position.Y += 1f;
                 direction = Direction.down;
                 image = downWalk;
             }
             else if (Math.Round(player.position.X) < Math.Round(position.X))
             {
-                position.X -= 1.5f;
+                position.X -= 1f;
                 direction = Direction.left;
                 image = leftWalk;
             }
             else if (Math.Round(player.position.Y) < Math.Round(position.Y))
             {
-                position.Y -= 1.5f;
+                position.Y -= 1f;
                 direction = Direction.up;
                 image = upWalk;
             }
-
+        */
+            
             Animate(gameTime);
           
             base.Update(gameTime);

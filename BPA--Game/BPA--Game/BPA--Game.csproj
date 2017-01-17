@@ -66,6 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Levels.txt" />
+    <None Include="bin\Windows\x86\Debug\Levels.txt" />
     <Content Include="Content\BattleScreen.png" />
     <Content Include="Content\Blue Back Movement.png" />
     <Content Include="Content\Blue Front Movement.png" />
