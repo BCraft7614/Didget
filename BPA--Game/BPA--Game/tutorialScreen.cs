@@ -112,7 +112,9 @@ namespace BPA__Game
             }
             public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
             {
-                content = ContentMgr;
+            TutorialHelp tutorialHelp = new TutorialHelp();
+            tutorialHelp.Show();
+            content = ContentMgr;
                 //spriteBatch = new SpriteBatch(GraphicsDevice);
 
                 graphics.PreferredBackBufferWidth = screenWidth;

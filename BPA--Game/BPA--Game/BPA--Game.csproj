@@ -56,6 +56,12 @@
     <Compile Include="Screen.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="TitleScreen.cs" />
+    <Compile Include="TutorialHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TutorialHelp.Designer.cs">
+      <DependentUpon>TutorialHelp.cs</DependentUpon>
+    </Compile>
     <Compile Include="TutorialScreen.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +69,9 @@
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="TutorialHelp.resx">
+      <DependentUpon>TutorialHelp.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
