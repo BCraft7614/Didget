@@ -42,7 +42,8 @@ namespace BPA__Game
             fightButton.ButtonClicked += HandleButtonClicked;
             itemButton.ButtonClicked += HandleButtonClicked;
             specialButton.ButtonClicked += HandleButtonClicked;
-
+            fightButton.setPosition(new Vector2(650, 500));
+            itemButton.setPosition(new Vector2());
             background = ContentMgr.Load<Texture2D>("BattleScreen");
             base.LoadContent(ContentMgr, graphics);
         }
@@ -50,8 +51,8 @@ namespace BPA__Game
         {
 
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-            spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(240, 530), Color.Green);
-            spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(0, 500), Color.Red);
+            spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(689, 300), Color.Green);
+            spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(650, 50), Color.Red);
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
@@ -63,7 +64,7 @@ namespace BPA__Game
             itemButton.Update();
             specialButton.Update();
             FleeButton.Update();
-
+            
 
             base.Update(theTime);
         }
@@ -76,9 +77,13 @@ namespace BPA__Game
 
 
         //Should call FightActionClass
-        private void FightUpdate(GameTime theTime)
+        private void FightUpdate()
         {
-
+            enemyHealth--;
+            if (enemyHealth <= 0)
+            {
+                ChangeScreen("GameScreen");
+            }
         }
 
         //Should loada SpecialAblitlyClass
@@ -105,7 +110,8 @@ namespace BPA__Game
             sender = fightButton;
             if (sender == fightButton)
             {
-                enemyHealth--; //ScreenName.GameScreen;
+                //ScreenName.GameScreen;
+                FightUpdate();
             }
             else if (sender == itemButton)
             {
@@ -119,6 +125,11 @@ namespace BPA__Game
             }
 
             
+        }
+        public void ChangeScreen(string NextScreen)
+        {
+            nextScreen = NextScreen;
+            OnButtonClicked();
         }
 
         public event EventHandler ButtonClicked;

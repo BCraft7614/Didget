@@ -275,6 +275,7 @@ namespace BPA__Game
                     ChangeScreen("BattleScreen");
                 }
             }
+           
 
         }
         public override void Draw(SpriteBatch spriteBatch)
