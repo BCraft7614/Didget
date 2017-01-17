@@ -16,6 +16,7 @@ namespace BPA__Game
         mButton btnLoad;
         mButton btnOp;
         mButton btnExit;
+        mButton btnTutorial;
         Texture2D rightanim;
         Texture2D background;
         // graphics;
@@ -44,14 +45,17 @@ namespace BPA__Game
             btnOp = new mButton(ContentMgr.Load<Texture2D>("OPBtn"), graphics.GraphicsDevice);
             btnLoad = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
             btnExit = new mButton(ContentMgr.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice);
+            btnTutorial = new mButton(ContentMgr.Load<Texture2D>("BtnBack"), graphics.GraphicsDevice);
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
             btnExit.ButtonClicked += HandleButtonClicked;
+            btnTutorial.ButtonClicked += HandleButtonClicked;
             btnPlay.setPosition(new Vector2(350, 300));
             btnOp.setPosition(new Vector2(350, 300 + btnOp.size.Y * 2));
             btnLoad.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 4));
             btnExit.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 8));
+            btnTutorial.setPosition(new Vector2(350, 300 + btnTutorial.size.Y* -8));
             background = ContentMgr.Load<Texture2D>("TitleScreenBg");
             
           //  this.IsMouseVisible = true;
@@ -62,6 +66,7 @@ namespace BPA__Game
             btnOp.ButtonClicked -= HandleButtonClicked;
             btnLoad.ButtonClicked -= HandleButtonClicked;
             btnExit.ButtonClicked -= HandleButtonClicked;
+            btnTutorial.ButtonClicked -= HandleButtonClicked;
            // base.UnloadContent();
         }
         public override void Update(GameTime gameTime)
@@ -70,6 +75,7 @@ namespace BPA__Game
             btnOp.Update();
             btnLoad.Update();
             btnExit.Update();
+            btnTutorial.Update();
 
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -81,6 +87,7 @@ namespace BPA__Game
             btnOp.Draw(spriteBatch);
             btnLoad.Draw(spriteBatch);
             btnExit.Draw(spriteBatch);
+            btnTutorial.Draw(spriteBatch);
             
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
@@ -101,6 +108,10 @@ namespace BPA__Game
             else if(sender == btnExit)
             {
                 Environment.Exit(1);
+            }
+            else if(sender == btnTutorial)
+            {
+                nextScreen = "TutorialScreen";//ScreenName.TutorialScreen
             }
             OnButtonClicked();
         }

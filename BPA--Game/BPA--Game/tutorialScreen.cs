@@ -9,19 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
+using BPA__Game.Content;
 
 namespace BPA__Game
 {
-    class TutorialScreen : Screen
-    {
-        public enum Direction
-        {
-            up,
-            down,
-            left,
-            right,
-        }
-        public class GameScreen : Screen
+    
+    
+        public class TutorialScreen : Screen
         {
             // Work Here Ryan. Add Player and Battle Scene
             const int NUMCOL = 2;
@@ -65,7 +59,7 @@ namespace BPA__Game
 
             }
 
-            public GameScreen()
+            public TutorialScreen()
             {
                 screenWidth = 800;
                 screenHeight = 700;
@@ -308,5 +302,5 @@ namespace BPA__Game
                 }
             }
         }
-    }
+    
 }

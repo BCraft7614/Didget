@@ -27,6 +27,7 @@ namespace BPA__Game
         LoadScreen loadScreen;
         InventoryScreen inventoryScreen;
         Screen CurrentScreen;
+        TutorialScreen tutorialScreen;
 
         public ScreenManager()
         {
@@ -44,6 +45,7 @@ namespace BPA__Game
             loadScreen = new LoadScreen();
             inventoryScreen = new InventoryScreen();
             battleScreen = new BattleScreen();
+            tutorialScreen = new TutorialScreen();
             
             // LoadContent();
             //Initialize();
@@ -78,6 +80,7 @@ namespace BPA__Game
             pauseScreen.ButtonClicked += HandleButtonClicked;
             inventoryScreen.ButtonClicked += HandleButtonClicked;
             battleScreen.ButtonClicked += HandleButtonClicked;
+            tutorialScreen.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
@@ -87,7 +90,8 @@ namespace BPA__Game
             Screens.Add("LoadScreen", loadScreen);
             Screens.Add("InventoryScreen", inventoryScreen);
             Screens.Add("BattleScreen", battleScreen);
-            
+            Screens.Add("TutorialScreen", tutorialScreen);
+
             CurrentScreen.LoadContent(Content, GraphicsDevceMgr);
           /*  gameScreen.LoadContent(Content, GraphicsDevceMgr);
             pauseScreen.LoadContent(Content, GraphicsDevceMgr);
@@ -113,6 +117,7 @@ namespace BPA__Game
             pauseScreen.ButtonClicked -= HandleButtonClicked;
             inventoryScreen.ButtonClicked -= HandleButtonClicked;
             battleScreen.ButtonClicked -= HandleButtonClicked;
+            tutorialScreen.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }
