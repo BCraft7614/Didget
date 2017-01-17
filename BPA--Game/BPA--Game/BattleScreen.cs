@@ -147,11 +147,6 @@ namespace BPA__Game
             nextScreen = NextScreen;
             OnButtonClicked();
         }
-        public void ChangeScreen(string NextScreen)
-        {
-            nextScreen = NextScreen;
-            OnButtonClicked();
-        }
 
         public event EventHandler ButtonClicked;
         public void OnButtonClicked()
