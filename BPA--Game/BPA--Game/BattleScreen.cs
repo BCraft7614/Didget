@@ -113,8 +113,6 @@ namespace BPA__Game
         {
 
         }
-    
-
         public override void UnloadContent()
         {
             fightButton.ButtonClicked -= HandleButtonClicked;

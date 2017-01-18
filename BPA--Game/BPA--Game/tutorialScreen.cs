@@ -112,8 +112,8 @@ namespace BPA__Game
             }
             public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
             {
-            TutorialHelp tutorialHelp = new TutorialHelp();
-            tutorialHelp.Show();
+            
+
             content = ContentMgr;
                 //spriteBatch = new SpriteBatch(GraphicsDevice);
 
