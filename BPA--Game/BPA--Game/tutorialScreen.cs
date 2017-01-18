@@ -50,6 +50,9 @@ namespace BPA__Game
 
             int currentRow;
             int currentCol;
+
+        private SpriteFont tutorialFont;
+        
             public struct Level
             {
 
@@ -124,8 +127,8 @@ namespace BPA__Game
                 upTransitionRect = new Entity(0, 0, screenWidth, 1);
                 downTransitionRect = new Entity(0, screenHeight - 1, screenWidth, 1);
                 player.LoadContent(content);
-
-                LoadLevel(content);
+            tutorialFont = content.Load<SpriteFont>("TutorialHelp");
+            LoadLevel(content);
                 // health = new List<Health>();
 
                 //this.IsMouseVisible = true;
@@ -202,82 +205,92 @@ namespace BPA__Game
 
 
             }
-            public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
+        {
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
+                ChangeScreen("PauseScreen");
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                {
-                    ChangeScreen("PauseScreen");
-
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.CapsLock))
-                {
-                    ChangeScreen("InventoryScreen");
-                }
-                MouseState mouse = Mouse.GetState();
-                player.Update(gameTime);
-                if (player.Collision(leftTransitionRect))
-                {
-                    currentCol = currentCol - 1;
-                    if (currentCol < 0)
-                    {
-                        currentCol = NUMCOL - 1;
-                    }
-                    player.position.X = 740;
-                    ScreenTransfer(currentRow, currentCol);
-                }
-                if (player.Collision(rightTransitionRect))
-                {
-                    currentCol = currentCol + 1;
-                    if (currentCol >= NUMCOL)
-                    {
-                        currentCol = 0;
-                    }
-                    player.position.X = 1;
-                    ScreenTransfer(currentRow, currentCol);
-                }
-                if (player.Collision(upTransitionRect))
-                {
-                    currentRow = currentRow - 1;
-                    if (currentRow < 0)
-                    {
-                        currentRow = NUMROW - 1;
-                    }
-                    player.position.Y = 630;
-                    ScreenTransfer(currentRow, currentCol);
-                }
-                if (player.Collision(downTransitionRect))
-                {
-                    currentRow = currentRow + 1;
-                    if (currentRow >= NUMROW)
-                    {
-                        currentRow = 0;
-                    }
-                    player.position.Y = 1;
-                    ScreenTransfer(currentRow, currentCol);
-                }
-                for (int i = 0; i < buildings.Count; i++)
-                {
-                    if (player.Collision(buildings[i]))
-                    {
-                        player.position = player.oldPosition;
-
-                    }
-                }
-
-                foreach (EnemyAI enemy in enemies)
-                {
-                    enemy.Update(gameTime, player);
-                    if (enemy.Collision(player))
-                    {
-                        ChangeScreen("BattleScreen");
-                    }
-                }
-                
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.CapsLock))
+            {
+                ChangeScreen("InventoryScreen");
+            }
+            MouseState mouse = Mouse.GetState();
+            player.Update(gameTime);
+            if (player.Collision(leftTransitionRect))
+            {
+                currentCol = currentCol - 1;
+                if (currentCol < 0)
+                {
+                    currentCol = NUMCOL - 1;
+                }
+                player.position.X = 740;
+                ScreenTransfer(currentRow, currentCol);
+            }
+            if (player.Collision(rightTransitionRect))
+            {
+                currentCol = currentCol + 1;
+                if (currentCol >= NUMCOL)
+                {
+                    currentCol = 0;
+                }
+                player.position.X = 1;
+                ScreenTransfer(currentRow, currentCol);
+            }
+            if (player.Collision(upTransitionRect))
+            {
+                currentRow = currentRow - 1;
+                if (currentRow < 0)
+                {
+                    currentRow = NUMROW - 1;
+                }
+                player.position.Y = 630;
+                ScreenTransfer(currentRow, currentCol);
+            }
+            if (player.Collision(downTransitionRect))
+            {
+                currentRow = currentRow + 1;
+                if (currentRow >= NUMROW)
+                {
+                    currentRow = 0;
+                }
+                player.position.Y = 1;
+                ScreenTransfer(currentRow, currentCol);
+            }
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                if (player.Collision(buildings[i]))
+                {
+                    player.position = player.oldPosition;
+
+                }
+            }
+
+            foreach (EnemyAI enemy in enemies)
+            {
+                enemy.Update(gameTime, player);
+                if (enemy.Collision(player))
+                {
+                    ChangeScreen("BattleScreen");
+                }
+                foreach (Buildings building in buildings)
+                {
+                    if (enemy.Collision(building))
+                    {
+                        enemy.position = enemy.oldPosition;
+                    }
+                }
+
+            }
+        }
             public override void Draw(SpriteBatch spriteBatch)
             {
+                
                 spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
+            spriteBatch.DrawString(tutorialFont, "To walk use the WASD keys or the Arrow pad", new Vector2(100, 100), Color.LightGoldenrodYellow);
+            
                 for (int i = 0; i < buildings.Count; i++)
                 {
                     buildings[i].Draw(spriteBatch);
