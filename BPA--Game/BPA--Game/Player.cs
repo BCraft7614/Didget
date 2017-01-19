@@ -22,6 +22,11 @@ namespace BPA__Game
         Texture2D idleAnime;
         Texture2D swordAnimeRight;
         Texture2D swordAnimeL;
+        int coins;
+        int playerHealth;
+        int str;
+        int def;
+        
         float elapsed;
         float delay = 200f;
         int frames = 0;
@@ -29,6 +34,23 @@ namespace BPA__Game
         public Player()
         {
 
+        }
+        
+        public int GetCoins()
+        {
+             return coins;
+        }
+        public int GetHealth()
+        {
+            return playerHealth;
+        }
+        public int GetStrength()
+        {
+            return str;
+        }
+        public int GetDefense()
+        {
+             return def;
         }
 
         public override void LoadContent(ContentManager content)

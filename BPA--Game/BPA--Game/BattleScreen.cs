@@ -22,8 +22,8 @@ namespace BPA__Game
         mButton itemButton;
         mButton selected;
         EnemyAI enemy;
-        int enemyHealth = 100;
-        int playerHealth = 100;
+        int enemyHealth;
+        int playerHealth;
         int playerStength;
         int playerDefence;
         
@@ -33,19 +33,21 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
-            ReadSave();
+            //ReadSave();
         }
           
         
         public void ReadSave()
         {
-            System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt");
-            file.ReadLine(); //player positionX
-            file.ReadLine(); //player positionY
-            playerHealth = Convert.ToInt32(file.ReadLine());
-            playerStength = Convert.ToInt32(file.ReadLine());
-            playerStength = Convert.ToInt32(file.ReadLine());
-            file.Close();
+            using (System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt"))
+            {
+                file.ReadLine(); //player positionX
+                file.ReadLine(); //player positionY
+                playerHealth = Convert.ToInt32(file.ReadLine());
+                playerStength = Convert.ToInt32(file.ReadLine());
+                playerStength = Convert.ToInt32(file.ReadLine());
+            }
+            
 
         }
 

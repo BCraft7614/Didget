@@ -25,29 +25,36 @@ namespace BPA__Game
         // Work Here Ryan. Add Player and Battle Scene
         const int NUMCOL = 2;
         const int NUMROW = 1;
+
         Level[,] levelArray = new Level[1, 2];
+
         mButton btnPlay;
         mButton btnLoad;
         mButton btnOp;
         mButton btnExit;
+
         Texture2D background;
         Texture2D towerBuilding;
         Texture2D waterFountain;
         Texture2D shopStore;
+
         GraphicsDeviceManager graphics;
+
         SpriteBatch spriteBatch;
         private List<EnemyAI> enemies;
-        //private List<Health> health;
         Player player;
         Buildings mainTower;
         Buildings waterPool;
+
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
+            
         Entity upTransitionRect;
         Entity leftTransitionRect;
         Entity rightTransitionRect;
         Entity downTransitionRect;
+
         List<Buildings> buildings = new List<Buildings>();
         List<Texture2D> buildingTextures = new List<Texture2D>();
         ContentManager content;
@@ -72,59 +79,79 @@ namespace BPA__Game
             //Initialize();
             inLevelDescription = false;
             player = new Player();
-            ReadFile();
-            WriteSave();
+           ReadFile();
+           // WriteSave();
             currentRow = 0;
             currentCol = 0;
 
         }
+        
         public void WriteSave()
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter("SavaData");
-            file.WriteLine(Convert.ToInt32(player.position.X));
-            file.WriteLine(Convert.ToInt32(player.position.Y));
-            //str
-            //def
-            //coins
-
-        }
-
-        public void ReadFile()
-        {
-           // string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-            System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt");
-            string line;
-            Level myLevel;
-            myLevel.buildingName = new List<string>();
-            myLevel.buildingX = new List<int>();
-            myLevel.buildingY = new List<int>();
-            while ((line = file.ReadLine()) != null)
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("Levels.txt"))
             {
-                if (line.StartsWith("Start"))
-                {
-                    inLevelDescription = true;
-                }
+                //writing the players attributes
+                file.WriteLine(Convert.ToInt32(player.position.X));
+                file.WriteLine(Convert.ToInt32(player.position.Y));
+                file.WriteLine(Convert.ToInt32(player.GetStrength()));//Writes the players strength to a file
+                file.WriteLine(Convert.ToInt32(player.GetHealth()));//Writes the players Health to a file
+                file.WriteLine(Convert.ToInt32(player.GetDefense()));// Writes the players defense to a file
+                file.WriteLine(Convert.ToInt32(player.GetCoins()));
 
-                if (inLevelDescription)
+                //writing enemy attributes
+                foreach (EnemyAI enemy in enemies)
                 {
-                    int Row = Convert.ToInt32(file.ReadLine());
-                    int Col = Convert.ToInt32(file.ReadLine());
-                    myLevel.background = file.ReadLine();
-                    while ((line = file.ReadLine()) != null)
-                    {
-                        if (line.StartsWith("End"))
-                        {
-                            inLevelDescription = false;
-                            break;
-                        }
-                        myLevel.buildingName.Add(line);
-                        myLevel.buildingX.Add(Convert.ToInt32(file.ReadLine()));
-                        myLevel.buildingY.Add(Convert.ToInt32(file.ReadLine()));
-                        
-                    }
-                    levelArray[Row, Col] = myLevel;
+                    file.WriteLine(Convert.ToInt32(enemy.position.X));
+                    file.WriteLine(Convert.ToInt32(enemy.position.Y));
+                    file.WriteLine("Blue");//FIXME
                 }
             }
+        }
+        /*
+        public void ReadSaveFile()
+        {
+            using(System.I0.StreamReader file = new System.I0.StreamReader)
+        }
+        */
+        public void ReadFile()
+        {
+            // string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            using (System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt"))
+            {
+                string line;
+                Level myLevel;
+                myLevel.buildingName = new List<string>();
+                myLevel.buildingX = new List<int>();
+                myLevel.buildingY = new List<int>();
+                while ((line = file.ReadLine()) != null)
+                {
+                    if (line.StartsWith("Start"))
+                    {
+                        inLevelDescription = true;
+                    }
+
+                    if (inLevelDescription)
+                    {
+                        int Row = Convert.ToInt32(file.ReadLine());
+                        int Col = Convert.ToInt32(file.ReadLine());
+                        myLevel.background = file.ReadLine();
+                        while ((line = file.ReadLine()) != null)
+                        {
+                            if (line.StartsWith("End"))
+                            {
+                                inLevelDescription = false;
+                                break;
+                            }
+                            myLevel.buildingName.Add(line);
+                            myLevel.buildingX.Add(Convert.ToInt32(file.ReadLine()));
+                            myLevel.buildingY.Add(Convert.ToInt32(file.ReadLine()));
+
+                        }
+                        levelArray[Row, Col] = myLevel;
+                    }
+                }
+            }
+              
         }
         public override void LoadContent(ContentManager ContentMgr,GraphicsDeviceManager graphics)
         {
@@ -311,19 +338,7 @@ namespace BPA__Game
                  buildings[i].Draw(spriteBatch);
             }
             player.Draw(spriteBatch);
-
-
-
-
-
-
-
-
-
-
-
-
-          
+  
             foreach(EnemyAI enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
