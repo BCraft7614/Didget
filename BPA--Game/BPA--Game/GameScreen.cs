@@ -59,7 +59,7 @@ namespace BPA__Game
         List<Texture2D> buildingTextures = new List<Texture2D>();
         ContentManager content;
         bool inLevelDescription;
-
+        bool playerDescription;
         int currentRow;
         int currentCol;
         public struct Level
@@ -91,10 +91,10 @@ namespace BPA__Game
             using (System.IO.StreamWriter file = new System.IO.StreamWriter("Levels.txt"))
             {
                 //writing the players attributes
+                file.WriteLine(Convert.ToInt32(player.GetHealth()));//Writes the players Health to a file
                 file.WriteLine(Convert.ToInt32(player.position.X));
                 file.WriteLine(Convert.ToInt32(player.position.Y));
                 file.WriteLine(Convert.ToInt32(player.GetStrength()));//Writes the players strength to a file
-                file.WriteLine(Convert.ToInt32(player.GetHealth()));//Writes the players Health to a file
                 file.WriteLine(Convert.ToInt32(player.GetDefense()));// Writes the players defense to a file
                 file.WriteLine(Convert.ToInt32(player.GetCoins()));
 
@@ -107,12 +107,23 @@ namespace BPA__Game
                 }
             }
         }
-        /*
+        
         public void ReadSaveFile()
         {
-            using(System.I0.StreamReader file = new System.I0.StreamReader)
+            using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData"))
+            {
+                string line;
+                while((line = file.ReadLine()) != null)
+                {
+                    if (line.StartsWith("Start"))
+                    {
+                        playerDescription = true;
+                    }
+                        
+                }
+            }
         }
-        */
+         
         public void ReadFile()
         {
             // string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
