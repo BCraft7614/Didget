@@ -73,8 +73,19 @@ namespace BPA__Game
             inLevelDescription = false;
             player = new Player();
             ReadFile();
+            WriteSave();
             currentRow = 0;
             currentCol = 0;
+
+        }
+        public void WriteSave()
+        {
+            System.IO.StreamWriter file = new System.IO.StreamWriter("SavaData");
+            file.WriteLine(Convert.ToInt32(player.position.X));
+            file.WriteLine(Convert.ToInt32(player.position.Y));
+            //str
+            //def
+            //coins
 
         }
 
@@ -166,7 +177,7 @@ namespace BPA__Game
                 }
 
                 int enemySeed = rand.Next(0, 5000);
-                enemies.Add(new EnemyAI(player, startX, startY, enemySeed));
+                enemies.Add(new EnemyAI(player, startX, startY));
                 enemies[i].LoadContent(content);
 
             }
@@ -219,6 +230,7 @@ namespace BPA__Game
             
             MouseState mouse = Mouse.GetState();
             player.Update(gameTime);
+            //transitons to next screen if player collides left;
             if (player.Collision(leftTransitionRect))
             {
                 currentCol = currentCol - 1;
@@ -229,6 +241,7 @@ namespace BPA__Game
                 player.position.X = 740;
                 ScreenTransfer(currentRow, currentCol);
             }
+            //transitons to next screen if player collides right;
             if (player.Collision(rightTransitionRect))
             {
                 currentCol = currentCol + 1;
@@ -239,6 +252,7 @@ namespace BPA__Game
                 player.position.X = 1;
                 ScreenTransfer(currentRow, currentCol);
             }
+            //transitons to next screen if player collides up;
             if (player.Collision(upTransitionRect))
             {
                 currentRow = currentRow - 1;
@@ -249,6 +263,7 @@ namespace BPA__Game
                 player.position.Y = 630;
                 ScreenTransfer(currentRow, currentCol);
             }
+            //transitons to next screen if player collides down;
             if (player.Collision(downTransitionRect))
             {
                 currentRow = currentRow + 1;
@@ -259,6 +274,8 @@ namespace BPA__Game
                 player.position.Y = 1;
                 ScreenTransfer(currentRow, currentCol);
             }
+
+            //players collision for a building
             for (int i = 0; i < buildings.Count; i++)
             {
                 if (player.Collision(buildings[i]))
@@ -294,6 +311,18 @@ namespace BPA__Game
                  buildings[i].Draw(spriteBatch);
             }
             player.Draw(spriteBatch);
+
+
+
+
+
+
+
+
+
+
+
+
           
             foreach(EnemyAI enemy in enemies)
             {

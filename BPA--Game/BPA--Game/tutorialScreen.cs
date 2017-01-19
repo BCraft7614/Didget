@@ -112,7 +112,6 @@ namespace BPA__Game
             }
             public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
             {
-            
 
             content = ContentMgr;
                 //spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -163,7 +162,7 @@ namespace BPA__Game
                     }
 
                     int enemySeed = rand.Next(0, 5000);
-                    enemies.Add(new EnemyAI(player, startX, startY, enemySeed));
+                    enemies.Add(new EnemyAI(player, startX, startY));
                     enemies[i].LoadContent(content);
 
                 }

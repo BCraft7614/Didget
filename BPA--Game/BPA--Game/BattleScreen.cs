@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using System.Threading;
 
 namespace BPA__Game
 {
@@ -20,8 +21,11 @@ namespace BPA__Game
         mButton specialButton;
         mButton itemButton;
         mButton selected;
+        EnemyAI enemy;
         int enemyHealth = 100;
         int playerHealth = 100;
+        int playerStength;
+        int playerDefence;
         
         SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
@@ -29,17 +33,19 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
+            ReadSave();
         }
           
-        public struct SaveData
-        {
-            public int playerHealth;
-            public Vector2 playerPosition;
-            
-           
-        }
+        
         public void ReadSave()
         {
+            System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt");
+            file.ReadLine(); //player positionX
+            file.ReadLine(); //player positionY
+            playerHealth = Convert.ToInt32(file.ReadLine());
+            playerStength = Convert.ToInt32(file.ReadLine());
+            playerStength = Convert.ToInt32(file.ReadLine());
+            file.Close();
 
         }
 
@@ -94,11 +100,14 @@ namespace BPA__Game
         //Should call FightActionClass
         private void FightUpdate()
         {
-            enemyHealth--;
+            enemyHealth-=20;
+            
             if (enemyHealth <= 0)
             {
                 ChangeScreen("GameScreen");
+                
             }
+           
         }
 
         //Should loada SpecialAblitlyClass
@@ -127,6 +136,7 @@ namespace BPA__Game
             {
                 //ScreenName.GameScreen;
                 FightUpdate();
+                
             }
             else if (sender == itemButton)
             {

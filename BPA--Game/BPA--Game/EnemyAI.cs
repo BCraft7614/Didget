@@ -22,9 +22,10 @@ namespace BPA__Game
         int randTime = 0;
         int randDirection = 0;
         float oldDistance;
-        public EnemyAI(Player player, int posX, int posY, int enemySeed)
+     
+        public EnemyAI(Player player, int posX, int posY)
         {
-            rand = new Random(enemySeed);
+            rand = new Random();
             position.X = posX;
             position.Y = posY;
 
@@ -129,96 +130,7 @@ namespace BPA__Game
                 }
 
               }
-            /*
-
-
-            if ((player.position.X) >(position.X) && (player.position.Y) > (position.Y))
-            {
-                if (randDirection == 1)
-                {
-
-                    position.X += 1f;
-                    direction = Direction.right;
-                    image = rightWalk;
-                }
-                else
-                {
-                    position.Y += 1f;
-                    direction = Direction.down;
-                    image = downWalk;
-                }
-            }
-            else if ((player.position.X) < (position.X) && (player.position.Y) > (position.Y))
-            {
-                if (randDirection == 1)
-                {
-                    position.X -= 1f;
-                    direction = Direction.left;
-                    image = leftWalk;
-                }
-                else
-                {
-                    position.Y += 1f;
-                    direction = Direction.down;
-                    image = downWalk;
-                }
-            }
-            else if ((player.position.X) > (position.X) && (player.position.Y) < (position.Y))
-            {
-                if (randDirection == 1)
-                {
-                    position.X += 1f;
-                    direction = Direction.right;
-                    image = rightWalk;
-                }
-                else
-                {
-                    position.Y -= 1f;
-                    direction = Direction.up;
-                    image = upWalk;
-                }
-            }
-            else if ((player.position.X) < (position.X) && (player.position.Y) < (position.Y))
-            {
-                if (randDirection == 1)
-                {
-                    position.X -= 1f;
-                    direction = Direction.left;
-                    image = leftWalk;
-                }
-                else
-                {
-                    position.Y -= 1f;
-                    direction = Direction.up;
-                    image = upWalk;
-                }
-          
-            }
-            else if (Math.Round(player.position.X) > Math.Round(position.X))
-            {
-                position.X += 1f;
-                direction = Direction.right;
-                image = rightWalk;
-            }
-            else if (Math.Round(player.position.Y) > Math.Round(position.Y))
-            {
-                position.Y += 1f;
-                direction = Direction.down;
-                image = downWalk;
-            }
-            else if (Math.Round(player.position.X) < Math.Round(position.X))
-            {
-                position.X -= 1f;
-                direction = Direction.left;
-                image = leftWalk;
-            }
-            else if (Math.Round(player.position.Y) < Math.Round(position.Y))
-            {
-                position.Y -= 1f;
-                direction = Direction.up;
-                image = upWalk;
-            }
-        */
+           
             
             Animate(gameTime);
           
