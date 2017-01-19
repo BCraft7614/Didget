@@ -529,3 +529,9 @@
 /processorParam:TextureFormat=Compressed
 /build:HealthFont.spritefont
 
+#begin TutorialHelp.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:TutorialHelp.spritefont
+
