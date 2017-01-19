@@ -1,5 +1,6 @@
 ﻿using BPA__Game.Content;
 using System;
+using System.Net.Mail;
 
 namespace BPA__Game
 {
@@ -15,17 +16,18 @@ namespace BPA__Game
         [STAThread]
         static void Main()
         {
-            //try
-           // {
+          // try
+          //  {
                 using (var game = new ScreenManager())
                     game.Run();
-           /* }
+          /*  }
             catch (Exception e)
             {
                 using (ErrorHandler errorHandler = new ErrorHandler())
                 {
-                    errorHandler.ErrorText = e.Message;
+                    errorHandler.SetErrorMsg(e.Message, e.StackTrace);
                     errorHandler.Run();
+                   
                 }
             }*/
 
