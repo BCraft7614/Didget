@@ -289,7 +289,7 @@ namespace BPA__Game
                 
                 spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             spriteBatch.DrawString(tutorialFont, "To walk use the WASD keys or the Arrow pad", new Vector2(100, 100), Color.LightGoldenrodYellow);
-
+            throw new Exception();
                 for (int i = 0; i < buildings.Count; i++)
                 {
                     buildings[i].Draw(spriteBatch);

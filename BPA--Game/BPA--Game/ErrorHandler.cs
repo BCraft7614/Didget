@@ -94,18 +94,21 @@ namespace BPA__Game.Content
         {
             try
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                MailMessage mail = new MailMessage("didgetsreal@gmail.com","DidgetsRealBPA@gmail.com");
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com",587);
 
                 mail.From = new MailAddress("didgetsreal@gmail.com");
                 mail.To.Add("DidgetsRealBPA@gmail.com");
                 mail.Subject = "Errors";
                 mail.Body = errorMsg;
+                mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
                 SmtpServer.Port =587;
+                SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+                SmtpServer.UseDefaultCredentials = false;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("didgetsReal@gmail.com", "Didgets1234");
                 SmtpServer.EnableSsl = true;
-
+                
                 SmtpServer.Send(mail);
             }
             catch (Exception ex)
