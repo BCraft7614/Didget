@@ -26,6 +26,7 @@ namespace BPA__Game
         int playerHealth;
         int playerStength;
         int playerDefence;
+        private SpriteFont tutorialFont;
 
         SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
@@ -70,12 +71,15 @@ namespace BPA__Game
             fightButton.setPosition(new Vector2(650, 500));
             itemButton.setPosition(new Vector2());
             background = ContentMgr.Load<Texture2D>("BattleScreen");
+            tutorialFont = ContentMgr.Load<SpriteFont>("TutorialHelp");
             base.LoadContent(ContentMgr, graphics);
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            
 
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
+            spriteBatch.DrawString(tutorialFont, "To Battle use the fight button.", new Vector2(100, 100), Color.DarkGreen);
             spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(689, 300), Color.Green);
             spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(650, 50), Color.Red);
             fightButton.Draw(spriteBatch);

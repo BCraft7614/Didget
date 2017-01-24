@@ -272,7 +272,7 @@ namespace BPA__Game
                 enemy.Update(gameTime, player);
                 if (enemy.Collision(player))
                 {
-                    ChangeScreen("TutorialgoBattleScreen");
+                    ChangeScreen("TutorialBattleScreen");
                 }
                 foreach (Buildings building in buildings)
                 {
@@ -288,7 +288,7 @@ namespace BPA__Game
             {
                 
                 spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-            spriteBatch.DrawString(tutorialFont, "To walk use the WASD keys or the Arrow pad,\n For Battling, use the buttons to fight.", new Vector2(100, 100), Color.LightGoldenrodYellow);
+            spriteBatch.DrawString(tutorialFont, "To walk use the WASD keys or the Arrow pad.", new Vector2(100, 100), Color.LightGoldenrodYellow);
                 for (int i = 0; i < buildings.Count; i++)
                 {
                     buildings[i].Draw(spriteBatch);
