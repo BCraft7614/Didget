@@ -1,0 +1,12 @@
+//posx
+//posy
+//health
+//str
+//def
+//coins
+//posx
+//posy
+//type
+//posx
+//posy
+//type

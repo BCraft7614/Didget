@@ -23,7 +23,7 @@ namespace BPA__Game
         int randDirection = 0;
         float oldDistance;
      
-        public EnemyAI(Player player, int posX, int posY)
+        public EnemyAI(int posX, int posY)
         {
             rand = new Random();
             position.X = posX;

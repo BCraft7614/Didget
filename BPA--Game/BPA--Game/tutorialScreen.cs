@@ -165,7 +165,7 @@ namespace BPA__Game
                     }
 
                     int enemySeed = rand.Next(0, 5000);
-                    enemies.Add(new EnemyAI(player, startX, startY));
+                    enemies.Add(new EnemyAI(startX, startY));
                     enemies[i].LoadContent(content);
 
                 }

@@ -79,7 +79,7 @@ namespace BPA__Game
             //Initialize();
             inLevelDescription = false;
             player = new Player();
-           ReadFile();
+            ReadFile();
            // WriteSave();
             currentRow = 0;
             currentCol = 0;
@@ -88,38 +88,44 @@ namespace BPA__Game
         
         public void WriteSave()
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter("Levels.txt"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("SaveData.txt"))
             {
                 //writing the players attributes
-                file.WriteLine(Convert.ToInt32(player.GetHealth()));//Writes the players Health to a file
-                file.WriteLine(Convert.ToInt32(player.position.X));
-                file.WriteLine(Convert.ToInt32(player.position.Y));
-                file.WriteLine(Convert.ToInt32(player.GetStrength()));//Writes the players strength to a file
-                file.WriteLine(Convert.ToInt32(player.GetDefense()));// Writes the players defense to a file
-                file.WriteLine(Convert.ToInt32(player.GetCoins()));
+                file.WriteLine(player.GetHealth());//Writes the players Health to a file
+                file.WriteLine(player.position.X);
+                file.WriteLine(player.position.Y);
+                file.WriteLine(player.GetStrength());//Writes the players strength to a file
+                file.WriteLine(player.GetDefense());// Writes the players defense to a file
+                file.WriteLine(player.GetCoins());
 
                 //writing enemy attributes
                 foreach (EnemyAI enemy in enemies)
                 {
-                    file.WriteLine(Convert.ToInt32(enemy.position.X));
-                    file.WriteLine(Convert.ToInt32(enemy.position.Y));
-                    file.WriteLine("Blue");//FIXME
+                    file.WriteLine(enemy.position.X);
+                    file.WriteLine(enemy.position.Y);
+                    file.WriteLine("Blue Left Movement");//FIXME
                 }
+                //enemies.Clear();
             }
         }
         
         public void ReadSaveFile()
         {
-            using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData"))
+            using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData.txt"))
             {
+                player.playerHealth = Convert.ToInt32(file.ReadLine());
+                player.position.X = Convert.ToInt32(file.ReadLine());
+                player.position.Y = Convert.ToInt32(file.ReadLine());
+                player.str = Convert.ToInt32(file.ReadLine());
+                player.def = Convert.ToInt32(file.ReadLine());
+                player.coins = Convert.ToInt32(file.ReadLine());
                 string line;
-                while((line = file.ReadLine()) != null)
+                while (( line = file.ReadLine()) != null)
                 {
-                    if (line.StartsWith("Start"))
-                    {
-                        playerDescription = true;
-                    }
-                        
+                    int xPos = Convert.ToInt32(line);
+                    int yPos = Convert.ToInt32(file.ReadLine());
+                    string texture  = file.ReadLine();//FIXME
+                    enemies.Add(new EnemyAI(xPos, yPos));
                 }
             }
         }
@@ -215,7 +221,7 @@ namespace BPA__Game
                 }
 
                 int enemySeed = rand.Next(0, 5000);
-                enemies.Add(new EnemyAI(player, startX, startY));
+                enemies.Add(new EnemyAI(startX, startY));
                 enemies[i].LoadContent(content);
 
             }
@@ -229,8 +235,7 @@ namespace BPA__Game
         }
         public override void UnloadContent()
         {
-        
-            
+          
             foreach(EnemyAI enemy in enemies)
             {
                 enemy.UnloadContent();
@@ -242,8 +247,6 @@ namespace BPA__Game
             buildings.Clear();
             buildingTextures.Clear();
             enemies.Clear();
-            
-
             
         }
         public void ScreenTransfer(int currentCol, int currentRow)
@@ -359,6 +362,7 @@ namespace BPA__Game
         }
         public void ChangeScreen(string NextScreen)
         {
+            WriteSave();
             nextScreen = NextScreen;
             OnButtonClicked();
         }

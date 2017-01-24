@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\SaveData.txt" />
     <None Include="Levels.txt" />
     <None Include="bin\Windows\x86\Debug\Levels.txt" />
     <Content Include="Content\BattleScreen.png" />

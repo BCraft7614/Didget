@@ -22,10 +22,10 @@ namespace BPA__Game
         Texture2D idleAnime;
         Texture2D swordAnimeRight;
         Texture2D swordAnimeL;
-        int coins;
-        int playerHealth;
-        int str;
-        int def;
+        public int coins;
+        public int playerHealth;
+        public int str;
+        public int def;
         
         float elapsed;
         float delay = 200f;
