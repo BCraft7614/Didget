@@ -16,11 +16,13 @@ namespace BPA__Game
         [STAThread]
         static void Main()
         {
-           try
+        
+           //try
             {
                 using (var game = new ScreenManager())
                     game.Run();
             }
+            /*
             catch (Exception e)
             {
                 using (ErrorHandler errorHandler = new ErrorHandler())
@@ -30,6 +32,7 @@ namespace BPA__Game
                    
                 }
             }
+            */
 
         }
     }

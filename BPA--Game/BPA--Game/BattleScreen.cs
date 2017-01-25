@@ -26,6 +26,7 @@ namespace BPA__Game
         int playerHealth;
         int playerStength;
         int playerDefence;
+        int playerCoins;
         
         SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
@@ -33,22 +34,35 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
-            //ReadSave();
+
+        
         }
           
         
         public void ReadSave()
         {
-            using (System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt"))
+            using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData"))
             {
                 file.ReadLine(); //player positionX
                 file.ReadLine(); //player positionY
                 playerHealth = Convert.ToInt32(file.ReadLine());
                 playerStength = Convert.ToInt32(file.ReadLine());
-                playerStength = Convert.ToInt32(file.ReadLine());
+                playerDefence = Convert.ToInt32(file.ReadLine());
+                playerCoins = Convert.ToInt32(file.ReadLine());
+                
             }
             
 
+        }
+        public void WriteSave()
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("SaveData"))
+            {
+                file.WriteLine(playerHealth);
+                file.WriteLine(playerStength);
+                file.WriteLine(playerDefence);
+                file.WriteLine(playerCoins);
+            }
         }
 
         
@@ -70,6 +84,7 @@ namespace BPA__Game
             fightButton.setPosition(new Vector2(650, 500));
             itemButton.setPosition(new Vector2());
             background = ContentMgr.Load<Texture2D>("BattleScreen");
+            
             base.LoadContent(ContentMgr, graphics);
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -106,6 +121,7 @@ namespace BPA__Game
             
             if (enemyHealth <= 0)
             {
+
                 ChangeScreen("GameScreen");
                 
             }
@@ -154,6 +170,7 @@ namespace BPA__Game
         }
         public void ChangeScreen(string NextScreen)
         {
+            WriteSave();
             nextScreen = NextScreen;
             OnButtonClicked();
         }

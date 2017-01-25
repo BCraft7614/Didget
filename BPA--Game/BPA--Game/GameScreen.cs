@@ -62,6 +62,7 @@ namespace BPA__Game
         bool playerDescription;
         int currentRow;
         int currentCol;
+        bool newGame;
         public struct Level
         {
 
@@ -75,12 +76,13 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
+            newGame = true;
             //LoadContent();
             //Initialize();
             inLevelDescription = false;
             player = new Player();
             ReadFile();
-           // WriteSave();
+           
             currentRow = 0;
             currentCol = 0;
 
@@ -91,14 +93,15 @@ namespace BPA__Game
             using (System.IO.StreamWriter file = new System.IO.StreamWriter("SaveData.txt"))
             {
                 //writing the players attributes
-                file.WriteLine(player.GetHealth());//Writes the players Health to a file
+                
                 file.WriteLine(player.position.X);
                 file.WriteLine(player.position.Y);
+                file.WriteLine(player.GetHealth());//Writes the players Health to a file
                 file.WriteLine(player.GetStrength());//Writes the players strength to a file
                 file.WriteLine(player.GetDefense());// Writes the players defense to a file
                 file.WriteLine(player.GetCoins());
 
-                //writing enemy attributes
+                //writing enemy attributes and position 
                 foreach (EnemyAI enemy in enemies)
                 {
                     file.WriteLine(enemy.position.X);
@@ -106,6 +109,7 @@ namespace BPA__Game
                     file.WriteLine("Blue Left Movement");//FIXME
                 }
                 //enemies.Clear();
+                newGame = false;
             }
         }
         
@@ -113,9 +117,11 @@ namespace BPA__Game
         {
             using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData.txt"))
             {
-                player.playerHealth = Convert.ToInt32(file.ReadLine());
+                //reads all the players attributes in the SaveData file
+                
                 player.position.X = Convert.ToInt32(file.ReadLine());
                 player.position.Y = Convert.ToInt32(file.ReadLine());
+                player.playerHealth = Convert.ToInt32(file.ReadLine());
                 player.str = Convert.ToInt32(file.ReadLine());
                 player.def = Convert.ToInt32(file.ReadLine());
                 player.coins = Convert.ToInt32(file.ReadLine());
@@ -128,6 +134,7 @@ namespace BPA__Game
                     enemies.Add(new EnemyAI(xPos, yPos));
                 }
             }
+            newGame = true;
         }
          
         public void ReadFile()
@@ -167,6 +174,7 @@ namespace BPA__Game
                         levelArray[Row, Col] = myLevel;
                     }
                 }
+                //This reads the file f levels to load in the background and buildings that are put into a list
             }
               
         }
@@ -192,38 +200,47 @@ namespace BPA__Game
         {
             Random rand = new Random();
             enemies = new List<EnemyAI>();
-            for (int i = 0; i < 2; i++)
-            {
-                bool goodStart = false;
-                int startX = 0;
-                int startY = 0;
-                while (!goodStart)
+            if (newGame) {
+                for (int i = 0; i < 2; i++)
                 {
-                    startX = rand.Next(10, 600);
-                    startY = rand.Next(10, 600);
-
-                    float playerRight = player.position.X + player.Width + 100;
-                    float playerLeft = player.position.X;
-                    float playerTop = player.position.Y;
-                    float playerBottom = player.position.Y + player.Height + 100;
-                    float enemyRight = startX + 120;
-                    float enemyLeft = startX;
-                    float enemyTop = startY;
-                    float enemyBottom = startY + 120;
-
-                    if ((enemyRight < playerLeft ||
-                        enemyLeft > playerRight ||
-                        enemyTop > playerBottom ||
-                        enemyBottom < playerTop))
+                    bool goodStart = false;
+                    int startX = 0;
+                    int startY = 0;
+                    while (!goodStart)
                     {
-                        goodStart = true;
+                        startX = rand.Next(10, 600);
+                        startY = rand.Next(10, 600);
+
+                        float playerRight = player.position.X + player.Width + 100;
+                        float playerLeft = player.position.X;
+                        float playerTop = player.position.Y;
+                        float playerBottom = player.position.Y + player.Height + 100;
+                        float enemyRight = startX + 120;
+                        float enemyLeft = startX;
+                        float enemyTop = startY;
+                        float enemyBottom = startY + 120;
+
+                        if ((enemyRight < playerLeft ||
+                            enemyLeft > playerRight ||
+                            enemyTop > playerBottom ||
+                            enemyBottom < playerTop))
+                        {
+                            goodStart = true;
+                        }
                     }
+
+                    int enemySeed = rand.Next(0, 5000);
+                    enemies.Add(new EnemyAI(startX, startY));
+
+
                 }
-
-                int enemySeed = rand.Next(0, 5000);
-                enemies.Add(new EnemyAI(startX, startY));
-                enemies[i].LoadContent(content);
-
+            }
+            else {
+                ReadSaveFile();
+            }
+            foreach (EnemyAI enemy in enemies)
+            {
+                enemy.LoadContent(content);
             }
             background = content.Load<Texture2D>(levelArray[currentRow, currentCol].background);
 
@@ -252,9 +269,7 @@ namespace BPA__Game
         public void ScreenTransfer(int currentCol, int currentRow)
         {
             UnloadContent();
-            LoadLevel(content);
-
-            
+            LoadLevel(content);            
 
         }
         public override void Update(GameTime gameTime)
@@ -332,6 +347,7 @@ namespace BPA__Game
                 if (enemy.Collision(player))
                 {
                     ChangeScreen("BattleScreen");
+                    
                 }
                 foreach(Buildings building in buildings)
                 {
