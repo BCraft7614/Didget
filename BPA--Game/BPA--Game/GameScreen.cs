@@ -55,6 +55,8 @@ namespace BPA__Game
         Entity rightTransitionRect;
         Entity downTransitionRect;
 
+        
+        
         List<Buildings> buildings = new List<Buildings>();
         List<Texture2D> buildingTextures = new List<Texture2D>();
         ContentManager content;
@@ -108,13 +110,16 @@ namespace BPA__Game
                     file.WriteLine(enemy.position.Y);
                     file.WriteLine("Blue Left Movement");//FIXME
                 }
+                
                 //enemies.Clear();
                 newGame = false;
+
             }
         }
         
         public void ReadSaveFile()
         {
+           
             using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData.txt"))
             {
                 //reads all the players attributes in the SaveData file
@@ -134,7 +139,9 @@ namespace BPA__Game
                     enemies.Add(new EnemyAI(xPos, yPos));
                 }
             }
+          
             newGame = true;
+           
         }
          
         public void ReadFile()
@@ -199,6 +206,7 @@ namespace BPA__Game
         public void LoadLevel(ContentManager content)
         {
             Random rand = new Random();
+            List<EnemyAI> removeEnemy = new List<EnemyAI>();
             enemies = new List<EnemyAI>();
             if (newGame) {
                 for (int i = 0; i < 2; i++)
@@ -225,13 +233,14 @@ namespace BPA__Game
                             enemyTop > playerBottom ||
                             enemyBottom < playerTop))
                         {
+
                             goodStart = true;
+                            
                         }
                     }
 
-                    int enemySeed = rand.Next(0, 5000);
-                    enemies.Add(new EnemyAI(startX, startY));
-
+                    int enemySeed = rand.Next(0, 5000);                    
+                    enemies.Add(new EnemyAI(startX, startY));  
 
                 }
             }
@@ -340,25 +349,26 @@ namespace BPA__Game
 
                 }
             }
-
+            
             foreach (EnemyAI enemy in enemies)
             {
                 enemy.Update(gameTime,player);
                 if (enemy.Collision(player))
                 {
                     ChangeScreen("BattleScreen");
-                    
+                    enemies.Remove(enemy);
+
                 }
-                foreach(Buildings building in buildings)
+                foreach (Buildings building in buildings)
                 {
                     if (enemy.Collision(building))
                     {
                         enemy.position = enemy.oldPosition;
                     }
-                }
-                
+                } 
             }
-
+            
+            
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
