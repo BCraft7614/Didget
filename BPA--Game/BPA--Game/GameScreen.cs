@@ -208,7 +208,15 @@ namespace BPA__Game
             Random rand = new Random();
             List<EnemyAI> removeEnemy = new List<EnemyAI>();
             enemies = new List<EnemyAI>();
+            background = content.Load<Texture2D>(levelArray[currentRow, currentCol].background);
+
+            for (int i = 0; i < levelArray[currentRow, currentCol].buildingName.Count; i++)
+            {
+                buildingTextures.Add(content.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
+                buildings.Add(new Buildings(buildingTextures[0], new Vector2(levelArray[currentRow, currentCol].buildingX[currentRow * NUMCOL + currentCol], levelArray[currentRow, currentCol].buildingY[currentRow * NUMCOL + currentCol])));
+            }
             if (newGame) {
+
                 for (int i = 0; i < 2; i++)
                 {
                     bool goodStart = false;
@@ -227,11 +235,21 @@ namespace BPA__Game
                         float enemyLeft = startX;
                         float enemyTop = startY;
                         float enemyBottom = startY + 120;
-
+                        bool buildingCheck = true;
+                        EnemyAI collEnemy = new EnemyAI(startX, startY);
+                        foreach (Buildings checkBuilding in buildings)
+                        {
+                            if (checkBuilding.Collision(collEnemy))
+                            {
+                                buildingCheck = false;
+                            }
+                          
+                        }
                         if ((enemyRight < playerLeft ||
                             enemyLeft > playerRight ||
                             enemyTop > playerBottom ||
-                            enemyBottom < playerTop))
+                            enemyBottom < playerTop)&& buildingCheck
+                            )
                         {
 
                             goodStart = true;
@@ -251,13 +269,7 @@ namespace BPA__Game
             {
                 enemy.LoadContent(content);
             }
-            background = content.Load<Texture2D>(levelArray[currentRow, currentCol].background);
-
-            for (int i = 0; i < levelArray[currentRow, currentCol].buildingName.Count; i++)
-            {
-                buildingTextures.Add(content.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
-                buildings.Add(new Buildings(buildingTextures[0], new Vector2(levelArray[currentRow, currentCol].buildingX[currentRow * NUMCOL + currentCol], levelArray[currentRow, currentCol].buildingY[currentRow * NUMCOL + currentCol])));
-            }
+           
         }
         public override void UnloadContent()
         {
@@ -355,8 +367,10 @@ namespace BPA__Game
                 enemy.Update(gameTime,player);
                 if (enemy.Collision(player))
                 {
+                   // enemies.Remove(enemy);
                     ChangeScreen("BattleScreen");
-                    enemies.Remove(enemy);
+
+
 
                 }
                 foreach (Buildings building in buildings)

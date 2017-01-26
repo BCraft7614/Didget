@@ -47,6 +47,7 @@ namespace BPA__Game
             List<Texture2D> buildingTextures = new List<Texture2D>();
             ContentManager content;
             bool inLevelDescription;
+            bool newGame;
 
             int currentRow;
             int currentCol;
@@ -76,7 +77,34 @@ namespace BPA__Game
 
             }
 
-            public void ReadFile()
+        public void ReadSaveFile()
+        {
+
+            using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData.txt"))
+            {
+                //reads all the players attributes in the SaveData file
+
+                player.position.X = Convert.ToInt32(file.ReadLine());
+                player.position.Y = Convert.ToInt32(file.ReadLine());
+                player.playerHealth = Convert.ToInt32(file.ReadLine());
+                player.str = Convert.ToInt32(file.ReadLine());
+                player.def = Convert.ToInt32(file.ReadLine());
+                player.coins = Convert.ToInt32(file.ReadLine());
+                string line;
+                while ((line = file.ReadLine()) != null)
+                {
+                    int xPos = Convert.ToInt32(line);
+                    int yPos = Convert.ToInt32(file.ReadLine());
+                    string texture = file.ReadLine();//FIXME
+                    enemies.Add(new EnemyAI(xPos, yPos));
+                }
+            }
+
+            newGame = true;
+
+        }
+
+        public void ReadFile()
             {
                 string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
                 System.IO.StreamReader file = new System.IO.StreamReader(currentDirectory + "/Levels.txt");
@@ -132,10 +160,21 @@ namespace BPA__Game
 
                 //this.IsMouseVisible = true;
             }
-            public void LoadLevel(ContentManager content)
+        public void LoadLevel(ContentManager content)
+        {
+            Random rand = new Random();
+            List<EnemyAI> removeEnemy = new List<EnemyAI>();
+            enemies = new List<EnemyAI>();
+            background = content.Load<Texture2D>(levelArray[currentRow, currentCol].background);
+
+            for (int i = 0; i < levelArray[currentRow, currentCol].buildingName.Count; i++)
             {
-                Random rand = new Random();
-                enemies = new List<EnemyAI>();
+                buildingTextures.Add(content.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
+                buildings.Add(new Buildings(buildingTextures[0], new Vector2(levelArray[currentRow, currentCol].buildingX[currentRow * NUMCOL + currentCol], levelArray[currentRow, currentCol].buildingY[currentRow * NUMCOL + currentCol])));
+            }
+            if (newGame)
+            {
+
                 for (int i = 0; i < 2; i++)
                 {
                     bool goodStart = false;
@@ -154,30 +193,44 @@ namespace BPA__Game
                         float enemyLeft = startX;
                         float enemyTop = startY;
                         float enemyBottom = startY + 120;
+                        bool buildingCheck = true;
+                        EnemyAI collEnemy = new EnemyAI(startX, startY);
+                        foreach (Buildings checkBuilding in buildings)
+                        {
+                            if (checkBuilding.Collision(collEnemy))
+                            {
+                                buildingCheck = false;
+                            }
 
+                        }
                         if ((enemyRight < playerLeft ||
                             enemyLeft > playerRight ||
                             enemyTop > playerBottom ||
-                            enemyBottom < playerTop))
+                            enemyBottom < playerTop) && buildingCheck
+                            )
                         {
+
                             goodStart = true;
+
                         }
                     }
 
                     int enemySeed = rand.Next(0, 5000);
                     enemies.Add(new EnemyAI(startX, startY));
-                    enemies[i].LoadContent(content);
 
-                }
-                background = content.Load<Texture2D>(levelArray[currentRow, currentCol].background);
-
-                for (int i = 0; i < levelArray[currentRow, currentCol].buildingName.Count; i++)
-                {
-                    buildingTextures.Add(content.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
-                    buildings.Add(new Buildings(buildingTextures[0], new Vector2(levelArray[currentRow, currentCol].buildingX[currentRow * NUMCOL + currentCol], levelArray[currentRow, currentCol].buildingY[currentRow * NUMCOL + currentCol])));
                 }
             }
-            public override void UnloadContent()
+            else
+            {
+                ReadSaveFile();
+            }
+            foreach (EnemyAI enemy in enemies)
+            {
+                enemy.LoadContent(content);
+            }
+
+        }
+        public override void UnloadContent()
             {
 
 
