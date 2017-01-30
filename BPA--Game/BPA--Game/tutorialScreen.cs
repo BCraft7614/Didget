@@ -87,8 +87,8 @@ namespace BPA__Game
                 player.position.X = Convert.ToInt32(file.ReadLine());
                 player.position.Y = Convert.ToInt32(file.ReadLine());
                 player.playerHealth = Convert.ToInt32(file.ReadLine());
-                player.str = Convert.ToInt32(file.ReadLine());
-                player.def = Convert.ToInt32(file.ReadLine());
+                player.playerstr = Convert.ToInt32(file.ReadLine());
+                player.playerdef = Convert.ToInt32(file.ReadLine());
                 player.coins = Convert.ToInt32(file.ReadLine());
                 string line;
                 while ((line = file.ReadLine()) != null)

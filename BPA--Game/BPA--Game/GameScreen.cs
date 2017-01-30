@@ -55,6 +55,7 @@ namespace BPA__Game
         Entity rightTransitionRect;
         Entity downTransitionRect;
 
+        int enemyCollisionIndex;
         
         
         List<Buildings> buildings = new List<Buildings>();
@@ -104,14 +105,18 @@ namespace BPA__Game
                 file.WriteLine(player.GetCoins());
 
                 //writing enemy attributes and position 
-                foreach (EnemyAI enemy in enemies)
+                for (int i = 0; i < enemies.Count; i++)
                 {
-                    file.WriteLine(enemy.position.X);
-                    file.WriteLine(enemy.position.Y);
-                    file.WriteLine("Blue Left Movement");//FIXME
+
+                    if (i != enemyCollisionIndex)
+                    {
+                        file.WriteLine(enemies[i].position.X);
+                        file.WriteLine(enemies[i].position.Y);
+                        file.WriteLine("Blue Left Movement");//FIXME
+                    }
                 }
                 
-                //enemies.Clear();
+                
                 newGame = false;
 
             }
@@ -127,8 +132,8 @@ namespace BPA__Game
                 player.position.X = Convert.ToInt32(file.ReadLine());
                 player.position.Y = Convert.ToInt32(file.ReadLine());
                 player.playerHealth = Convert.ToInt32(file.ReadLine());
-                player.str = Convert.ToInt32(file.ReadLine());
-                player.def = Convert.ToInt32(file.ReadLine());
+                player.playerstr = Convert.ToInt32(file.ReadLine());
+                player.playerdef = Convert.ToInt32(file.ReadLine());
                 player.coins = Convert.ToInt32(file.ReadLine());
                 string line;
                 while (( line = file.ReadLine()) != null)
@@ -362,22 +367,21 @@ namespace BPA__Game
                 }
             }
             
-            foreach (EnemyAI enemy in enemies)
+            for(int i = 0; i < enemies.Count; i++)
             {
-                enemy.Update(gameTime,player);
-                if (enemy.Collision(player))
+                enemyCollisionIndex = i;
+                enemies[i].Update(gameTime,player);
+                if (enemies[i].Collision(player))
                 {
-                   // enemies.Remove(enemy);
+                   // enemies.Remove(enemies[i]);
                     ChangeScreen("BattleScreen");
-
-
-
+                   
                 }
-                foreach (Buildings building in buildings)
+                for (int x = 0; x < buildings.Count; x++)
                 {
-                    if (enemy.Collision(building))
+                    if (enemies[i].Collision(buildings[x]))
                     {
-                        enemy.position = enemy.oldPosition;
+                        enemies[i].position = enemies[i].oldPosition;
                     }
                 } 
             }

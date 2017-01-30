@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using System.Threading;
+using System.IO;
+
 
 namespace BPA__Game
 {
@@ -49,6 +51,8 @@ namespace BPA__Game
                 playerStength = Convert.ToInt32(file.ReadLine());
                 playerDefence = Convert.ToInt32(file.ReadLine());
                 playerCoins = Convert.ToInt32(file.ReadLine());
+
+                
                 
             }
             
@@ -56,16 +60,36 @@ namespace BPA__Game
         }
         public void WriteSave()
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter("SaveData"))
+            
+            var writeFile = new StreamWriter("tempFile");
+            using (StreamReader readFile = new StreamReader("SaveData"))
             {
-                file.WriteLine(playerHealth);
-                file.WriteLine(playerStength);
-                file.WriteLine(playerDefence);
-                file.WriteLine(playerCoins);
-            }
-        }
+                writeFile.WriteLine(readFile.ReadLine());
+                writeFile.WriteLine(readFile.ReadLine());
+                writeFile.WriteLine(playerHealth);
+                writeFile.WriteLine(playerStength);
+                writeFile.WriteLine(playerDefence);
+                writeFile.WriteLine(playerCoins);
+                for (int i = 0; i < 4; i++)
+                {
+                    readFile.ReadLine();
+                }
+                string line;
+                while ((line = readFile.ReadLine()) != null)
+                {
+                    writeFile.WriteLine(readFile.ReadLine());
+                }
 
-        
+            }
+
+            writeFile.Close();
+            if (File.Exists("SaveData"))
+            {
+                File.Delete("SaveData");
+            }
+            File.Move("tempFile", "SaveData");
+
+        }
 
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
         {
@@ -117,7 +141,7 @@ namespace BPA__Game
         //Should call FightActionClass
         private void FightUpdate()
         {
-            enemyHealth-=20;
+            
             
             if (enemyHealth <= 0)
             {
