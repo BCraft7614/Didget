@@ -33,7 +33,10 @@ namespace BPA__Game
         
         public Player()
         {
-
+            playerHealth = 100;
+            coins = 10;
+            playerstr = 10;
+            playerdef = 5;
         }
         
         public int GetCoins()

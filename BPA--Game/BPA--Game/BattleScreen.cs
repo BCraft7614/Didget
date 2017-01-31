@@ -23,12 +23,13 @@ namespace BPA__Game
         mButton specialButton;
         mButton itemButton;
         mButton selected;
+
         EnemyAI enemy;
-        int enemyHealth;
-        int playerHealth;
-        int playerStength;
-        int playerDefence;
-        int playerCoins;
+        public int enemyHealth;
+        public int playerHealth;
+        public int playerStength;
+        public int playerDefence;
+        public int playerCoins;
         
         SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
@@ -36,7 +37,7 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
-
+            enemyHealth = 5;
         
         }
           
@@ -50,9 +51,7 @@ namespace BPA__Game
                 playerHealth = Convert.ToInt32(file.ReadLine());
                 playerStength = Convert.ToInt32(file.ReadLine());
                 playerDefence = Convert.ToInt32(file.ReadLine());
-                playerCoins = Convert.ToInt32(file.ReadLine());
-
-                
+                playerCoins = Convert.ToInt32(file.ReadLine()); 
                 
             }
             
@@ -77,7 +76,7 @@ namespace BPA__Game
                 string line;
                 while ((line = readFile.ReadLine()) != null)
                 {
-                    writeFile.WriteLine(readFile.ReadLine());
+                    writeFile.WriteLine(line);
                 }
 
             }
@@ -108,6 +107,7 @@ namespace BPA__Game
             fightButton.setPosition(new Vector2(650, 500));
             itemButton.setPosition(new Vector2());
             background = ContentMgr.Load<Texture2D>("BattleScreen");
+            ReadSave();
             
             base.LoadContent(ContentMgr, graphics);
         }
@@ -115,7 +115,7 @@ namespace BPA__Game
         {
 
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
-            spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(689, 300), Color.Green);
+            spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(689, 330), Color.Green);
             spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(650, 50), Color.Red);
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
@@ -141,12 +141,13 @@ namespace BPA__Game
         //Should call FightActionClass
         private void FightUpdate()
         {
-            
-            
+
+            enemyHealth--;
             if (enemyHealth <= 0)
             {
-
+                playerCoins = playerCoins + 5;
                 ChangeScreen("GameScreen");
+                enemyHealth = 5;
                 
             }
            

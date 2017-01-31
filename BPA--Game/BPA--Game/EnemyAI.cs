@@ -16,6 +16,7 @@ namespace BPA__Game
         Texture2D rightWalk, leftWalk, upWalk, downWalk;
         Rectangle sourceRect;
         Random rand;
+        EnemyAI enemy;
         float elapsed;
         float delay = 200f;
         int frames = 0;
@@ -25,7 +26,7 @@ namespace BPA__Game
      
         public EnemyAI(int posX, int posY)
         {
-            rand = new Random();
+            rand = new Random(posX);
             position.X = posX;
             position.Y = posY;
 
@@ -76,7 +77,7 @@ namespace BPA__Game
             {
 
                 randTime = rand.Next(60, 160);
-                randDirection = rand.Next(0, 6);
+                randDirection = rand.Next(0,8);
                 //randDirection *= (int) position.X + (int) position.Y;    
 
             }

@@ -93,7 +93,7 @@ namespace BPA__Game
         
         public void WriteSave()
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter("SaveData.txt"))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("SaveData"))
             {
                 //writing the players attributes
                 
@@ -125,7 +125,7 @@ namespace BPA__Game
         public void ReadSaveFile()
         {
            
-            using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData.txt"))
+            using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData"))
             {
                 //reads all the players attributes in the SaveData file
                 
@@ -211,7 +211,7 @@ namespace BPA__Game
         public void LoadLevel(ContentManager content)
         {
             Random rand = new Random();
-            List<EnemyAI> removeEnemy = new List<EnemyAI>();
+           // List<EnemyAI> removeEnemy = new List<EnemyAI>();
             enemies = new List<EnemyAI>();
             background = content.Load<Texture2D>(levelArray[currentRow, currentCol].background);
 
@@ -255,11 +255,13 @@ namespace BPA__Game
                             enemyTop > playerBottom ||
                             enemyBottom < playerTop)&& buildingCheck
                             )
+
                         {
 
                             goodStart = true;
                             
                         }
+                        
                     }
 
                     int enemySeed = rand.Next(0, 5000);                    
@@ -269,7 +271,13 @@ namespace BPA__Game
             }
             else {
                 ReadSaveFile();
+               
             }
+            /*if (100)
+            {
+                enemies.Clear()
+                enemies.Add(boss)
+             }*/
             foreach (EnemyAI enemy in enemies)
             {
                 enemy.LoadContent(content);
