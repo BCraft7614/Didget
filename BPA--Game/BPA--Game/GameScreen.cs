@@ -45,6 +45,7 @@ namespace BPA__Game
         Player player;
         Buildings mainTower;
         Buildings waterPool;
+        SpriteFont HealthFont;
 
         //ScreenName nextScreen;
         int screenWidth;
