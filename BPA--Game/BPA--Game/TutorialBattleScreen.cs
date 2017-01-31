@@ -110,7 +110,7 @@ namespace BPA__Game
 
             if (enemyHealth <= 0)
             {
-                ChangeScreen("TutorialScreen");
+                ChangeScreen("GameScreen");
 
             }
 

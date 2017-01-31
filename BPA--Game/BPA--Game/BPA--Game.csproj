@@ -88,10 +88,7 @@
     <Content Include="Content\DigetDown.png" />
     <Content Include="Content\DigetUp.png" />
     <Content Include="Content\DownAnime.png" />
-    <Content Include="Content\Green Back Movement.png" />
-    <Content Include="Content\Green Front Movement.png" />
-    <Content Include="Content\Green Left Movement.png" />
-    <Content Include="Content\Green Right Movement.png" />
+    <Content Include="Content\FistAnimation.png" />
     <Content Include="Content\Heart.png" />
     <Content Include="Content\IdleLeft.png" />
     <Content Include="Content\LeftAnime.png" />
@@ -103,8 +100,7 @@
     <Content Include="Content\R Left Movement.png" />
     <Content Include="Content\R Right Movement.png" />
     <Content Include="Content\RightAnime.png" />
-    <Content Include="Content\SwordAnime.png" />
-    <Content Include="Content\SwordAnimeL.png" />
+    <Content Include="Content\SlashAnimation.png" />
     <Content Include="Content\TitleScreenBg.png" />
     <Content Include="Content\TowerBuilding.png" />
     <Content Include="Content\TownGameScreen.png" />
