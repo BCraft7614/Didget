@@ -17,6 +17,9 @@ namespace BPA__Game
         Rectangle sourceRect;
         Random rand;
         EnemyAI enemy;
+        public int enemyDef = 5;
+        public int enemyStr = 5;
+        public int enemyHealth = 100;
         float elapsed;
         float delay = 200f;
         int frames = 0;
@@ -36,10 +39,10 @@ namespace BPA__Game
         {
 
             base.LoadContent(content);
-            rightWalk = content.Load<Texture2D>("Blue Right Movement");
-            leftWalk = content.Load<Texture2D>("Blue Left Movement");
-            upWalk = content.Load<Texture2D>("Blue Back Movement");
-            downWalk = content.Load<Texture2D>("Blue Front Movement");
+            rightWalk = content.Load<Texture2D>("W Right Movement");
+            leftWalk = content.Load<Texture2D>("W Left Movement");
+            upWalk = content.Load<Texture2D>("W Back Movement");
+            downWalk = content.Load<Texture2D>("W Front Movement");
             image = downWalk;
             Height = image.Height;
             Width = image.Width / 3;
@@ -137,6 +140,12 @@ namespace BPA__Game
           
             base.Update(gameTime);
 
+        }
+        public void TakeDamage(Player player)
+        {
+            int dmg = enemyStr + enemyDef;
+            enemyHealth = enemyHealth - dmg;
+    
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

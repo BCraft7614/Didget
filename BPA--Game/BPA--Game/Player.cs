@@ -35,7 +35,7 @@ namespace BPA__Game
         {
             playerHealth = 100;
             coins = 10;
-            playerstr = 10;
+            playerstr = 5;
             playerdef = 5;
         }
         
@@ -89,12 +89,7 @@ namespace BPA__Game
                 image = rightAnime;
                 position += new Vector2(3, 0);
                 MovementAnimation(gameTime);
-                if (state.IsKeyDown(Keys.Space))
-                {
-                    image = swordAnimeRight;
-                    SwordAnimation(gameTime);
-
-                }
+                
 
             }
             else if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
@@ -102,12 +97,7 @@ namespace BPA__Game
                 image = leftAnime;          
                 position += new Vector2(-3, 0);
                 MovementAnimation(gameTime);
-                if (state.IsKeyDown(Keys.Space))
-                {
-                    image = swordAnimeL;
-                    SwordAnimation(gameTime);
-                 
-                }
+                
             }
             else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
             {
@@ -144,27 +134,17 @@ namespace BPA__Game
                 //Something is wrong here
             }
         }
-        public void SwordAnimation(GameTime gameTime)
-        {
-            elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            if(elapsed >= delay)
-            {
-                if(frames >= 3)
-                {
-                    frames = 0;
-                }
-                else
-                {
-                    frames++;
-                }
-                elapsed = 0;
-            }
-        }
+        
         //fix this part Ryan
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(image, position, soruceRect, Color.White);
             
+        }
+        public void TakeDamage()
+        {
+            int dmg = playerstr + playerdef;
+
         }
     }
 

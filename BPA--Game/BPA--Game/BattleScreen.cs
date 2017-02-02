@@ -24,12 +24,17 @@ namespace BPA__Game
         mButton itemButton;
         mButton selected;
 
-        EnemyAI enemy;
+        EnemyAI enemyAI = new EnemyAI(20,20);
+        Texture2D enemy;
+        Player player = new Player();
         public int enemyHealth;
         public int playerHealth;
         public int playerStength;
         public int playerDefence;
         public int playerCoins;
+
+        public int enemyDmg;
+
         
         SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
@@ -37,8 +42,7 @@ namespace BPA__Game
         {
             screenWidth = 800;
             screenHeight = 700;
-            enemyHealth = 5;
-        
+            
         }
           
         
@@ -99,6 +103,9 @@ namespace BPA__Game
             specialButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = specialButton);
 
             FleeButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = FleeButton);
+
+            enemy = ContentMgr.Load<Texture2D>("BattlePen");
+
             enemyHealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             HealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             fightButton.ButtonClicked += HandleButtonClicked;
@@ -117,6 +124,7 @@ namespace BPA__Game
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(689, 330), Color.Green);
             spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(650, 50), Color.Red);
+            spriteBatch.Draw(enemy, new Vector2(650, 60), Color.White);
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
@@ -141,14 +149,13 @@ namespace BPA__Game
         //Should call FightActionClass
         private void FightUpdate()
         {
-
-            enemyHealth--;
+            enemyAI.TakeDamage(playerHealth);
+            player.TakeDamage();
             if (enemyHealth <= 0)
             {
                 playerCoins = playerCoins + 5;
                 ChangeScreen("GameScreen");
-                enemyHealth = 5;
-                
+                enemyHealth = 5;               
             }
            
         }
@@ -165,6 +172,9 @@ namespace BPA__Game
         {
 
         }
+
+        
+      
         public override void UnloadContent()
         {
             fightButton.ButtonClicked -= HandleButtonClicked;
