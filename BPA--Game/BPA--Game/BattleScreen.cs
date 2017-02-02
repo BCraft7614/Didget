@@ -149,8 +149,8 @@ namespace BPA__Game
         //Should call FightActionClass
         private void FightUpdate()
         {
-            enemyAI.TakeDamage(playerHealth);
-            player.TakeDamage();
+           // enemyAI.TakeDamage(playerHealth);
+           // player.TakeDamage();
             if (enemyHealth <= 0)
             {
                 playerCoins = playerCoins + 5;
