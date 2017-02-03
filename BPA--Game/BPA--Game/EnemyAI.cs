@@ -141,12 +141,6 @@ namespace BPA__Game
             base.Update(gameTime);
 
         }
-        public void TakeDamage(Player player)
-        {
-            int dmg = enemyStr + enemyDef;
-            enemyHealth = enemyHealth - dmg;
-    
-        }
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(image, position, sourceRect, Color.White);

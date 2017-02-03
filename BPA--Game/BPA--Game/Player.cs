@@ -22,6 +22,8 @@ namespace BPA__Game
         Texture2D idleAnime;
         Texture2D swordAnimeRight;
         Texture2D swordAnimeL;
+
+        Random rand = new Random();
         public int coins;
         public int playerHealth;
         public int playerstr;
@@ -35,8 +37,8 @@ namespace BPA__Game
         {
             playerHealth = 100;
             coins = 10;
-            playerstr = 5;
-            playerdef = 5;
+            playerstr = rand.Next(1,10);
+            playerdef = rand.Next(1, 10);
         }
         
         public int GetCoins()
@@ -141,11 +143,7 @@ namespace BPA__Game
             spriteBatch.Draw(image, position, soruceRect, Color.White);
             
         }
-        public void TakeDamage()
-        {
-            int dmg = playerstr + playerdef;
 
-        }
     }
 
 }
