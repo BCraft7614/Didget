@@ -27,15 +27,26 @@ namespace BPA__Game
         EnemyAI enemyAI = new EnemyAI(20,20);
         Texture2D battleEnemy;
         Texture2D battleEnemy2;
-        Player player = new Player();
+        Texture2D animationTexture;
+        Vector2 animationPosition;
+
         public int enemyHealth;
         public int playerHealth;
         public int playerStength;
         public int playerDefence;
         public int playerCoins;
 
+        private bool playersTurn;
+        private bool enemyTurn;
+        private bool playersAnimation;
+        private bool enemyAnimation;
+        private int animationCount;
+        private bool fightValid;
         private int enemyStrength;
         private int enemyDefence;
+
+        private enum actionType{HEAL,ATTACK,RUN,SPECIAL};
+        private actionType action;
       
         SpriteFont enemyHealthFont;
         SpriteFont HealthFont;
@@ -44,7 +55,12 @@ namespace BPA__Game
             screenWidth = 800;
             screenHeight = 700;
             enemyHealth = 100;
-         
+            playersTurn = false;
+            fightValid = false;
+            enemyTurn = false;
+            enemyAnimation = false;
+            playersAnimation = false;
+            animationCount = 0;
         }
           
         
@@ -127,9 +143,9 @@ namespace BPA__Game
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(689, 330), Color.Green);
             spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(650, 50), Color.Red);
-            spriteBatch.Draw(battleEnemy2, new Vector2(650, 60), Color.BlueViolet);
-            spriteBatch.Draw(battleEnemy, new Vector2(650, 60), Color.White);
-           
+            spriteBatch.Draw(battleEnemy2, new Vector2(660, 70), Color.White);
+            spriteBatch.Draw(battleEnemy, new Vector2(660, 70), Color.White);
+            DrawAnimation(spriteBatch);
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
@@ -141,6 +157,9 @@ namespace BPA__Game
             itemButton.Update();
             specialButton.Update();
             FleeButton.Update();
+
+            FightUpdate();
+            EnemyFightUpdate();
             base.Update(theTime);
         }
      
@@ -154,18 +173,60 @@ namespace BPA__Game
         //Should call FightActionClass
         private void FightUpdate()
         {
-
-            EnemyTakeDamage();
-            PlayerTakeDamage();
-            if (enemyHealth <= 0)
+            if (playersTurn & fightValid)
             {
-                playerCoins = playerCoins + 5;
-                ChangeScreen("GameScreen");
-                enemyHealth = 100;               
+                if (action == actionType.ATTACK) { PlayerGivesDamage(); }
+                else if(action == actionType.ATTACK) { }
+                else if(action == actionType.SPECIAL) { }
+                
+                if (enemyHealth <= 0)
+                {
+                    playerCoins = playerCoins + 5;
+                    ChangeScreen("GameScreen");
+                    enemyHealth = 100;
+                }
+                playersTurn = false;
+                playersAnimation = true;
             }
-           
         }
-
+        private void EnemyFightUpdate()
+        {
+            if(enemyTurn && fightValid)
+            {
+                EnemyGivesDamage();
+                enemyTurn = false;
+                enemyAnimation = true;
+            }
+            
+        }
+        private void DrawAnimation(SpriteBatch spriteBatch)
+        {
+            if (fightValid)
+            {
+                
+                if (playersAnimation)
+                {
+                    spriteBatch.Draw(animationTexture, animationPosition, Color.White);
+                    animationCount++;
+                    if(animationCount > 30)
+                    {
+                        animationCount = 0;
+                        enemyTurn = true;
+                        playersAnimation = false;
+                    }
+                }
+                if (enemyAnimation)
+                {
+                    spriteBatch.Draw(animationTexture, animationPosition, Color.White);
+                    animationCount++;
+                    if (animationCount > 30)
+                    {
+                        animationCount = 0;
+                        enemyAnimation = false;
+                    }
+                }
+            }
+        }
         //Should loada SpecialAblitlyClass
         private void SpecialUpdate(GameTime theTime)
         {
@@ -178,18 +239,16 @@ namespace BPA__Game
         {
 
         }
-        public void EnemyTakeDamage()
-        {
-            
+        public void EnemyGivesDamage()
+        {          
                 enemyStrength = rand.Next(1, 10);
                 enemyDefence = rand.Next(1, 10);
                 int dmg = enemyStrength + enemyDefence;
-                playerHealth = playerHealth - dmg;
-          
+                playerHealth = playerHealth - dmg;         
         
         }
 
-        public void PlayerTakeDamage()
+        public void PlayerGivesDamage()
         {
             int dmg = playerStength + playerDefence;
             enemyHealth = enemyHealth - dmg;
@@ -206,21 +265,26 @@ namespace BPA__Game
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
             sender = fightButton;
-            if (sender == fightButton)
+            if (!fightValid)
             {
-                //ScreenName.GameScreen;
-                FightUpdate();
-                
-            }
-            else if (sender == itemButton)
-            {
-                nextScreen = "LoadScreen"; //ScreenName.LoadScreen;
-                OnButtonClicked();
-            }
-            else if (sender == specialButton)
-            {
-                nextScreen = "TitleScreen"; //ScreenName.TitleScreen
-                OnButtonClicked();
+                fightValid = true;
+                playersTurn = false;
+                enemyTurn = false;
+                playersAnimation = true;
+                enemyAnimation = false;
+                if (sender == fightButton)
+                {
+                    animationTexture = battleEnemy;
+                    animationPosition = new Vector2(660, 70);
+                }
+                else if (sender == itemButton)
+                {
+                    
+                }
+                else if (sender == specialButton)
+                {
+                    
+                }
             }
            
         }
