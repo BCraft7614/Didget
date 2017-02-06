@@ -91,9 +91,11 @@
     <Content Include="Content\DigetUp.png" />
     <Content Include="Content\DownAnime.png" />
     <Content Include="Content\FistAnimation.png" />
+    <Content Include="Content\GameBlackHole.png" />
     <Content Include="Content\Heart.png" />
     <Content Include="Content\IdleLeft.png" />
     <Content Include="Content\LeftAnime.png" />
+    <Content Include="Content\LeftSideBall.png" />
     <Content Include="Content\LoadScreen.png" />
     <Content Include="Content\Menu and Town.png" />
     <Content Include="Content\OPbtn.png" />
@@ -102,6 +104,9 @@
     <Content Include="Content\R Left Movement.png" />
     <Content Include="Content\R Right Movement.png" />
     <Content Include="Content\RightAnime.png" />
+    <Content Include="Content\RightSideBall.png" />
+    <Content Include="Content\RoundBallBot.png" />
+    <Content Include="Content\ShopBuilding.png" />
     <Content Include="Content\SlashAnimation.png" />
     <Content Include="Content\TitleScreenBg.png" />
     <Content Include="Content\TowerBuilding.png" />
