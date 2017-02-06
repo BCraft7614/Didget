@@ -23,10 +23,10 @@ namespace BPA__Game
     public class GameScreen:Screen
     {
         // Work Here Ryan. Add Player and Battle Scene
-        const int NUMCOL = 2;
-        const int NUMROW = 1;
+        const int NUMCOL = 1;
+        const int NUMROW = 2;
 
-        Level[,] levelArray = new Level[1, 2];
+        Level[,] levelArray = new Level[3, 2];
 
         mButton btnPlay;
         mButton btnLoad;
@@ -283,6 +283,7 @@ namespace BPA__Game
             {
                 enemy.LoadContent(content);
             }
+            enemyCollisionIndex = enemies.Count();
            
         }
         public override void UnloadContent()
@@ -378,10 +379,11 @@ namespace BPA__Game
             
             for(int i = 0; i < enemies.Count; i++)
             {
-                enemyCollisionIndex = i;
+              
                 enemies[i].Update(gameTime,player);
                 if (enemies[i].Collision(player))
                 {
+                    enemyCollisionIndex = i;
                    // enemies.Remove(enemies[i]);
                     ChangeScreen("BattleScreen");
                    

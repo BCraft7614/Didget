@@ -20,7 +20,7 @@ namespace BPA__Game
             // Work Here Ryan. Add Player and Battle Scene
             const int NUMCOL = 2;
             const int NUMROW = 1;
-            Level[,] levelArray = new Level[1, 2];
+            Level[,] levelArray = new Level[3, 2];
             mButton btnPlay;
             mButton btnLoad;
             mButton btnOp;

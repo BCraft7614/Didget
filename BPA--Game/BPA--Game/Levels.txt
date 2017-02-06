@@ -4,11 +4,11 @@ Start
 0
 TownGameScreen
 TowerBuilding
-420
-50
+400
+80
 WaterFountain
 474
-300
+350
 End
 //level 2
 Start
@@ -24,7 +24,7 @@ WaterFountain
 End
 //level 1
 Start
-0
+1
 0
 TownGameScreen
 TowerBuilding
@@ -36,7 +36,7 @@ WaterFountain
 End
 //level 2
 Start
-0
+1
 1
 TownGameScreen
 TowerBuilding

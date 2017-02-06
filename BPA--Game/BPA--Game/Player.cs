@@ -37,8 +37,8 @@ namespace BPA__Game
         {
             playerHealth = 100;
             coins = 10;
-            playerstr = rand.Next(1,10);
-            playerdef = rand.Next(1, 10);
+            playerstr = 15;
+            playerdef = 5;
         }
         
         public int GetCoins()

@@ -27,13 +27,15 @@ namespace BPA__Game
         EnemyAI enemyAI = new EnemyAI(20,20);
         Texture2D battleEnemy;
         Texture2D battleEnemy2;
+        Texture2D fistAnimation;
+        Texture2D heartAnime;
         Texture2D animationTexture;
         Vector2 animationPosition;
 
         public int enemyHealth;
         public int playerHealth;
         public int playerStength;
-        public int playerDefence;
+        public int playerDefense;
         public int playerCoins;
 
         private bool playersTurn;
@@ -43,8 +45,9 @@ namespace BPA__Game
         private int animationCount;
         private bool fightValid;
         private int enemyStrength;
-        private int enemyDefence;
-
+        private int enemyDefense;
+      
+        
         private enum actionType{HEAL,ATTACK,RUN,SPECIAL};
         private actionType action;
       
@@ -61,6 +64,8 @@ namespace BPA__Game
             enemyAnimation = false;
             playersAnimation = false;
             animationCount = 0;
+            enemyStrength = rand.Next(1, 10);
+            enemyDefense = rand.Next(1, 10);
         }
           
         
@@ -72,7 +77,7 @@ namespace BPA__Game
                 file.ReadLine(); //player positionY
                 playerHealth = Convert.ToInt32(file.ReadLine());
                 playerStength = Convert.ToInt32(file.ReadLine());
-                playerDefence = Convert.ToInt32(file.ReadLine());
+                playerDefense = Convert.ToInt32(file.ReadLine());
                 playerCoins = Convert.ToInt32(file.ReadLine()); 
                 
             }
@@ -81,7 +86,7 @@ namespace BPA__Game
         }
         public void WriteSave()
         {
-            
+            //Write the save file Save File into another file witch is called TempFile
             var writeFile = new StreamWriter("tempFile");
             using (StreamReader readFile = new StreamReader("SaveData"))
             {
@@ -89,7 +94,7 @@ namespace BPA__Game
                 writeFile.WriteLine(readFile.ReadLine());
                 writeFile.WriteLine(playerHealth);
                 writeFile.WriteLine(playerStength);
-                writeFile.WriteLine(playerDefence);
+                writeFile.WriteLine(playerDefense);
                 writeFile.WriteLine(playerCoins);
                 for (int i = 0; i < 4; i++)
                 {
@@ -103,6 +108,7 @@ namespace BPA__Game
 
             }
 
+            //Checks to see if Sava Data File Exists and the delets and Move the Save Data
             writeFile.Close();
             if (File.Exists("SaveData"))
             {
@@ -114,24 +120,27 @@ namespace BPA__Game
 
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
         {
-            fightButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = fightButton);
+            //All of our animation and buttins are stored into LoadContent
+            fightButton = new mButton(ContentMgr.Load<Texture2D>("BtnFight"), graphics.GraphicsDevice, (o, e) => selected = fightButton);
 
-            itemButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = itemButton);
+            itemButton = new mButton(ContentMgr.Load<Texture2D>("BtnItem"), graphics.GraphicsDevice, (o, e) => selected = itemButton);
 
-            specialButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = specialButton);
+            specialButton = new mButton(ContentMgr.Load<Texture2D>("BtnSpecial"), graphics.GraphicsDevice, (o, e) => selected = specialButton);
 
             FleeButton = new mButton(ContentMgr.Load<Texture2D>("btnLoad"), graphics.GraphicsDevice, (o, e) => selected = FleeButton);
 
             battleEnemy = ContentMgr.Load<Texture2D>("BattlePen");
             battleEnemy2 = ContentMgr.Load<Texture2D>("BattleCen");
-
+            fistAnimation = ContentMgr.Load<Texture2D>("FistAnimation");
+            heartAnime = ContentMgr.Load<Texture2D>("Heart");
             enemyHealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             HealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             fightButton.ButtonClicked += HandleButtonClicked;
             itemButton.ButtonClicked += HandleButtonClicked;
             specialButton.ButtonClicked += HandleButtonClicked;
-            fightButton.setPosition(new Vector2(650, 500));
-            itemButton.setPosition(new Vector2());
+            fightButton.setPosition(new Vector2(80,550));
+            itemButton.setPosition(new Vector2(80,650));
+            specialButton.setPosition(new Vector2(450, 630));
             background = ContentMgr.Load<Texture2D>("BattleScreen");
             ReadSave();
             
@@ -143,7 +152,7 @@ namespace BPA__Game
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             spriteBatch.DrawString(HealthFont, "Health:" + playerHealth.ToString(), new Vector2(689, 330), Color.Green);
             spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(650, 50), Color.Red);
-            spriteBatch.Draw(battleEnemy2, new Vector2(660, 70), Color.White);
+            spriteBatch.Draw(battleEnemy2, new Vector2(660,70), Color.White);
             spriteBatch.Draw(battleEnemy, new Vector2(660, 70), Color.White);
             DrawAnimation(spriteBatch);
             fightButton.Draw(spriteBatch);
@@ -166,7 +175,7 @@ namespace BPA__Game
         //Should Call Invertory class if Item button is pressed
         private void ItemUpdate(GameTime theTime)
         {
-
+            
         }
 
 
@@ -176,13 +185,14 @@ namespace BPA__Game
             if (playersTurn & fightValid)
             {
                 if (action == actionType.ATTACK) { PlayerGivesDamage(); }
-                else if(action == actionType.ATTACK) { }
+                else if(action == actionType.HEAL) { }
                 else if(action == actionType.SPECIAL) { }
                 
                 if (enemyHealth <= 0)
                 {
                     playerCoins = playerCoins + 5;
                     ChangeScreen("GameScreen");
+                    
                     enemyHealth = 100;
                 }
                 playersTurn = false;
@@ -193,7 +203,29 @@ namespace BPA__Game
         {
             if(enemyTurn && fightValid)
             {
-                EnemyGivesDamage();
+                int TypeOfAction = rand.Next(2);
+                if (TypeOfAction == 0)
+                {
+                    action = actionType.HEAL;
+                    animationTexture = heartAnime;
+                    animationPosition = new Vector2(660, 70);
+                    enemyHealth += rand.Next(1, 5);
+
+                }
+                if (TypeOfAction == 1)
+                {
+                    action = actionType.ATTACK;
+                    animationTexture = fistAnimation;
+                    animationPosition = new Vector2(110, 300);
+                    int dmg = enemyStrength - playerDefense;
+                    if (dmg < 0)
+                    {
+                        dmg = 0;
+                    }
+                    dmg += rand.Next(0, 5);
+                    playerHealth = playerHealth - dmg;
+                }
+
                 enemyTurn = false;
                 enemyAnimation = true;
             }
@@ -223,6 +255,7 @@ namespace BPA__Game
                     {
                         animationCount = 0;
                         enemyAnimation = false;
+                        fightValid = false;
                     }
                 }
             }
@@ -239,18 +272,15 @@ namespace BPA__Game
         {
 
         }
-        public void EnemyGivesDamage()
-        {          
-                enemyStrength = rand.Next(1, 10);
-                enemyDefence = rand.Next(1, 10);
-                int dmg = enemyStrength + enemyDefence;
-                playerHealth = playerHealth - dmg;         
-        
-        }
 
         public void PlayerGivesDamage()
         {
-            int dmg = playerStength + playerDefence;
+            int dmg = playerStength - enemyDefense;
+            if (dmg < 0)
+            {
+                dmg = 0;
+            }
+            dmg += rand.Next(0, 5);
             enemyHealth = enemyHealth - dmg;
         }
         
@@ -274,7 +304,9 @@ namespace BPA__Game
                 enemyAnimation = false;
                 if (sender == fightButton)
                 {
-                    animationTexture = battleEnemy;
+                    playersTurn = true;
+                    action = actionType.ATTACK;
+                    animationTexture = fistAnimation;
                     animationPosition = new Vector2(660, 70);
                 }
                 else if (sender == itemButton)

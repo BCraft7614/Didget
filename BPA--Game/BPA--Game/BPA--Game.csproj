@@ -82,8 +82,11 @@
     <Content Include="Content\Blue Right Movement.png" />
     <Content Include="Content\BtnBack.png" />
     <Content Include="Content\BtnExit.png" />
+    <Content Include="Content\BtnFight.png" />
+    <Content Include="Content\BtnItem.png" />
     <Content Include="Content\BtnLoad.png" />
     <Content Include="Content\BtnSave.png" />
+    <Content Include="Content\BtnSpecial.png" />
     <Content Include="Content\Button.png" />
     <Content Include="Content\DidgetLeft.png" />
     <Content Include="Content\DidgetRight.png" />
