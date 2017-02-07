@@ -98,7 +98,7 @@ namespace BPA__Game
                 nextScreen = "GameScreen"; //ScreenName.GameScreen;
             }
             else if (sender == btnOp)
-            {
+            { 
                 nextScreen = "OptionsScreen";//ScreenName.OptionsScreen;
             }
             else if(sender == btnLoad)
