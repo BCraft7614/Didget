@@ -14,11 +14,11 @@ End
 Start
 0
 1
-TownGameScreen
+GameBlackHole
 TowerBuilding
 474
 300
-WaterFountain
+ShopBuilding
 474
 0
 End
