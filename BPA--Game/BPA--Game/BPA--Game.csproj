@@ -80,6 +80,7 @@
     <Content Include="Content\Blue Front Movement.png" />
     <Content Include="Content\Blue Left Movement.png" />
     <Content Include="Content\Blue Right Movement.png" />
+    <Content Include="Content\Bottle.png" />
     <Content Include="Content\BtnBack.png" />
     <Content Include="Content\BtnExit.png" />
     <Content Include="Content\BtnFight.png" />
@@ -110,6 +111,7 @@
     <Content Include="Content\RightSideBall.png" />
     <Content Include="Content\RoundBallBot.png" />
     <Content Include="Content\ShopBuilding.png" />
+    <Content Include="Content\ShopGround.png" />
     <Content Include="Content\SlashAnimation.png" />
     <Content Include="Content\TitleScreenBg.png" />
     <Content Include="Content\TowerBuilding.png" />
