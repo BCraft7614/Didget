@@ -28,7 +28,8 @@ namespace BPA__Game
         public int playerHealth;
         public int playerstr;
         public int playerdef;
-        
+
+        public int healthPotion;
         float elapsed;
         float delay = 200f;
         int frames = 0;
@@ -39,8 +40,12 @@ namespace BPA__Game
             coins = 10;
             playerstr = 15;
             playerdef = 5;
+            healthPotion = 5;
         }
-        
+        public int HealPotion()
+        {
+            return healthPotion;
+        }
         public int GetCoins()
         {
              return coins;

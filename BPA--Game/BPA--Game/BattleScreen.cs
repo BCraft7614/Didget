@@ -37,6 +37,7 @@ namespace BPA__Game
         public int playerStength;
         public int playerDefense;
         public int playerCoins;
+        public int healPotion;
 
         private bool playersTurn;
         private bool enemyTurn;
@@ -78,7 +79,8 @@ namespace BPA__Game
                 playerHealth = Convert.ToInt32(file.ReadLine());
                 playerStength = Convert.ToInt32(file.ReadLine());
                 playerDefense = Convert.ToInt32(file.ReadLine());
-                playerCoins = Convert.ToInt32(file.ReadLine()); 
+                playerCoins = Convert.ToInt32(file.ReadLine());
+                healPotion = Convert.ToInt32(file.ReadLine());
                 
             }
             
@@ -96,7 +98,8 @@ namespace BPA__Game
                 writeFile.WriteLine(playerStength);
                 writeFile.WriteLine(playerDefense);
                 writeFile.WriteLine(playerCoins);
-                for (int i = 0; i < 4; i++)
+                writeFile.WriteLine(healPotion);
+                for (int i = 0; i < 5; i++)
                 {
                     readFile.ReadLine();
                 }
@@ -158,6 +161,8 @@ namespace BPA__Game
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
+            
+            
         }
 
         public override void Update(GameTime theTime)
@@ -185,7 +190,7 @@ namespace BPA__Game
             if (playersTurn & fightValid)
             {
                 if (action == actionType.ATTACK) { PlayerGivesDamage(); }
-                else if(action == actionType.HEAL) { }
+                else if(action == actionType.HEAL) { PlayerHeals(); }
                 else if(action == actionType.SPECIAL) { }
                 
                 if (enemyHealth <= 0)
@@ -294,7 +299,7 @@ namespace BPA__Game
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
-            sender = fightButton;
+            //sender = fightButton;
             if (!fightValid)
             {
                 fightValid = true;
@@ -311,6 +316,10 @@ namespace BPA__Game
                 }
                 else if (sender == itemButton)
                 {
+                    playersTurn = true;
+                    action = actionType.HEAL;
+                    animationTexture = heartAnime;
+                    animationPosition = new Vector2(110, 300);
                     
                 }
                 else if (sender == specialButton)
@@ -319,6 +328,19 @@ namespace BPA__Game
                 }
             }
            
+        }
+        private void PlayerHeals()
+        {
+            if(healPotion > 0)
+            {
+                playerHealth += 10;
+                healPotion--;
+            }
+            else
+            {
+                fightValid = false;
+            }
+
         }
         public void ChangeScreen(string NextScreen)
         {

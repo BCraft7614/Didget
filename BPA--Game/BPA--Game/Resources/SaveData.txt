@@ -4,6 +4,7 @@
 //str
 //def
 //coins
+//HealthPotion
 //posx
 //posy
 //type
