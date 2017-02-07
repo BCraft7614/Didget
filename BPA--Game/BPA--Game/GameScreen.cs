@@ -23,10 +23,10 @@ namespace BPA__Game
     public class GameScreen:Screen
     {
         // Work Here Ryan. Add Player and Battle Scene
-        const int NUMCOL = 1;
+        const int NUMCOL = 2;
         const int NUMROW = 2;
 
-        Level[,] levelArray = new Level[3, 2];
+        Level[,] levelArray = new Level[NUMCOL, NUMROW];
 
         mButton btnPlay;
         mButton btnLoad;
