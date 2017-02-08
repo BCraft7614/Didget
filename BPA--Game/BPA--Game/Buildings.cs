@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace BPA__Game
 {
-    class Buildings:Entity
+    public class Buildings:Entity
     {
         //For Collsions Pictures
         public Buildings(Texture2D Image, Vector2 Position)

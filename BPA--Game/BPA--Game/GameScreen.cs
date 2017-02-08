@@ -23,50 +23,51 @@ namespace BPA__Game
     public class GameScreen:Screen
     {
         // Work Here Ryan. Add Player and Battle Scene
-        const int NUMCOL = 2;
-        const int NUMROW = 2;
+        protected const int NUMCOL = 2;
+        protected const int NUMROW = 2;
 
-        Level[,] levelArray = new Level[NUMCOL, NUMROW];
+        protected Level[,] levelArray = new Level[NUMCOL, NUMROW];
 
-        mButton btnPlay;
-        mButton btnLoad;
-        mButton btnOp;
-        mButton btnExit;
+        protected mButton btnPlay;
+        protected mButton btnLoad;
+        protected mButton btnOp;
+        protected mButton btnExit;
 
-        Texture2D background;
-        Texture2D towerBuilding;
-        Texture2D waterFountain;
-        Texture2D shopStore;
+        protected Texture2D background;
+        protected Texture2D towerBuilding;
+        protected Texture2D waterFountain;
+        protected Texture2D shopStore;
 
-        GraphicsDeviceManager graphics;
+        protected GraphicsDeviceManager graphics;
 
-        SpriteBatch spriteBatch;
-        private List<EnemyAI> enemies;
-        Player player;
-        Buildings mainTower;
-        Buildings waterPool;
-        SpriteFont HealthFont;
+        protected SpriteBatch spriteBatch;
+        protected List<EnemyAI> enemies;
+        protected Player player;
+        protected Buildings mainTower;
+        protected Buildings waterPool;
+        protected SpriteFont HealthFont;
 
         //ScreenName nextScreen;
-        int screenWidth;
-        int screenHeight;
-            
-        Entity upTransitionRect;
-        Entity leftTransitionRect;
-        Entity rightTransitionRect;
-        Entity downTransitionRect;
+        protected int screenWidth;
+        protected int screenHeight;
 
-        int enemyCollisionIndex;
-        
-        
-        List<Buildings> buildings = new List<Buildings>();
-        List<Texture2D> buildingTextures = new List<Texture2D>();
-        ContentManager content;
-        bool inLevelDescription;
-        bool playerDescription;
-        int currentRow;
-        int currentCol;
-        bool newGame;
+        protected Entity upTransitionRect;
+        protected Entity leftTransitionRect;
+        protected Entity rightTransitionRect;
+        protected Entity downTransitionRect;
+
+        protected int enemyCollisionIndex;
+
+
+        protected List<Buildings> buildings = new List<Buildings>();
+        protected List<Texture2D> buildingTextures = new List<Texture2D>();
+        protected ContentManager content;
+        protected bool inLevelDescription;
+        protected bool playerDescription;
+        protected int currentRow;
+        protected int currentCol;
+        protected bool newGame;
+
         public struct Level
         {
 

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BPA__Game
 {
-    class EnemyAI : Entity
+    public class EnemyAI : Entity
     {
         public Direction direction;
         Texture2D rightWalk, leftWalk, upWalk, downWalk;
