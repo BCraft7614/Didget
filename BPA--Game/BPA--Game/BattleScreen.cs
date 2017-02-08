@@ -13,24 +13,24 @@ using System.IO;
 
 namespace BPA__Game
 {
-    class BattleScreen : Screen
+    public class BattleScreen : Screen
     {
-        int screenWidth;
-        int screenHeight;
-        Texture2D background;
-        mButton fightButton;
-        mButton FleeButton;
-        mButton specialButton;
-        mButton itemButton;
-        mButton selected;
-        Random rand = new Random();
-        EnemyAI enemyAI = new EnemyAI(20,20);
-        Texture2D battleEnemy;
-        Texture2D battleEnemy2;
-        Texture2D fistAnimation;
-        Texture2D heartAnime;
-        Texture2D animationTexture;
-        Vector2 animationPosition;
+        protected int screenWidth;
+        protected int screenHeight;
+        protected Texture2D background;
+        protected mButton fightButton;
+        protected mButton FleeButton;
+        protected mButton specialButton;
+        protected mButton itemButton;
+        protected mButton selected;
+        protected Random rand = new Random();
+        protected EnemyAI enemyAI = new EnemyAI(20,20);
+        protected Texture2D battleEnemy;
+        protected Texture2D battleEnemy2;
+        protected Texture2D fistAnimation;
+        protected Texture2D heartAnime;
+        protected Texture2D animationTexture;
+        protected Vector2 animationPosition;
 
         public int enemyHealth;
         public int playerHealth;
@@ -51,10 +51,13 @@ namespace BPA__Game
         
         private enum actionType{HEAL,ATTACK,RUN,SPECIAL};
         private actionType action;
-      
-        SpriteFont enemyHealthFont;
-        SpriteFont HealthFont;
-        public BattleScreen()
+
+        protected SpriteFont enemyHealthFont;
+        protected SpriteFont HealthFont;
+        protected SpriteFont tutorialHelp;
+
+
+       public BattleScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
@@ -145,6 +148,7 @@ namespace BPA__Game
             itemButton.setPosition(new Vector2(80,650));
             specialButton.setPosition(new Vector2(450, 630));
             background = ContentMgr.Load<Texture2D>("BattleScreen");
+            tutorialHelp = ContentMgr.Load<SpriteFont>("TutorialHelp");
             ReadSave();
             
             base.LoadContent(ContentMgr, graphics);
@@ -161,8 +165,8 @@ namespace BPA__Game
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
-            
-            
+
+
         }
 
         public override void Update(GameTime theTime)
@@ -185,7 +189,7 @@ namespace BPA__Game
 
 
         //Should call FightActionClass
-        private void FightUpdate()
+        public void FightUpdate()
         {
             if (playersTurn & fightValid)
             {
@@ -204,7 +208,7 @@ namespace BPA__Game
                 playersAnimation = true;
             }
         }
-        private void EnemyFightUpdate()
+        public void EnemyFightUpdate()
         {
             if(enemyTurn && fightValid)
             {
@@ -236,7 +240,7 @@ namespace BPA__Game
             }
             
         }
-        private void DrawAnimation(SpriteBatch spriteBatch)
+        public void DrawAnimation(SpriteBatch spriteBatch)
         {
             if (fightValid)
             {
@@ -266,14 +270,14 @@ namespace BPA__Game
             }
         }
         //Should loada SpecialAblitlyClass
-        private void SpecialUpdate(GameTime theTime)
+        protected void SpecialUpdate(GameTime theTime)
         {
 
         }
 
 
         //Should load RunClass but it doesnt work
-        private void FleeUpdate(GameTime theTime)
+        protected void FleeUpdate(GameTime theTime)
         {
 
         }
@@ -329,7 +333,7 @@ namespace BPA__Game
             }
            
         }
-        private void PlayerHeals()
+        public void PlayerHeals()
         {
             if(healPotion > 0)
             {

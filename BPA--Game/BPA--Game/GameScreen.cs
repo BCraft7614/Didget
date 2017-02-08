@@ -46,6 +46,7 @@ namespace BPA__Game
         protected Buildings mainTower;
         protected Buildings waterPool;
         protected SpriteFont HealthFont;
+        protected SpriteFont tutorialHelp;
 
         //ScreenName nextScreen;
         protected int screenWidth;
@@ -203,6 +204,7 @@ namespace BPA__Game
             rightTransitionRect = new Entity(screenWidth - 1, 0, 1, screenHeight);
             upTransitionRect = new Entity(0,0,screenWidth, 1);
             downTransitionRect = new Entity(0, screenHeight - 1, screenWidth, 1);
+            tutorialHelp = content.Load<SpriteFont>("TutorialHelp");
             player.LoadContent(content);
 
             LoadLevel(content);

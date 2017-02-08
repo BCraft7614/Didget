@@ -108,8 +108,23 @@ namespace BPA__Game
              }
 
 
-             base.Update(gameTime);
+            
          }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                buildings[i].Draw(spriteBatch);
+            }
+            player.Draw(spriteBatch);
+
+            foreach (EnemyAI enemy in enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
+            spriteBatch.DrawString(tutorialHelp, "To move use the Arrow keys or WASD keys", new Vector2(100, 100), Color.DarkGoldenrod);
+        }
     }
 
 }
