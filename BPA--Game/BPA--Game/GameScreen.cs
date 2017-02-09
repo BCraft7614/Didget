@@ -106,7 +106,7 @@ namespace BPA__Game
                 file.WriteLine(player.GetStrength());//Writes the players strength to a file
                 file.WriteLine(player.GetDefense());// Writes the players defense to a file
                 file.WriteLine(player.GetCoins());
-
+                file.WriteLine(player.HealPotion());
                 //writing enemy attributes and position 
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -138,6 +138,7 @@ namespace BPA__Game
                 player.playerstr = Convert.ToInt32(file.ReadLine());
                 player.playerdef = Convert.ToInt32(file.ReadLine());
                 player.coins = Convert.ToInt32(file.ReadLine());
+                player.healthPotion = Convert.ToInt32(file.ReadLine());
                 string line;
                 while (( line = file.ReadLine()) != null)
                 {
@@ -395,6 +396,10 @@ namespace BPA__Game
                 {
                     if (enemies[i].Collision(buildings[x]))
                     {
+                        if(currentRow == 0 && currentCol == 1)
+                        {
+                            //ChangeScreen("ShopScreen")
+                        }
                         enemies[i].position = enemies[i].oldPosition;
                     }
                 } 

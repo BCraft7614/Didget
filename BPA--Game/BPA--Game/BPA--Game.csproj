@@ -55,6 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ScreenManager.cs" />
+    <Compile Include="SplashScreen.cs" />
+    <Compile Include="SplashScreen2.cs" />
     <Compile Include="TitleScreen.cs" />
     <Compile Include="TutorialBattleScreen.cs" />
     <Compile Include="TutorialScreen.cs" />
@@ -113,6 +115,8 @@
     <Content Include="Content\ShopBuilding.png" />
     <Content Include="Content\ShopGround.png" />
     <Content Include="Content\SlashAnimation.png" />
+    <Content Include="Content\SplashScreen.png" />
+    <Content Include="Content\SplashText.png" />
     <Content Include="Content\TitleScreenBg.png" />
     <Content Include="Content\TowerBuilding.png" />
     <Content Include="Content\TownGameScreen.png" />

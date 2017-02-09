@@ -29,6 +29,8 @@ namespace BPA__Game
         Screen CurrentScreen;
         TutorialScreen tutorialScreen;
         TutorialBattleScreen tutorialBattleScreen;
+        SplashScreen splashScreen;
+        SplashScreen splashScreen2;
 
         public ScreenManager()
         {
@@ -48,10 +50,12 @@ namespace BPA__Game
             battleScreen = new BattleScreen();
             tutorialScreen = new TutorialScreen();
             tutorialBattleScreen = new TutorialBattleScreen();
+            splashScreen = new SplashScreen("SplashScreen","SplashScreen2");
+            splashScreen2 = new SplashScreen("SplashText","TitleScreen");
             
             // LoadContent();
             //Initialize();
-            CurrentScreen = titleScreen;
+            CurrentScreen = splashScreen;
         }
 
         /// <summary>
@@ -84,6 +88,8 @@ namespace BPA__Game
             battleScreen.ButtonClicked += HandleButtonClicked;
             tutorialScreen.ButtonClicked += HandleButtonClicked;
             tutorialBattleScreen.ButtonClicked += HandleButtonClicked;
+            splashScreen.ButtonClicked += HandleButtonClicked;
+            splashScreen2.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
@@ -95,6 +101,8 @@ namespace BPA__Game
             Screens.Add("BattleScreen", battleScreen);
             Screens.Add("TutorialScreen", tutorialScreen);
             Screens.Add("TutorialBattleScreen", tutorialBattleScreen);
+            Screens.Add("SplashScreen", splashScreen);
+            Screens.Add("SplashScreen2", splashScreen2);
 
             CurrentScreen.LoadContent(Content, GraphicsDevceMgr);
           /*  gameScreen.LoadContent(Content, GraphicsDevceMgr);
@@ -123,6 +131,8 @@ namespace BPA__Game
             battleScreen.ButtonClicked -= HandleButtonClicked;
             tutorialScreen.ButtonClicked -= HandleButtonClicked;
             tutorialBattleScreen.ButtonClicked -= HandleButtonClicked;
+            splashScreen.ButtonClicked -= HandleButtonClicked;
+            splashScreen2.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }
