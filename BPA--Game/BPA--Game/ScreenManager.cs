@@ -31,6 +31,7 @@ namespace BPA__Game
         TutorialBattleScreen tutorialBattleScreen;
         SplashScreen splashScreen;
         SplashScreen splashScreen2;
+        ShopScreen shopScreen;
 
         public ScreenManager()
         {
@@ -52,7 +53,7 @@ namespace BPA__Game
             tutorialBattleScreen = new TutorialBattleScreen();
             splashScreen = new SplashScreen("SplashScreen","SplashScreen2");
             splashScreen2 = new SplashScreen("SplashText","TitleScreen");
-            
+            shopScreen = new ShopScreen();
             // LoadContent();
             //Initialize();
             CurrentScreen = splashScreen;
@@ -90,6 +91,7 @@ namespace BPA__Game
             tutorialBattleScreen.ButtonClicked += HandleButtonClicked;
             splashScreen.ButtonClicked += HandleButtonClicked;
             splashScreen2.ButtonClicked += HandleButtonClicked;
+            shopScreen.ButtonClicked += HandleButtonClicked;
 
             Content = base.Content;
             Screens.Add("TitleScreen", titleScreen);
@@ -103,6 +105,7 @@ namespace BPA__Game
             Screens.Add("TutorialBattleScreen", tutorialBattleScreen);
             Screens.Add("SplashScreen", splashScreen);
             Screens.Add("SplashScreen2", splashScreen2);
+            Screens.Add("ShopScreen", shopScreen);
 
             CurrentScreen.LoadContent(Content, GraphicsDevceMgr);
           /*  gameScreen.LoadContent(Content, GraphicsDevceMgr);
@@ -133,6 +136,7 @@ namespace BPA__Game
             tutorialBattleScreen.ButtonClicked -= HandleButtonClicked;
             splashScreen.ButtonClicked -= HandleButtonClicked;
             splashScreen2.ButtonClicked -= HandleButtonClicked;
+            shopScreen.ButtonClicked -= HandleButtonClicked;
             base.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }

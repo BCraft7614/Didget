@@ -40,12 +40,12 @@ namespace BPA__Game
 
         protected GraphicsDeviceManager graphics;
 
+        SpriteFont HealthFont;
         protected SpriteBatch spriteBatch;
         protected List<EnemyAI> enemies;
         protected Player player;
         protected Buildings mainTower;
         protected Buildings waterPool;
-        protected SpriteFont HealthFont;
         protected SpriteFont tutorialHelp;
 
         //ScreenName nextScreen;
@@ -59,6 +59,7 @@ namespace BPA__Game
 
         protected int enemyCollisionIndex;
 
+        
 
         protected List<Buildings> buildings = new List<Buildings>();
         protected List<Texture2D> buildingTextures = new List<Texture2D>();
@@ -206,6 +207,7 @@ namespace BPA__Game
             upTransitionRect = new Entity(0,0,screenWidth, 1);
             downTransitionRect = new Entity(0, screenHeight - 1, screenWidth, 1);
             tutorialHelp = content.Load<SpriteFont>("TutorialHelp");
+            HealthFont = content.Load<SpriteFont>("HealthFont");
             player.LoadContent(content);
 
             LoadLevel(content);
@@ -398,7 +400,7 @@ namespace BPA__Game
                     {
                         if(currentRow == 0 && currentCol == 1)
                         {
-                            //ChangeScreen("ShopScreen")
+                            ChangeScreen("ShopScreen");
                         }
                         enemies[i].position = enemies[i].oldPosition;
                     }
@@ -420,6 +422,7 @@ namespace BPA__Game
             {
                 enemy.Draw(spriteBatch);
             }
+            spriteBatch.DrawString(HealthFont, "Health: " + player.playerHealth, new Vector2(700, 0), Color.DarkBlue);
            
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }

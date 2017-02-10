@@ -70,8 +70,6 @@ namespace BPA__Game
             upAnime = content.Load<Texture2D>("DigetUp");
             downAnime = content.Load<Texture2D>("DigetDown");
             idleAnime = content.Load<Texture2D>("IdleLeft");
-            swordAnimeRight = content.Load<Texture2D>("SwordAnime");
-            swordAnimeL = content.Load<Texture2D>("SwordAnimeL");
             image = idleAnime;
             Height = image.Height;
             Width = image.Width / 3;
