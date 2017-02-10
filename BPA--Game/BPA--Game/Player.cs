@@ -20,8 +20,6 @@ namespace BPA__Game
         Texture2D downAnime;
         Rectangle soruceRect;
         Texture2D idleAnime;
-        Texture2D swordAnimeRight;
-        Texture2D swordAnimeL;
 
         Random rand = new Random();
         public int coins;

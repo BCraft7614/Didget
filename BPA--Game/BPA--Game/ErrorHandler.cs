@@ -79,12 +79,13 @@ namespace BPA__Game.Content
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
-
+            //If user chooses send, this sends the email
             if (sender == sendEmail)
             {
                 SendEmail();
                 System.Environment.Exit(1);
             }
+            //This is if the user chooses to not send the email. Doesn't send email
             else if (sender == dontSend)
             {
                 System.Environment.Exit(1);
@@ -94,6 +95,7 @@ namespace BPA__Game.Content
         {
             try
             {
+                
                 MailMessage mail = new MailMessage("didgetsreal@gmail.com","DidgetsRealBPA@gmail.com");
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com",587);
 
