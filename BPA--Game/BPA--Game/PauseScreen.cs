@@ -20,6 +20,7 @@ namespace BPA__Game
         int screenWidth;
         int screenHeight;
         Player player;
+        Texture2D background;
 
  
         public PauseScreen()
@@ -52,7 +53,8 @@ namespace BPA__Game
             btnResume.setPosition(new Vector2(350, 300));    
             btnOp.setPosition(new Vector2(350, 400 + btnOp.size.Y * 2));
             btnExit.setPosition(new Vector2(359, 500 + btnExit.size.Y * 2));
-            
+            background = ContentMgr.Load<Texture2D>("PauseScreen");
+
         }
         public override void UnloadContent()
         {
@@ -63,6 +65,7 @@ namespace BPA__Game
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 700), Color.White);
             btnResume.Draw(spriteBatch);
             btnOp.Draw(spriteBatch);
             btnExit.Draw(spriteBatch);

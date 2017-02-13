@@ -99,6 +99,7 @@
     <Content Include="Content\DownAnime.png" />
     <Content Include="Content\FistAnimation.png" />
     <Content Include="Content\GameBlackHole.png" />
+    <Content Include="Content\Healing.wav" />
     <Content Include="Content\Heart.png" />
     <Content Include="Content\IdleLeft.png" />
     <Content Include="Content\LeftAnime.png" />
@@ -106,6 +107,8 @@
     <Content Include="Content\LoadScreen.png" />
     <Content Include="Content\Menu and Town.png" />
     <Content Include="Content\OPbtn.png" />
+    <Content Include="Content\PauseScreen.png" />
+    <Content Include="Content\Punching.wav" />
     <Content Include="Content\R Back movement.png" />
     <Content Include="Content\R Front Movement.png" />
     <Content Include="Content\R Left Movement.png" />
