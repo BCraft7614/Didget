@@ -2,7 +2,7 @@
 Start
 0
 0
-TownGameScreen
+GameBlackHole
 TowerBuilding
 400
 80
@@ -26,7 +26,7 @@ End
 Start
 1
 0
-TownGameScreen
+GameBlackHole
 TowerBuilding
 420
 50
@@ -38,7 +38,7 @@ End
 Start
 1
 1
-TownGameScreen
+GameBlackHole
 TowerBuilding
 474
 300
