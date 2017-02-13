@@ -160,7 +160,7 @@ namespace BPA__Game
             using (System.IO.StreamReader file = new System.IO.StreamReader("Levels.txt"))
             {
                 string line;
-                Level myLevel;
+                Level myLevel = new Level();
                 myLevel.buildingName = new List<string>();
                 myLevel.buildingX = new List<int>();
                 myLevel.buildingY = new List<int>();
@@ -189,6 +189,10 @@ namespace BPA__Game
 
                         }
                         levelArray[Row, Col] = myLevel;
+                        myLevel = new Level();
+                        myLevel.buildingName = new List<string>();
+                        myLevel.buildingX = new List<int>();
+                        myLevel.buildingY = new List<int>();
                     }
                 }
                 //This reads the file f levels to load in the background and buildings that are put into a list
@@ -224,8 +228,8 @@ namespace BPA__Game
 
             for (int i = 0; i < levelArray[currentRow, currentCol].buildingName.Count; i++)
             {
-                buildingTextures.Add(content.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[currentRow * NUMCOL + currentCol]));
-                buildings.Add(new Buildings(buildingTextures[0], new Vector2(levelArray[currentRow, currentCol].buildingX[currentRow * NUMCOL + currentCol], levelArray[currentRow, currentCol].buildingY[currentRow * NUMCOL + currentCol])));
+                buildingTextures.Add(content.Load<Texture2D>(levelArray[currentRow, currentCol].buildingName[i]));
+                buildings.Add(new Buildings(buildingTextures[i], new Vector2(levelArray[currentRow, currentCol].buildingX[i], levelArray[currentRow, currentCol].buildingY[i])));
             }
             if (newGame) {
 
@@ -378,6 +382,10 @@ namespace BPA__Game
             {
                 if (player.Collision(buildings[i]))
                 {
+                    if (currentRow == 0 && currentCol == 1)
+                    {
+                        ChangeScreen("ShopScreen");
+                    }
                     player.position = player.oldPosition;
 
                 }
@@ -398,10 +406,7 @@ namespace BPA__Game
                 {
                     if (enemies[i].Collision(buildings[x]))
                     {
-                        if(currentRow == 0 && currentCol == 1)
-                        {
-                            ChangeScreen("ShopScreen");
-                        }
+                        
                         enemies[i].position = enemies[i].oldPosition;
                     }
                 } 
