@@ -106,6 +106,7 @@
     <Content Include="Content\LeftSideBall.png" />
     <Content Include="Content\LoadScreen.png" />
     <Content Include="Content\Menu and Town.png" />
+    <Content Include="Content\NoBtn.png" />
     <Content Include="Content\OPbtn.png" />
     <Content Include="Content\PauseScreen.png" />
     <Content Include="Content\Punching.wav" />
@@ -116,6 +117,7 @@
     <Content Include="Content\RightAnime.png" />
     <Content Include="Content\RightSideBall.png" />
     <Content Include="Content\RoundBallBot.png" />
+    <Content Include="Content\SendEmail.png" />
     <Content Include="Content\ShopBuilding.png" />
     <Content Include="Content\ShopGround.png" />
     <Content Include="Content\SlashAnimation.png" />
@@ -124,6 +126,7 @@
     <Content Include="Content\TitleScreenBg.png" />
     <Content Include="Content\TowerBuilding.png" />
     <Content Include="Content\TownGameScreen.png" />
+    <Content Include="Content\TutorialBtn.png" />
     <Content Include="Content\UpAnime.png" />
     <Content Include="Content\W Back Movement.png" />
     <Content Include="Content\W Front movement.png" />

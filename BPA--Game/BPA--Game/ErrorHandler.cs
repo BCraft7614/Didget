@@ -41,8 +41,8 @@ namespace BPA__Game.Content
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ErrorFont = Content.Load<SpriteFont>("ErrorFont");
-            sendEmail = new mButton(Content.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice);
-            dontSend = new mButton(Content.Load<Texture2D>("BtnBack"), graphics.GraphicsDevice);
+            sendEmail = new mButton(Content.Load<Texture2D>("SendEmail"), graphics.GraphicsDevice);
+            dontSend = new mButton(Content.Load<Texture2D>("Nobtn"), graphics.GraphicsDevice);
           sendEmail.ButtonClicked += HandleButtonClicked;
             dontSend.ButtonClicked += HandleButtonClicked;
             sendEmail.setPosition(new Vector2(350, 300 + sendEmail.size.Y * 2));

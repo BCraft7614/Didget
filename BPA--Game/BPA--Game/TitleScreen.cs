@@ -45,7 +45,7 @@ namespace BPA__Game
             btnOp = new mButton(ContentMgr.Load<Texture2D>("OPBtn"), graphics.GraphicsDevice);
             btnLoad = new mButton(ContentMgr.Load<Texture2D>("BtnLoad"), graphics.GraphicsDevice);
             btnExit = new mButton(ContentMgr.Load<Texture2D>("BtnExit"), graphics.GraphicsDevice);
-            btnTutorial = new mButton(ContentMgr.Load<Texture2D>("BtnBack"), graphics.GraphicsDevice);
+            btnTutorial = new mButton(ContentMgr.Load<Texture2D>("TutorialBtn"), graphics.GraphicsDevice);
             btnPlay.ButtonClicked += HandleButtonClicked;
             btnOp.ButtonClicked += HandleButtonClicked;
             btnLoad.ButtonClicked += HandleButtonClicked;
