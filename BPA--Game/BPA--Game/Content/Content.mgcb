@@ -655,3 +655,15 @@
 /processorParam:TextureFormat=Color
 /build:SplashText.png
 
+#begin Healing.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Healing.wav
+
+#begin Punching.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Punching.wav
+
