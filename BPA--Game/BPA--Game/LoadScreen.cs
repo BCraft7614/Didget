@@ -22,13 +22,15 @@ namespace BPA__Game
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
+        bool loadGame;
+
 
        
         public LoadScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
-
+            loadGame = false;
            // LoadContent();
             //Initialize();
         }
@@ -45,7 +47,7 @@ namespace BPA__Game
             btnBack.ButtonClicked += HandleButtonClicked;
             btnLoad2.setPosition(new Vector2(350, 300));
             btnLoad1.setPosition(new Vector2(350, 300 + btnLoad1.size.Y * 2));
-            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 8));
+            btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 9));
             //this.IsMouseVisible = true;
 
 
@@ -73,27 +75,30 @@ namespace BPA__Game
             btnBack.Draw(spriteBatch);
 
         }
-
+        public bool GetLoadGame() { return loadGame; }
 
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
             if (sender == btnLoad1)
             {
                 nextScreen = "GameScreen"; //ScreenName.GameScreen;
+                loadGame = true;
             }
             else if (sender == btnLoad2)
             {
                 nextScreen = "GameScreen"; //ScreenName.GameScreen;
+                loadGame = true;
             }
             else if (sender == btnBack)
             {
                 nextScreen = "TitleScreen"; //ScreenName.OptionsScreen;
+                loadGame = false;
             }
             OnButtonClicked();
         }
         public event EventHandler ButtonClicked;
         public void OnButtonClicked()
-        {
+        {   
             if (ButtonClicked != null)
             {
                 ButtonClicked(this, EventArgs.Empty);

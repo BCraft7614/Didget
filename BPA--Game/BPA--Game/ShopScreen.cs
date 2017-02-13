@@ -47,6 +47,7 @@ namespace BPA__Game
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
+            
             spriteBatch.Draw(backGround, new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
             potionBottle.Draw(spriteBatch);
         }

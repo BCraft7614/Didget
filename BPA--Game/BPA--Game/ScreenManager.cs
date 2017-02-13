@@ -170,10 +170,19 @@ namespace BPA__Game
 
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
+            if (sender == loadScreen)
+            {
+                gameScreen.newGame = !loadScreen.GetLoadGame();
+            }
+            else if (sender == titleScreen)
+            {
+                gameScreen.newGame = true;
+            }
             Screen previousScreen = CurrentScreen;
             Screens.TryGetValue(CurrentScreen.GetNextScreen(), out CurrentScreen);
            // previousScreen.UnloadContent();
             CurrentScreen.LoadContent(Content,GraphicsDevceMgr);
+
         }
     }
 }

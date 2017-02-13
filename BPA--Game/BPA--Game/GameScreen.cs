@@ -68,7 +68,7 @@ namespace BPA__Game
         protected bool playerDescription;
         protected int currentRow;
         protected int currentCol;
-        protected bool newGame;
+        public bool newGame;
 
         public struct Level
         {
