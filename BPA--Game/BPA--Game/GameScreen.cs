@@ -89,11 +89,13 @@ namespace BPA__Game
             inLevelDescription = false;
             player = new Player();
             ReadFile();
-           
+
             currentRow = 0;
             currentCol = 0;
 
         }
+
+       
         
         public void WriteSave()
         {
@@ -119,10 +121,7 @@ namespace BPA__Game
                         file.WriteLine("Blue Left Movement");//FIXME
                     }
                 }
-                
-                
                 newGame = false;
-
             }
         }
         
@@ -238,6 +237,7 @@ namespace BPA__Game
                     bool goodStart = false;
                     int startX = 0;
                     int startY = 0;
+                    
                     while (!goodStart)
                     {
                         startX = rand.Next(10, 600);
@@ -284,11 +284,12 @@ namespace BPA__Game
                 ReadSaveFile();
                
             }
-            /*if (100)
+            
+            if (//enemiesKilled = 100)
             {
-                enemies.Clear()
+                enemies.Clear();
                 enemies.Add(boss)
-             }*/
+             }
             foreach (EnemyAI enemy in enemies)
             {
                 enemy.LoadContent(content);
@@ -382,12 +383,12 @@ namespace BPA__Game
             {
                 if (player.Collision(buildings[i]))
                 {
+                    player.position = player.oldPosition;
                     if (currentRow == 0 && currentCol == 1)
                     {
                         ChangeScreen("ShopScreen");
+                        
                     }
-                    player.position = player.oldPosition;
-
                 }
             }
             

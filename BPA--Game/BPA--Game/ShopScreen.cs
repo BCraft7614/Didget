@@ -18,7 +18,7 @@ namespace BPA__Game
         int screenWidth;
         int screenHeight;
         Texture2D backGround;
-        mButton potionBottle;
+        Texture2D potionBottle;
         mButton btnBack;
         public ShopScreen()
         {
@@ -28,41 +28,48 @@ namespace BPA__Game
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
         {
             backGround = ContentMgr.Load<Texture2D>("ShopGround");
-            potionBottle = new mButton(ContentMgr.Load<Texture2D>("Bottle"), graphics.GraphicsDevice);
+            potionBottle = ContentMgr.Load<Texture2D>("Bottle");
             btnBack = new mButton(ContentMgr.Load<Texture2D>("BtnBack"), graphics.GraphicsDevice);
-            potionBottle.setPosition(new Vector2(350, 300));
+            //potionBottle.setPosition(new Vector2(350, 300));
             btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 8));
-            potionBottle.ButtonClicked += HandleButtonClicked;
+            ////potionBottle.ButtonClicked += HandleButtonClicked;
             btnBack.ButtonClicked += HandleButtonClicked;
         }
         public override void UnloadContent()
         {
-            potionBottle.ButtonClicked -= HandleButtonClicked;
+            //otionBottle.ButtonClicked -= HandleButtonClicked;
             btnBack.ButtonClicked -= HandleButtonClicked;
         }
         public override void Update(GameTime theTime)
         {
-            potionBottle.Update();
+            //potionBottle.Update();
+            btnBack.Update();
             
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
             
             spriteBatch.Draw(backGround, new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
-            potionBottle.Draw(spriteBatch);
+            spriteBatch.Draw(potionBottle, new Vector2(350, 300), Color.White);
+            btnBack.Draw(spriteBatch);
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
+            sender = btnBack;
             if(sender == potionBottle)
             {
+                if(player.coins >= 10) { 
                 player.coins -= 10;
                 player.healthPotion++;
+                    }
             }
             if(sender == btnBack)
             {
-                ChangeScreen("TitleScreen");
+                
+                ChangeScreen("GameScreen");
+                
             }
-            OnButtonClicked();
+
         }
 
         public void ChangeScreen(string NextScreen)

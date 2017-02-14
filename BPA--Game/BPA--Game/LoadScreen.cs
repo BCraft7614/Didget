@@ -22,7 +22,7 @@ namespace BPA__Game
         //ScreenName nextScreen;
         int screenWidth;
         int screenHeight;
-        bool loadGame;
+        private bool loadGame;
 
 
        

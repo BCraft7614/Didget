@@ -47,7 +47,6 @@ namespace BPA__Game
         private bool fightValid;
         private int enemyStrength;
         private int enemyDefense;
-      
         
         private enum actionType{HEAL,ATTACK,RUN,SPECIAL};
         private actionType action;
@@ -201,7 +200,6 @@ namespace BPA__Game
                 {
                     playerCoins = playerCoins + 5;
                     ChangeScreen("GameScreen");
-                    
                     enemyHealth = 100;
                 }
                 playersTurn = false;
