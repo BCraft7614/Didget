@@ -31,7 +31,6 @@ namespace BPA__Game
         protected Texture2D heartAnime;
         protected Texture2D animationTexture;
         protected Vector2 animationPosition;
-
         public int enemyHealth;
         public int playerHealth;
         public int playerStength;

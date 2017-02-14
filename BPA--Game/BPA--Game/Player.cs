@@ -26,6 +26,7 @@ namespace BPA__Game
         public int playerHealth;
         public int playerstr;
         public int playerdef;
+        
 
         public int healthPotion;
         float elapsed;

@@ -39,7 +39,7 @@ namespace BPA__Game
         protected Texture2D shopStore;
 
         protected GraphicsDeviceManager graphics;
-
+        
         SpriteFont HealthFont;
         protected SpriteBatch spriteBatch;
         protected List<EnemyAI> enemies;
@@ -59,8 +59,6 @@ namespace BPA__Game
 
         protected int enemyCollisionIndex;
 
-        
-
         protected List<Buildings> buildings = new List<Buildings>();
         protected List<Texture2D> buildingTextures = new List<Texture2D>();
         protected ContentManager content;
@@ -69,6 +67,7 @@ namespace BPA__Game
         protected int currentRow;
         protected int currentCol;
         public bool newGame;
+        public int enemiesKilled;
 
         public struct Level
         {
@@ -89,7 +88,7 @@ namespace BPA__Game
             inLevelDescription = false;
             player = new Player();
             ReadFile();
-
+            enemiesKilled = 0;
             currentRow = 0;
             currentCol = 0;
 
@@ -276,7 +275,8 @@ namespace BPA__Game
                     }
 
                     int enemySeed = rand.Next(0, 5000);                    
-                    enemies.Add(new EnemyAI(startX, startY));  
+                    enemies.Add(new EnemyAI(startX, startY));
+                    
 
                 }
             }
@@ -285,10 +285,10 @@ namespace BPA__Game
                
             }
             
-            if (//enemiesKilled = 100)
+            if (enemiesKilled == 100)
             {
                 enemies.Clear();
-                enemies.Add(boss)
+                //enemies.Add(boss)
              }
             foreach (EnemyAI enemy in enemies)
             {
@@ -398,8 +398,8 @@ namespace BPA__Game
                 enemies[i].Update(gameTime,player);
                 if (enemies[i].Collision(player))
                 {
-                    enemyCollisionIndex = i;
-                   // enemies.Remove(enemies[i]);
+                    enemyCollisionIndex = i; 
+
                     ChangeScreen("BattleScreen");
                    
                 }
