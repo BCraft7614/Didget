@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using System.Threading;
 using System.IO;
-
+using Microsoft.Xna.Framework.Audio;
 
 namespace BPA__Game
 {
@@ -46,7 +46,9 @@ namespace BPA__Game
         private bool fightValid;
         private int enemyStrength;
         private int enemyDefense;
-        
+
+        SoundEffect punchSound;
+        SoundEffect healingSound;
         private enum actionType{HEAL,ATTACK,RUN,SPECIAL};
         private actionType action;
 
@@ -147,6 +149,9 @@ namespace BPA__Game
             specialButton.setPosition(new Vector2(450, 630));
             background = ContentMgr.Load<Texture2D>("BattleScreen");
             tutorialHelp = ContentMgr.Load<SpriteFont>("TutorialHelp");
+
+            punchSound = ContentMgr.Load<SoundEffect>("Punching");
+            healingSound = ContentMgr.Load <SoundEffect>("Healing");
             ReadSave();
             
             base.LoadContent(ContentMgr, graphics);
@@ -314,6 +319,7 @@ namespace BPA__Game
                     action = actionType.ATTACK;
                     animationTexture = fistAnimation;
                     animationPosition = new Vector2(660, 70);
+                    punchSound.Play();
                 }
                 else if (sender == itemButton)
                 {
@@ -321,6 +327,7 @@ namespace BPA__Game
                     action = actionType.HEAL;
                     animationTexture = heartAnime;
                     animationPosition = new Vector2(110, 300);
+                    healingSound.Play();
                     
                 }
                 else if (sender == specialButton)
