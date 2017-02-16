@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Audio;
 
 namespace BPA__Game
 {
@@ -19,6 +20,7 @@ namespace BPA__Game
         mButton btnTutorial;
         Texture2D rightanim;
         Texture2D background;
+        
         // graphics;
        // SpriteBatch spriteBatch;
 
@@ -57,6 +59,7 @@ namespace BPA__Game
             btnExit.setPosition(new Vector2(350, 300 + btnLoad.size.Y * 8));
             btnTutorial.setPosition(new Vector2(350, 300 + btnTutorial.size.Y* -8));
             background = ContentMgr.Load<Texture2D>("TitleScreenBg");
+            btnSound = ContentMgr.Load<SoundEffect>("ButtonClick");
             
           //  this.IsMouseVisible = true;
         }
@@ -96,14 +99,17 @@ namespace BPA__Game
             if (sender == btnPlay)
             {
                 nextScreen = "GameScreen"; //ScreenName.GameScreen;
+                btnSound.Play();
             }
             else if (sender == btnOp)
             { 
                 nextScreen = "OptionsScreen";//ScreenName.OptionsScreen;
+                btnSound.Play();
             }
             else if(sender == btnLoad)
             {
                 nextScreen = "LoadScreen"; //ScreenName.LoadScreen;
+                btnSound.Play();
             }
             else if(sender == btnExit)
             {
@@ -112,6 +118,7 @@ namespace BPA__Game
             else if(sender == btnTutorial)
             {
                 nextScreen = "TutorialScreen";//ScreenName.TutorialScreen
+                btnSound.Play();
             }
             OnButtonClicked();
         }

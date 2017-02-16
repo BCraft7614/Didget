@@ -7,11 +7,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace BPA__Game
 {
     public class Screen
     {
+        protected SoundEffect btnSound;
         protected String nextScreen;
         public  string GetNextScreen()
         {

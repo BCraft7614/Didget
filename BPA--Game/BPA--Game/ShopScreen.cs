@@ -20,6 +20,7 @@ namespace BPA__Game
         Texture2D backGround;
         Texture2D potionBottle;
         mButton btnBack;
+        mButton btnBuy;
         public ShopScreen()
         {
             screenWidth = 800;
@@ -30,20 +31,24 @@ namespace BPA__Game
             backGround = ContentMgr.Load<Texture2D>("ShopGround");
             potionBottle = ContentMgr.Load<Texture2D>("Bottle");
             btnBack = new mButton(ContentMgr.Load<Texture2D>("BtnBack"), graphics.GraphicsDevice);
+            btnBuy = new mButton(ContentMgr.Load<Texture2D>("BtnBuy"),graphics.GraphicsDevice);
             //potionBottle.setPosition(new Vector2(350, 300));
             btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 8));
             ////potionBottle.ButtonClicked += HandleButtonClicked;
             btnBack.ButtonClicked += HandleButtonClicked;
+            btnBuy.ButtonClicked += HandleButtonClicked;
         }
         public override void UnloadContent()
         {
             //otionBottle.ButtonClicked -= HandleButtonClicked;
             btnBack.ButtonClicked -= HandleButtonClicked;
+            btnBuy.ButtonClicked -= HandleButtonClicked;
         }
         public override void Update(GameTime theTime)
         {
             //potionBottle.Update();
             btnBack.Update();
+            btnBuy.Update();
             
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -52,11 +57,12 @@ namespace BPA__Game
             spriteBatch.Draw(backGround, new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
             spriteBatch.Draw(potionBottle, new Vector2(350, 300), Color.White);
             btnBack.Draw(spriteBatch);
+            btnBuy.Draw(spriteBatch);
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
             sender = btnBack;
-            if(sender == potionBottle)
+            if(sender == btnBuy)
             {
                 if(player.coins >= 10) { 
                 player.coins -= 10;

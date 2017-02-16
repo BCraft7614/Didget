@@ -248,7 +248,7 @@ namespace BPA__Game
             {
                 
                 if (playersAnimation)
-                {
+                {// displays the player fight animation
                     spriteBatch.Draw(animationTexture, animationPosition, Color.White);
                     animationCount++;
                     if(animationCount > 30)
