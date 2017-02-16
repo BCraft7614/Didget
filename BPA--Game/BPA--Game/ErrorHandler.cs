@@ -43,7 +43,7 @@ namespace BPA__Game.Content
             ErrorFont = Content.Load<SpriteFont>("ErrorFont");
             sendEmail = new mButton(Content.Load<Texture2D>("SendEmail"), graphics.GraphicsDevice);
             dontSend = new mButton(Content.Load<Texture2D>("Nobtn"), graphics.GraphicsDevice);
-          sendEmail.ButtonClicked += HandleButtonClicked;
+            sendEmail.ButtonClicked += HandleButtonClicked;
             dontSend.ButtonClicked += HandleButtonClicked;
             sendEmail.setPosition(new Vector2(350, 300 + sendEmail.size.Y * 2));
             dontSend.setPosition(new Vector2(350, 300 + dontSend.size.Y * 4));
@@ -113,13 +113,14 @@ namespace BPA__Game.Content
                 
                 SmtpServer.Send(mail);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
             }
         }
         public void SetErrorMsg(string message, string stackTrace)
         {
+            //This gets the error code and types it out in the email
             errorMsg = message + "\n" + stackTrace;
         }
 
