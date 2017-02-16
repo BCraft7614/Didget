@@ -37,6 +37,7 @@ namespace BPA__Game
         public int playerDefense;
         public int playerCoins;
         public int healPotion;
+        public int enimiesKilled;
 
         private bool playersTurn;
         private bool enemyTurn;
@@ -84,6 +85,7 @@ namespace BPA__Game
                 playerDefense = Convert.ToInt32(file.ReadLine());
                 playerCoins = Convert.ToInt32(file.ReadLine());
                 healPotion = Convert.ToInt32(file.ReadLine());
+                enimiesKilled = Convert.ToInt32(file.ReadLine());
                 
             }
             
@@ -102,6 +104,7 @@ namespace BPA__Game
                 writeFile.WriteLine(playerDefense);
                 writeFile.WriteLine(playerCoins);
                 writeFile.WriteLine(healPotion);
+                writeFile.WriteLine(enimiesKilled);
                 for (int i = 0; i < 5; i++)
                 {
                     readFile.ReadLine();
@@ -327,8 +330,7 @@ namespace BPA__Game
                     action = actionType.HEAL;
                     animationTexture = heartAnime;
                     animationPosition = new Vector2(110, 300);
-                    healingSound.Play();
-                    
+      
                 }
                 else if (sender == specialButton)
                 {
@@ -341,6 +343,7 @@ namespace BPA__Game
         {
             if(healPotion > 0)
             {
+                healingSound.Play();
                 playerHealth += 10;
                 healPotion--;
             }

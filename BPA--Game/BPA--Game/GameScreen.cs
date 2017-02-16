@@ -109,6 +109,7 @@ namespace BPA__Game
                 file.WriteLine(player.GetDefense());// Writes the players defense to a file
                 file.WriteLine(player.GetCoins());
                 file.WriteLine(player.HealPotion());
+                file.WriteLine(player.GetEnimiesKilled());
                 //writing enemy attributes and position 
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -138,6 +139,7 @@ namespace BPA__Game
                 player.playerdef = Convert.ToInt32(file.ReadLine());
                 player.coins = Convert.ToInt32(file.ReadLine());
                 player.healthPotion = Convert.ToInt32(file.ReadLine());
+                player.enimieskilled = Convert.ToInt32(file.ReadLine());
                 string line;
                 while (( line = file.ReadLine()) != null)
                 {

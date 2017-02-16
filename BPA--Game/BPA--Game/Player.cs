@@ -26,7 +26,7 @@ namespace BPA__Game
         public int playerHealth;
         public int playerstr;
         public int playerdef;
-        
+        public int enimieskilled;
 
         public int healthPotion;
         float elapsed;
@@ -40,6 +40,7 @@ namespace BPA__Game
             playerstr = 15;
             playerdef = 5;
             healthPotion = 5;
+            enimieskilled = 0;
         }
         public int HealPotion()
         {
@@ -60,6 +61,10 @@ namespace BPA__Game
         public int GetDefense()
         {
              return playerdef;
+        }
+        public int GetEnimiesKilled()
+        {
+            return enimieskilled;
         }
 
         public override void LoadContent(ContentManager content)

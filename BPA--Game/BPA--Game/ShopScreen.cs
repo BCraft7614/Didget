@@ -61,7 +61,7 @@ namespace BPA__Game
         }
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
-            sender = btnBack;
+            
             if(sender == btnBuy)
             {
                 if(player.coins >= 10) { 
