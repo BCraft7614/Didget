@@ -98,6 +98,7 @@
     <Content Include="Content\DigetDown.png" />
     <Content Include="Content\DigetUp.png" />
     <Content Include="Content\DownAnime.png" />
+    <Content Include="Content\Fireball.png" />
     <Content Include="Content\FistAnimation.png" />
     <Content Include="Content\GameBlackHole.png" />
     <Content Include="Content\Healing.wav" />
