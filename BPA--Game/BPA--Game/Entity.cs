@@ -59,6 +59,12 @@ namespace BPA__Game
         {
             this.content = new ContentManager(content.ServiceProvider, "Content");
         }
+
+        /// <summary>
+        /// Checks if an entity is colliding with a building 
+        /// </summary>
+        /// <param name="OtherEntity"></param>
+        /// <returns></returns>
         public bool Collision(Entity OtherEntity)
         {
             Rectangle boundingBox = new Rectangle((int)position.X, (int)position.Y, Width, Height);

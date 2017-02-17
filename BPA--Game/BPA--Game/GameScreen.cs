@@ -67,7 +67,6 @@ namespace BPA__Game
         protected int currentRow;
         protected int currentCol;
         public bool newGame;
-        public int enemiesKilled;
 
         public struct Level
         {
@@ -88,15 +87,16 @@ namespace BPA__Game
             inLevelDescription = false;
             player = new Player();
             ReadFile();
-            enemiesKilled = 0;
             currentRow = 0;
             currentCol = 0;
 
         }
 
-       
-        
-        public void WriteSave()
+
+        /// <summary>
+        /// Makes sure that the player stays in the spot where he left off when pausing screens or in actions
+        /// </summary>
+        public void WriteSave(int eHealth, int eStrength)
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter("SaveData"))
             {
@@ -109,7 +109,7 @@ namespace BPA__Game
                 file.WriteLine(player.GetDefense());// Writes the players defense to a file
                 file.WriteLine(player.GetCoins());
                 file.WriteLine(player.HealPotion());
-                file.WriteLine(player.GetEnimiesKilled());
+                file.WriteLine(player.GetenemiesKilled());
                 //writing enemy attributes and position 
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -121,10 +121,14 @@ namespace BPA__Game
                         file.WriteLine("Blue Left Movement");//FIXME
                     }
                 }
+                file.WriteLine(eStrength);
+                file.WriteLine(eHealth);
                 newGame = false;
             }
         }
-        
+        /// <summary>
+        /// Loads the save file that contains the player postitons  he left off on when pausing screens or in battle
+        /// </summary>
         public void ReadSaveFile()
         {
            
@@ -139,13 +143,14 @@ namespace BPA__Game
                 player.playerdef = Convert.ToInt32(file.ReadLine());
                 player.coins = Convert.ToInt32(file.ReadLine());
                 player.healthPotion = Convert.ToInt32(file.ReadLine());
-                player.enimieskilled = Convert.ToInt32(file.ReadLine());
+                player.enemieskilled = Convert.ToInt32(file.ReadLine());
                 string line;
                 while (( line = file.ReadLine()) != null)
                 {
                     int xPos = Convert.ToInt32(line);
                     int yPos = Convert.ToInt32(file.ReadLine());
-                    string texture  = file.ReadLine();//FIXME
+                    if ((line = file.ReadLine()) == null) { break; }
+                    string texture  = line;//FIXME
                     enemies.Add(new EnemyAI(xPos, yPos));
                 }
             }
@@ -154,6 +159,9 @@ namespace BPA__Game
            
         }
          
+        /// <summary>
+        /// Reads the levels file to create the levels and building within the file
+        /// </summary>
         public void ReadFile()
         {
             // string currentDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
@@ -219,6 +227,11 @@ namespace BPA__Game
  
             //this.IsMouseVisible = true;
         }
+
+        /// <summary>
+        /// Makes sure that when it loads a level that the enemies are not within the buildings and that the player does not hit the enemies on spawn
+        /// </summary>
+        /// <param name="content"></param>
         public void LoadLevel(ContentManager content)
         {
             Random rand = new Random();
@@ -287,10 +300,10 @@ namespace BPA__Game
                
             }
             
-            if (enemiesKilled == 100)
+            if (player.enemieskilled%5 == 4)
             {
                 enemies.Clear();
-                //enemies.Add(boss)
+                enemies.Add(new EnemyBoss(0, 0));
              }
             foreach (EnemyAI enemy in enemies)
             {
@@ -325,12 +338,12 @@ namespace BPA__Game
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                ChangeScreen("PauseScreen");
+                ChangeScreen("PauseScreen",0,0);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.CapsLock))
             {
-                ChangeScreen("InventoryScreen");
+                ChangeScreen("InventoryScreen",0,0);
             }
             
             MouseState mouse = Mouse.GetState();
@@ -388,7 +401,7 @@ namespace BPA__Game
                     player.position = player.oldPosition;
                     if (currentRow == 0 && currentCol == 1)
                     {
-                        ChangeScreen("ShopScreen");
+                        ChangeScreen("ShopScreen", 0,0);
                         
                     }
                 }
@@ -402,7 +415,7 @@ namespace BPA__Game
                 {
                     enemyCollisionIndex = i; 
 
-                    ChangeScreen("BattleScreen");
+                    ChangeScreen("BattleScreen", enemies[i].GetEnemyStrength(),enemies[i].GetEnemyHealth());
                    
                 }
                 for (int x = 0; x < buildings.Count; x++)
@@ -434,9 +447,9 @@ namespace BPA__Game
            
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }
-        public void ChangeScreen(string NextScreen)
+        public void ChangeScreen(string NextScreen,int strength, int health)
         {
-            WriteSave();
+            WriteSave(health,strength);
             nextScreen = NextScreen;
             OnButtonClicked();
         }

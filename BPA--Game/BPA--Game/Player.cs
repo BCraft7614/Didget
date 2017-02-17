@@ -26,7 +26,7 @@ namespace BPA__Game
         public int playerHealth;
         public int playerstr;
         public int playerdef;
-        public int enimieskilled;
+        public int enemieskilled;
 
         public int healthPotion;
         float elapsed;
@@ -37,34 +37,63 @@ namespace BPA__Game
         {
             playerHealth = 100;
             coins = 10;
-            playerstr = 15;
+            playerstr = 30;
             playerdef = 5;
             healthPotion = 5;
-            enimieskilled = 0;
+            enemieskilled = 0;
         }
+        /// <summary>
+        /// Returns the amount of potions the player has
+        /// </summary>
+        /// <returns></returns>
         public int HealPotion()
         {
             return healthPotion;
         }
+
+        /// <summary>
+        /// Returns the amount of coins the player has
+        /// </summary>
+        /// <returns></returns>
         public int GetCoins()
         {
              return coins;
         }
+
+        /// <summary>
+        /// Returns player health
+        /// </summary>
+        /// <returns></returns>
         public int GetHealth()
         {
             return playerHealth;
         }
+
+        /// <summary>
+        /// Returns player strength
+        /// </summary>
+        /// <returns></returns>
         public int GetStrength()
         {
             return playerstr;
         }
+
+        /// <summary>
+        /// Returns player defense
+        /// </summary>
+        /// <returns></returns>
         public int GetDefense()
         {
              return playerdef;
         }
-        public int GetEnimiesKilled()
+
+        /// <summary>
+        /// Returns the amount of enemies killed so far
+        /// </summary>
+        /// <returns></returns>
+        public int GetenemiesKilled()
         {
-            return enimieskilled;
+            return enemieskilled;
         }
 
         public override void LoadContent(ContentManager content)

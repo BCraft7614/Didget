@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BattleScreen.cs" />
+    <Compile Include="EnemyBoss.cs" />
     <Compile Include="ErrorHandler.cs" />
     <Compile Include="Buildings.cs" />
     <Compile Include="EnemyAI.cs" />

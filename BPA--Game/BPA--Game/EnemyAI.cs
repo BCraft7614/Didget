@@ -13,27 +13,29 @@ namespace BPA__Game
     public class EnemyAI : Entity
     {
         public Direction direction;
-        Texture2D rightWalk, leftWalk, upWalk, downWalk;
-        Rectangle sourceRect;
-        Random rand;
-        EnemyAI enemy;
-        public int enemyDef = 5;
-        public int enemyStr = 5;
-        public int enemyHealth = 100;
+        protected Texture2D rightWalk, leftWalk, upWalk, downWalk;
+        protected Rectangle sourceRect;
+        protected Random rand;
+        protected int enemyDef;
+        protected int enemyStr;
+        protected int enemyHealth;
         float elapsed;
         float delay = 200f;
         int frames = 0;
         int randTime = 0;
         int randDirection = 0;
-        float oldDistance;
-     
+        public EnemyAI() { }
         public EnemyAI(int posX, int posY)
         {
             rand = new Random(posX);
             position.X = posX;
             position.Y = posY;
+            enemyHealth =  100;
+            enemyStr = 10;
+            enemyDef = 5;
 
-            
+
+
         }
         public override void LoadContent(ContentManager content)
         {
@@ -145,6 +147,14 @@ namespace BPA__Game
         {
             spriteBatch.Draw(image, position, sourceRect, Color.White);
             base.Draw(spriteBatch);
+        }
+        public int  GetEnemyStrength()
+        {
+            return enemyStr;
+        }
+        public int GetEnemyHealth()
+        {
+            return enemyHealth;
         }
 
 

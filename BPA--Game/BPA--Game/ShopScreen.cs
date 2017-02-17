@@ -15,17 +15,21 @@ namespace BPA__Game
 
     {
         Player player = new Player();
-        int screenWidth;
-        int screenHeight;
-        Texture2D backGround;
-        Texture2D potionBottle;
-        mButton btnBack;
-        mButton btnBuy;
+        private int screenWidth;
+        private int screenHeight;
+        private Texture2D backGround;
+        private Texture2D potionBottle;
+        private mButton btnBack;
+        private mButton btnBuy;
+        private SpriteFont shopText;
+        private bool NoCoins = false;
+
         public ShopScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
         }
+
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
         {
             backGround = ContentMgr.Load<Texture2D>("ShopGround");
@@ -35,22 +39,28 @@ namespace BPA__Game
             //potionBottle.setPosition(new Vector2(350, 300));
             btnBack.setPosition(new Vector2(350, 300 + btnBack.size.Y * 8));
             ////potionBottle.ButtonClicked += HandleButtonClicked;
+            shopText = ContentMgr.Load<SpriteFont>("TutorialHelp");
             btnBack.ButtonClicked += HandleButtonClicked;
             btnBuy.ButtonClicked += HandleButtonClicked;
         }
+
         public override void UnloadContent()
         {
             //otionBottle.ButtonClicked -= HandleButtonClicked;
             btnBack.ButtonClicked -= HandleButtonClicked;
             btnBuy.ButtonClicked -= HandleButtonClicked;
         }
+
         public override void Update(GameTime theTime)
         {
+            
             //potionBottle.Update();
             btnBack.Update();
             btnBuy.Update();
+
             
         }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             
@@ -58,20 +68,34 @@ namespace BPA__Game
             spriteBatch.Draw(potionBottle, new Vector2(350, 300), Color.White);
             btnBack.Draw(spriteBatch);
             btnBuy.Draw(spriteBatch);
+            if (NoCoins)
+            {
+                spriteBatch.DrawString(shopText, "Not enough coins", new Vector2(100, 100), Color.DarkGoldenrod);
+                
+            }
+            
         }
+
         public void HandleButtonClicked(object sender, EventArgs eventArgs)
         {
             
             if(sender == btnBuy)
             {
-                if(player.coins >= 10) { 
-                player.coins -= 10;
-                player.healthPotion++;
-                    }
+                if(player.coins >= 10)
+                { 
+                    player.coins -= 10;
+                    player.healthPotion++;
+
+                }
+                else if (player.coins < 10)
+                {
+                    NoCoins = true;
+                    
+                }
             }
             if(sender == btnBack)
             {
-                
+                NoCoins = false;
                 ChangeScreen("GameScreen");
                 
             }

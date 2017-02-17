@@ -22,12 +22,12 @@ namespace BPA__Game
          {
              if (Keyboard.GetState().IsKeyDown(Keys.Escape))
              {
-                 ChangeScreen("PauseScreen");
+                 ChangeScreen("PauseScreen",0,0);
 
              }
              if (Keyboard.GetState().IsKeyDown(Keys.CapsLock))
              {
-                 ChangeScreen("InventoryScreen");
+                 ChangeScreen("InventoryScreen",0,0);
              }
 
              MouseState mouse = Mouse.GetState();
@@ -95,7 +95,7 @@ namespace BPA__Game
                  {
                      enemyCollisionIndex = i;
                      // enemies.Remove(enemies[i]);
-                     ChangeScreen("TutorialBattleScreen");
+                     ChangeScreen("TutorialBattleScreen", enemies[i].GetEnemyStrength(), enemies[i].GetEnemyHealth());
 
                  }
                  for (int x = 0; x < buildings.Count; x++)

@@ -15,8 +15,10 @@ namespace BPA__Game
     {
         protected SoundEffect btnSound;
         protected String nextScreen;
+        protected bool ExitGame =false;
         public  string GetNextScreen()
         {
+           
             return nextScreen;
         }
         public virtual void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
@@ -38,6 +40,10 @@ namespace BPA__Game
         public virtual void Draw(SpriteBatch theBatch)
         {
 
+        }
+        public bool GetExitGame()
+        {
+            return ExitGame;
         }
     }
 }

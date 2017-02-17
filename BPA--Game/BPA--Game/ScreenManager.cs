@@ -150,6 +150,10 @@ namespace BPA__Game
         {
             //MouseState mouse = Mouse.GetState();
             CurrentScreen.Update(gameTime);
+            if (CurrentScreen.GetExitGame())
+            {
+                Exit();
+            }
 
         }
         // TODO: Add your update logic here

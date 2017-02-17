@@ -29,15 +29,18 @@ namespace BPA__Game
         protected Texture2D battleEnemy2;
         protected Texture2D fistAnimation;
         protected Texture2D heartAnime;
+        protected Texture2D fireball;
         protected Texture2D animationTexture;
         protected Vector2 animationPosition;
+        protected Vector2 enemyPos = new Vector2(660, 70);
+        protected Vector2 playerPos = new Vector2(110, 300);
         public int enemyHealth;
         public int playerHealth;
         public int playerStength;
         public int playerDefense;
         public int playerCoins;
         public int healPotion;
-        public int enimiesKilled;
+        public int enemiesKilled;
 
         private bool playersTurn;
         private bool enemyTurn;
@@ -56,6 +59,8 @@ namespace BPA__Game
         protected SpriteFont enemyHealthFont;
         protected SpriteFont HealthFont;
         protected SpriteFont tutorialHelp;
+        private int deathtime = 0;
+        private bool death = false;
 
 
        public BattleScreen()
@@ -85,8 +90,17 @@ namespace BPA__Game
                 playerDefense = Convert.ToInt32(file.ReadLine());
                 playerCoins = Convert.ToInt32(file.ReadLine());
                 healPotion = Convert.ToInt32(file.ReadLine());
-                enimiesKilled = Convert.ToInt32(file.ReadLine());
-                
+                enemiesKilled = Convert.ToInt32(file.ReadLine());
+                string line;
+                while ((line = file.ReadLine()) != null)
+                {
+                    enemyStrength = Convert.ToInt32(line);
+                    enemyDefense = enemyStrength;
+                    enemyHealth = Convert.ToInt32(file.ReadLine());
+                    if ((line = file.ReadLine()) == null) { break; }
+                    string tempString = line;//FIXME
+                }
+
             }
             
 
@@ -104,8 +118,8 @@ namespace BPA__Game
                 writeFile.WriteLine(playerDefense);
                 writeFile.WriteLine(playerCoins);
                 writeFile.WriteLine(healPotion);
-                writeFile.WriteLine(enimiesKilled);
-                for (int i = 0; i < 5; i++)
+                writeFile.WriteLine(enemiesKilled);
+                for (int i = 0; i < 6; i++)
                 {
                     readFile.ReadLine();
                 }
@@ -142,6 +156,7 @@ namespace BPA__Game
             battleEnemy2 = ContentMgr.Load<Texture2D>("BattleCen");
             fistAnimation = ContentMgr.Load<Texture2D>("FistAnimation");
             heartAnime = ContentMgr.Load<Texture2D>("Heart");
+            fireball = ContentMgr.Load<Texture2D>("Fireball");
             enemyHealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             HealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             fightButton.ButtonClicked += HandleButtonClicked;
@@ -171,6 +186,11 @@ namespace BPA__Game
             fightButton.Draw(spriteBatch);
             itemButton.Draw(spriteBatch);
             specialButton.Draw(spriteBatch);
+            if (death)
+            {
+                spriteBatch.DrawString(HealthFont, "YOU DIED", new Vector2(400, 350), Color.Red);
+                
+            }
 
 
         }
@@ -196,19 +216,31 @@ namespace BPA__Game
 
         //Should call FightActionClass
         public void FightUpdate()
-        {
-            if (playersTurn & fightValid)
+        {   
+            if (playerHealth <= 0)
+            {
+                death = true;
+                deathtime++;
+                if (deathtime >= 100)
+                {
+                    ExitGame = true;
+                }
+                
+            }
+            else if (playersTurn & fightValid)
             {
                 if (action == actionType.ATTACK) { PlayerGivesDamage(); }
                 else if(action == actionType.HEAL) { PlayerHeals(); }
-                else if(action == actionType.SPECIAL) { }
+                else if(action == actionType.SPECIAL) { PlayerGivesDamage(); }
                 
                 if (enemyHealth <= 0)
                 {
                     playerCoins = playerCoins + 5;
+                    enemiesKilled++;
                     ChangeScreen("GameScreen");
                     enemyHealth = 100;
                 }
+
                 playersTurn = false;
                 playersAnimation = true;
             }
@@ -217,20 +249,20 @@ namespace BPA__Game
         {
             if(enemyTurn && fightValid)
             {
-                int TypeOfAction = rand.Next(2);
+                int TypeOfAction = rand.Next(3);
                 if (TypeOfAction == 0)
                 {
                     action = actionType.HEAL;
                     animationTexture = heartAnime;
-                    animationPosition = new Vector2(660, 70);
+                    animationPosition = enemyPos;
                     enemyHealth += rand.Next(1, 5);
 
                 }
-                if (TypeOfAction == 1)
+                if (TypeOfAction >= 1)
                 {
                     action = actionType.ATTACK;
                     animationTexture = fistAnimation;
-                    animationPosition = new Vector2(110, 300);
+                    animationPosition = playerPos;
                     int dmg = enemyStrength - playerDefense;
                     if (dmg < 0)
                     {
@@ -321,7 +353,7 @@ namespace BPA__Game
                     playersTurn = true;
                     action = actionType.ATTACK;
                     animationTexture = fistAnimation;
-                    animationPosition = new Vector2(660, 70);
+                    animationPosition = enemyPos;
                     punchSound.Play();
                 }
                 else if (sender == itemButton)
@@ -329,12 +361,16 @@ namespace BPA__Game
                     playersTurn = true;
                     action = actionType.HEAL;
                     animationTexture = heartAnime;
-                    animationPosition = new Vector2(110, 300);
+                    animationPosition = playerPos;
       
                 }
                 else if (sender == specialButton)
                 {
-                    
+                    playersTurn = true;
+                    action = actionType.SPECIAL;
+                    animationTexture = fireball;
+                    animationPosition = enemyPos;
+
                 }
             }
            
@@ -345,6 +381,11 @@ namespace BPA__Game
             {
                 healingSound.Play();
                 playerHealth += 10;
+
+                if (playerHealth <=10)
+                {
+                    playerHealth = 100;
+                }
                 healPotion--;
             }
             else
