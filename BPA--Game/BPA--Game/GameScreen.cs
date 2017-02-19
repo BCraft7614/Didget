@@ -25,6 +25,7 @@ namespace BPA__Game
         // Work Here Ryan. Add Player and Battle Scene
         protected const int NUMCOL = 2;
         protected const int NUMROW = 2;
+        
 
         protected Level[,] levelArray = new Level[NUMCOL, NUMROW];
 
@@ -40,7 +41,7 @@ namespace BPA__Game
 
         protected GraphicsDeviceManager graphics;
         
-        SpriteFont HealthFont;
+        SpriteFont Font;
         protected SpriteBatch spriteBatch;
         protected List<EnemyAI> enemies;
         protected Player player;
@@ -219,7 +220,7 @@ namespace BPA__Game
             upTransitionRect = new Entity(0,0,screenWidth, 1);
             downTransitionRect = new Entity(0, screenHeight - 1, screenWidth, 1);
             tutorialHelp = content.Load<SpriteFont>("TutorialHelp");
-            HealthFont = content.Load<SpriteFont>("HealthFont");
+            Font = content.Load<SpriteFont>("HealthFont");
             player.LoadContent(content);
 
             LoadLevel(content);
@@ -443,7 +444,9 @@ namespace BPA__Game
             {
                 enemy.Draw(spriteBatch);
             }
-            spriteBatch.DrawString(HealthFont, "Health: " + player.playerHealth, new Vector2(700, 0), Color.DarkBlue);
+            spriteBatch.DrawString(Font, "Health: " + player.playerHealth, new Vector2(700, 0), Color.DarkBlue);
+            spriteBatch.DrawString(Font, "Coins: " + player.coins, new Vector2(600, 0), Color.Yellow);
+            spriteBatch.DrawString(Font, "Enimies Killied: " + player.enemieskilled, new Vector2(400, 0), Color.OrangeRed);
            
             //GraphicsDevice.Clear(Color.CornflowerBlue);
         }

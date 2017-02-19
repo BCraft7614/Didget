@@ -5,6 +5,7 @@
 //def
 //coins
 //HealthPotion
+//enimiesKilled
 //posx
 //posy
 //type
