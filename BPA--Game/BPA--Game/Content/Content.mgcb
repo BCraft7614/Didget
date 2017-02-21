@@ -769,3 +769,15 @@
 /processorParam:TextureFormat=Color
 /build:BrassKnuckles.png
 
+#begin BackgroundMusic.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:BackgroundMusic.wav
+
+#begin BattleMusic.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:BattleMusic.wav
+
