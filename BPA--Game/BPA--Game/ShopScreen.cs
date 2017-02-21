@@ -85,7 +85,7 @@ namespace BPA__Game
             btnBuyF.Draw(spriteBatch);
             if (NoCoins)
             {
-                spriteBatch.DrawString(shopText, "Not enough coins", new Vector2(100, 100), Color.DarkGoldenrod);
+                spriteBatch.DrawString(shopText, "Not enough coins", new Vector2(150, 120), Color.DarkGoldenrod);
 
             }
             spriteBatch.DrawString(shopText, "Coins: " + player.GetCoins(), new Vector2(700, 0), Color.Gold);
