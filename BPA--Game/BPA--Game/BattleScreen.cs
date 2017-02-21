@@ -42,6 +42,7 @@ namespace BPA__Game
         public int playerCoins;
         public int healPotion;
         public int enemiesKilled;
+        public int fistUpgrade;
         ShopScreen shopscreen = new ShopScreen();
         private bool playersTurn;
         private bool enemyTurn;
@@ -93,6 +94,7 @@ namespace BPA__Game
                 playerCoins = Convert.ToInt32(file.ReadLine());
                 healPotion = Convert.ToInt32(file.ReadLine());
                 enemiesKilled = Convert.ToInt32(file.ReadLine());
+                //fistUpgrade = Convert.ToInt32(file.ReadLine());
                 string line;
                 while ((line = file.ReadLine()) != null)
                 {
@@ -121,6 +123,7 @@ namespace BPA__Game
                 writeFile.WriteLine(playerCoins);
                 writeFile.WriteLine(healPotion);
                 writeFile.WriteLine(enemiesKilled);
+                //writeFile.WriteLine(fistUpgrade);
                 for (int i = 0; i < 6; i++)
                 {
                     readFile.ReadLine();
@@ -133,7 +136,7 @@ namespace BPA__Game
 
             }
 
-            //Checks to see if Sava Data File Exists and the delets and Move the Save Data
+            //Checks to see if Sava Data File Exists and the deletes and Move the Save Data
             writeFile.Close();
             if (File.Exists("SaveData"))
             {
@@ -185,7 +188,7 @@ namespace BPA__Game
             spriteBatch.DrawString(enemyHealthFont, "Health:" + enemyHealth.ToString(), new Vector2(650, 50), Color.Red);
             spriteBatch.Draw(battleEnemy2, new Vector2(660,70), Color.White);
             spriteBatch.Draw(battleEnemy, new Vector2(660, 70), Color.White);
-            spriteBatch.DrawString(HealthFont, "Attack Points: " + attackpts, new Vector2(590,390), Color.Black);
+            spriteBatch.DrawString(HealthFont, "Special Points: " + attackpts, new Vector2(590,390), Color.Black);
             spriteBatch.DrawString(HealthFont, "Healing Potions: x" + healPotion, new Vector2(590, 520), Color.PaleVioletRed);
             DrawAnimation(spriteBatch);
             fightButton.Draw(spriteBatch);

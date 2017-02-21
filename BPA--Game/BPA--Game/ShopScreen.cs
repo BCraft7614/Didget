@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BPA__Game
 {
@@ -25,6 +26,10 @@ namespace BPA__Game
         private SpriteFont shopText;
         public Texture2D brassKnuckle;
         public int playerCoins;
+        public int playerHealth;
+        public int playerDefense;
+        public int playerStrength;
+        public int healPotions;
         private bool NoCoins = false;
         public bool upgradeFist;
         public ShopScreen()
@@ -85,10 +90,10 @@ namespace BPA__Game
             btnBuyF.Draw(spriteBatch);
             if (NoCoins)
             {
-                spriteBatch.DrawString(shopText, "Not enough coins", new Vector2(150, 120), Color.DarkGoldenrod);
+                spriteBatch.DrawString(shopText, "Not enough coins", new Vector2(100, 100), Color.DarkGoldenrod);
 
             }
-            spriteBatch.DrawString(shopText, "Coins: " + player.GetCoins(), new Vector2(700, 0), Color.Gold);
+            spriteBatch.DrawString(shopText, "Coins: " + playerCoins, new Vector2(700, 0), Color.Gold);
 
         }
 
@@ -100,7 +105,7 @@ namespace BPA__Game
                 if (playerCoins >= 10)
                 {
                     playerCoins -= 10;
-                    player.healthPotion++;
+                    healPotions++;
 
                 }
                 else if (playerCoins < 10)
@@ -147,21 +152,51 @@ namespace BPA__Game
 
             }
         }
-
+      
         public void ReadSave()
         {
             using (System.IO.StreamReader file = new System.IO.StreamReader("SaveData"))
             {
                 file.ReadLine(); //player positionX
                 file.ReadLine(); //player positionY
-                //playerHealth = Convert.ToInt32(file.ReadLine());
-                //playerStength = Convert.ToInt32(file.ReadLine());
-                //playerDefense = Convert.ToInt32(file.ReadLine());
+                playerHealth = Convert.ToInt32(file.ReadLine());
+                playerStrength = Convert.ToInt32(file.ReadLine());
+                playerDefense = Convert.ToInt32(file.ReadLine());
                 playerCoins = Convert.ToInt32(file.ReadLine());
-                //healPotion = Convert.ToInt32(file.ReadLine());
-                //enemiesKilled = Convert.ToInt32(file.ReadLine());
+                healPotions = Convert.ToInt32(file.ReadLine());
+            }
+        }
+
+        public void WriteSave()
+        {
+            //Write the save file Save File into another file witch is called TempFile
+            var writeFile = new StreamWriter("tempFile");
+            using (StreamReader readFile = new StreamReader("SaveData"))
+            {
+                writeFile.WriteLine(readFile.ReadLine());
+                writeFile.WriteLine(readFile.ReadLine());
+                writeFile.WriteLine(playerHealth);
+                writeFile.WriteLine(playerStrength);
+                writeFile.WriteLine(playerDefense);
+                writeFile.WriteLine(playerCoins);
+                writeFile.WriteLine(healPotions);               
+                for (int i = 0; i < 6; i++)
+                {
+                    readFile.ReadLine();
+                }
+                string line;
+                while ((line = readFile.ReadLine()) != null)
+                {
+                    writeFile.WriteLine(line);
+                }
 
             }
+            writeFile.Close();
+            if (File.Exists("SaveData"))
+            {
+                File.Delete("SaveData");
+            }
+            File.Move("tempFile", "SaveData");
         }
     }
 }

@@ -111,6 +111,7 @@ namespace BPA__Game
                 file.WriteLine(player.GetCoins());
                 file.WriteLine(player.HealPotion());
                 file.WriteLine(player.GetenemiesKilled());
+                //file.WriteLine(player.GetFistUpgrade());
                 //writing enemy attributes and position 
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -145,6 +146,7 @@ namespace BPA__Game
                 player.coins = Convert.ToInt32(file.ReadLine());
                 player.healthPotion = Convert.ToInt32(file.ReadLine());
                 player.enemieskilled = Convert.ToInt32(file.ReadLine());
+                //player.fistUpgrade = Convert.ToInt32(file.ReadLine());
                 string line;
                 while (( line = file.ReadLine()) != null)
                 {
@@ -445,7 +447,7 @@ namespace BPA__Game
                 enemy.Draw(spriteBatch);
             }
             spriteBatch.DrawString(Font, "Health: " + player.playerHealth, new Vector2(700, 0), Color.DarkBlue);
-            spriteBatch.DrawString(Font, "Coins: " + player.coins, new Vector2(600, 0), Color.Yellow);
+            spriteBatch.DrawString(Font, "Coins: " + player.coins, new Vector2(600, 0), Color.SeaGreen);
             spriteBatch.DrawString(Font, "Enimies Killied: " + player.enemieskilled, new Vector2(400, 0), Color.OrangeRed);
            
             //GraphicsDevice.Clear(Color.CornflowerBlue);

@@ -27,6 +27,7 @@ namespace BPA__Game
         public int playerstr;
         public int playerdef;
         public int enemieskilled;
+        public int fistUpgrade = 0;
 
         public int healthPotion;
         float elapsed;
@@ -37,10 +38,11 @@ namespace BPA__Game
         {
             playerHealth = 100;
             coins = 10;
-            playerstr = 30;
+            playerstr = 15;
             playerdef = 5;
             healthPotion = 5;
             enemieskilled = 0;
+            fistUpgrade = 0;
         }
         /// <summary>
         /// Returns the amount of potions the player has
@@ -85,6 +87,11 @@ namespace BPA__Game
         public int GetDefense()
         {
              return playerdef;
+        }
+
+        public int GetFistUpgrade()
+        {
+            return fistUpgrade;
         }
 
         /// <summary>
@@ -169,7 +176,7 @@ namespace BPA__Game
                 }
                 elapsed = 0;
                 
-                //Something is wrong here
+              
             }
         }
         
