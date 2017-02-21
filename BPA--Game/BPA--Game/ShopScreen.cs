@@ -15,7 +15,7 @@ namespace BPA__Game
     public class ShopScreen : Screen
 
     {
-        Player player = new Player();
+   
         private int screenWidth;
         private int screenHeight;
         private Texture2D backGround;
@@ -30,13 +30,15 @@ namespace BPA__Game
         public int playerDefense;
         public int playerStrength;
         public int healPotions;
+        public int enemiesKilled;
+        public bool fistUpgrade;
         private bool NoCoins = false;
-        public bool upgradeFist;
+        
         public ShopScreen()
         {
             screenWidth = 800;
             screenHeight = 700;
-            upgradeFist = false;
+           
         }
 
         public override void LoadContent(ContentManager ContentMgr, GraphicsDeviceManager graphics)
@@ -124,13 +126,13 @@ namespace BPA__Game
             {
                 if (playerCoins >= 30)
                 {
-                    player.coins -= 30;
-                    upgradeFist = true;
+                    playerCoins -= 30;
+                    fistUpgrade= true;
                 }
                 else if (playerCoins < 30)
                 {
                     NoCoins = true;
-                    upgradeFist = false;
+                    fistUpgrade = false;
 
                 }
             }
@@ -141,6 +143,7 @@ namespace BPA__Game
         {
 
             nextScreen = NextScreen;
+            WriteSave();
             OnButtonClicked();
         }
         public EventHandler ButtonClicked;
@@ -164,6 +167,9 @@ namespace BPA__Game
                 playerDefense = Convert.ToInt32(file.ReadLine());
                 playerCoins = Convert.ToInt32(file.ReadLine());
                 healPotions = Convert.ToInt32(file.ReadLine());
+                enemiesKilled = Convert.ToInt32(file.ReadLine());
+                string line = file.ReadLine();
+                fistUpgrade = Convert.ToBoolean(line);
             }
         }
 
@@ -179,7 +185,9 @@ namespace BPA__Game
                 writeFile.WriteLine(playerStrength);
                 writeFile.WriteLine(playerDefense);
                 writeFile.WriteLine(playerCoins);
-                writeFile.WriteLine(healPotions);               
+                writeFile.WriteLine(healPotions);
+                writeFile.WriteLine(enemiesKilled);
+                writeFile.Write(fistUpgrade);              
                 for (int i = 0; i < 6; i++)
                 {
                     readFile.ReadLine();

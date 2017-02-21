@@ -32,6 +32,7 @@ namespace BPA__Game
         protected Texture2D fireball;
         protected Texture2D animationTexture;
         protected Texture2D PotionWarn;
+        protected Texture2D brassKnuckle;
         protected Vector2 animationPosition;
         protected Vector2 enemyPos = new Vector2(660, 70);
         protected Vector2 playerPos = new Vector2(110, 300);
@@ -42,8 +43,7 @@ namespace BPA__Game
         public int playerCoins;
         public int healPotion;
         public int enemiesKilled;
-        public int fistUpgrade;
-        ShopScreen shopscreen = new ShopScreen();
+        public bool fistUpgrade;
         private bool playersTurn;
         private bool enemyTurn;
         private bool playersAnimation;
@@ -65,6 +65,7 @@ namespace BPA__Game
         private int deathtime = 0;
         private bool death = false;
 
+        private int amountOfCoins;
 
        public BattleScreen()
         {
@@ -79,6 +80,7 @@ namespace BPA__Game
             animationCount = 0;
             enemyStrength = rand.Next(1, 10);
             enemyDefense = rand.Next(1, 10);
+            amountOfCoins = rand.Next(10, 15);
         }
           
         
@@ -94,7 +96,7 @@ namespace BPA__Game
                 playerCoins = Convert.ToInt32(file.ReadLine());
                 healPotion = Convert.ToInt32(file.ReadLine());
                 enemiesKilled = Convert.ToInt32(file.ReadLine());
-                //fistUpgrade = Convert.ToInt32(file.ReadLine());
+                fistUpgrade = Convert.ToBoolean(file.ReadLine());
                 string line;
                 while ((line = file.ReadLine()) != null)
                 {
@@ -123,8 +125,8 @@ namespace BPA__Game
                 writeFile.WriteLine(playerCoins);
                 writeFile.WriteLine(healPotion);
                 writeFile.WriteLine(enemiesKilled);
-                //writeFile.WriteLine(fistUpgrade);
-                for (int i = 0; i < 6; i++)
+                writeFile.WriteLine(fistUpgrade);
+                for (int i = 0; i < 7; i++)
                 {
                     readFile.ReadLine();
                 }
@@ -162,6 +164,7 @@ namespace BPA__Game
             fistAnimation = ContentMgr.Load<Texture2D>("FistAnimation");
             heartAnime = ContentMgr.Load<Texture2D>("Heart");
             fireball = ContentMgr.Load<Texture2D>("Fireball");
+            brassKnuckle = ContentMgr.Load<Texture2D>("BrassKnuckles");
            
             enemyHealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
             HealthFont = ContentMgr.Load<SpriteFont>("HealthFont");
@@ -244,7 +247,7 @@ namespace BPA__Game
                 
                 if (enemyHealth <= 0)
                 {
-                    playerCoins = playerCoins + 5;
+                    playerCoins = playerCoins + amountOfCoins;
                     enemiesKilled++;
                     ChangeScreen("GameScreen");
                     enemyHealth = 100;
@@ -336,6 +339,10 @@ namespace BPA__Game
                 dmg = 0;
             }
             dmg += rand.Next(0, 5);
+            if (fistUpgrade)
+            {
+                dmg += 5;
+            }
             enemyHealth = enemyHealth - dmg;
         }
 
@@ -379,9 +386,10 @@ namespace BPA__Game
                     attackpts = attackpts + 2;
                     punchSound.Play();
 
-                    if (shopscreen.upgradeFist == true)
+                    if (fistUpgrade)
                     {
-                        animationTexture = shopscreen.brassKnuckle;
+                        animationTexture = brassKnuckle;
+                       
                     }
                       
                 }
@@ -428,8 +436,6 @@ namespace BPA__Game
             }
 
         }
-
-        
         public void ChangeScreen(string NextScreen)
         {
             WriteSave();

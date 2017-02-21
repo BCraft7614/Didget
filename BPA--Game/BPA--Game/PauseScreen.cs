@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
+
 namespace BPA__Game
 {
     public class PauseScreen:Screen
@@ -54,6 +56,7 @@ namespace BPA__Game
             btnOp.setPosition(new Vector2(350, 400 + btnOp.size.Y * 2));
             btnExit.setPosition(new Vector2(359, 500 + btnExit.size.Y * 2));
             background = ContentMgr.Load<Texture2D>("PauseScreen");
+            btnSound = ContentMgr.Load<SoundEffect>("ButtonClick");
 
         }
         public override void UnloadContent()
@@ -76,14 +79,17 @@ namespace BPA__Game
             if (sender == btnResume)
             {
                 nextScreen = "GameScreen";//ScreenNaem.GameScreen;
+                btnSound.Play();
             }
             else if (sender == btnOp)
             {
                 nextScreen = "OptionsScreen";//ScreenName.OptionsScreen;
+                btnSound.Play();
             }
             else if (sender == btnExit)
             {
                 nextScreen = "TitleScreen"; //ScreenName.Tittlescreen;
+                btnSound.Play();
             }
             
             OnButtonClicked();

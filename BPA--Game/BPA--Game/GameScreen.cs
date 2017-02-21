@@ -111,7 +111,7 @@ namespace BPA__Game
                 file.WriteLine(player.GetCoins());
                 file.WriteLine(player.HealPotion());
                 file.WriteLine(player.GetenemiesKilled());
-                //file.WriteLine(player.GetFistUpgrade());
+                file.WriteLine(player.GetFistUpgrade());
                 //writing enemy attributes and position 
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -146,7 +146,7 @@ namespace BPA__Game
                 player.coins = Convert.ToInt32(file.ReadLine());
                 player.healthPotion = Convert.ToInt32(file.ReadLine());
                 player.enemieskilled = Convert.ToInt32(file.ReadLine());
-                //player.fistUpgrade = Convert.ToInt32(file.ReadLine());
+                player.fistUpgrade = Convert.ToBoolean(file.ReadLine());
                 string line;
                 while (( line = file.ReadLine()) != null)
                 {
