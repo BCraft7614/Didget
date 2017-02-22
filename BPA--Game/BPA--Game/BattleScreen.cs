@@ -421,13 +421,15 @@ namespace BPA__Game
 
             if (healPotion > 0)
             {
-                healingSound.Play();
-                playerHealth += 20;
-
-                if (playerHealth < 50)
+                if (playerHealth <= 50)
                 {
                     healingSound.Play();
                     playerHealth = 100;
+                }
+                else
+                {
+                    healingSound.Play();
+                    playerHealth += 20;
                 }
                 healPotion--;
             }
