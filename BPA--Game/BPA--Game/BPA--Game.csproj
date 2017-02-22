@@ -77,9 +77,9 @@
     <None Include="Resources\SaveData.txt" />
     <None Include="Levels.txt" />
     <None Include="bin\Windows\x86\Debug\Levels.txt" />
-    <Content Include="Content\BackgroundMusic.wav" />
+    <Content Include="Content\BackgroundMusic.mp3" />
     <Content Include="Content\BattleCen.png" />
-    <Content Include="Content\BattleMusic.wav" />
+    <Content Include="Content\BattleMusic.mp3" />
     <Content Include="Content\BattlePen.png" />
     <Content Include="Content\BattleScreen.png" />
     <Content Include="Content\Blue Back Movement.png" />

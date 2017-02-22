@@ -224,8 +224,9 @@ namespace BPA__Game
             downTransitionRect = new Entity(0, screenHeight - 1, screenWidth, 1);
             tutorialHelp = content.Load<SpriteFont>("TutorialHelp");
             Font = content.Load<SpriteFont>("HealthFont");
-            backMusic = ContentMgr.Load<Song>("BackgroundMusic");
-            MediaPlayer.Play(backMusic);
+            song = ContentMgr.Load<Song>("BackgroundMusic");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(song);
             player.LoadContent(content);
 
             LoadLevel(content);

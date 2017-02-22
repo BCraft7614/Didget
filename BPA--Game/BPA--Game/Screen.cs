@@ -15,7 +15,7 @@ namespace BPA__Game
     public class Screen
     {
         protected SoundEffect btnSound;
-        protected Song backMusic;
+        protected Song song;
         protected String nextScreen;
         protected bool ExitGame =false;
         public  string GetNextScreen()

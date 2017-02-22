@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Threading;
 using System.IO;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace BPA__Game
 {
@@ -176,7 +177,9 @@ namespace BPA__Game
             specialButton.setPosition(new Vector2(450, 630));
             background = ContentMgr.Load<Texture2D>("BattleScreen");
             tutorialHelp = ContentMgr.Load<SpriteFont>("TutorialHelp");
-
+            song = ContentMgr.Load<Song>("BattleMusic");
+            MediaPlayer.Play(song);
+            MediaPlayer.IsRepeating = true;
             punchSound = ContentMgr.Load<SoundEffect>("Punching");
             healingSound = ContentMgr.Load <SoundEffect>("Healing");
             ReadSave();
