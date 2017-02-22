@@ -70,18 +70,7 @@ namespace BPA__Game
 
        public BattleScreen()
         {
-            screenWidth = 800;
-            screenHeight = 700;
-            enemyHealth = 100;
-            playersTurn = false;
-            fightValid = false;
-            enemyTurn = false;
-            enemyAnimation = false;
-            playersAnimation = false;
-            animationCount = 0;
-            enemyStrength = rand.Next(1, 10);
-            enemyDefense = rand.Next(1, 10);
-            amountOfCoins = rand.Next(10, 15);
+            PlayersInitialize();
         }
           
         
@@ -253,6 +242,7 @@ namespace BPA__Game
                     playerCoins = playerCoins + amountOfCoins;
                     enemiesKilled++;
                     ChangeScreen("GameScreen");
+                    PlayersInitialize();
                     enemyHealth = 100;
                 }
 
@@ -418,6 +408,21 @@ namespace BPA__Game
                 }
             }
            
+        }
+        public void PlayersInitialize()
+        {
+            screenWidth = 800;
+            screenHeight = 700;
+            enemyHealth = 100;
+            playersTurn = false;
+            fightValid = false;
+            enemyTurn = false;
+            enemyAnimation = false;
+            playersAnimation = false;
+            animationCount = 0;
+            enemyStrength = rand.Next(1, 10);
+            enemyDefense = rand.Next(1, 10);
+            amountOfCoins = rand.Next(10, 15);
         }
         public void PlayerHeals()
         {
