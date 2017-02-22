@@ -146,7 +146,7 @@ namespace BPA__Game
                 player.coins = Convert.ToInt32(file.ReadLine());
                 player.healthPotion = Convert.ToInt32(file.ReadLine());
                 player.enemieskilled = Convert.ToInt32(file.ReadLine());
-                player.fistUpgrade = Convert.ToBoolean(file.ReadLine());
+                player.fistUpgrade = Convert.ToInt32(file.ReadLine());
                 string line;
                 while (( line = file.ReadLine()) != null)
                 {

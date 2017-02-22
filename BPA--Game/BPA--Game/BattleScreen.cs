@@ -43,7 +43,7 @@ namespace BPA__Game
         public int playerCoins;
         public int healPotion;
         public int enemiesKilled;
-        public bool fistUpgrade;
+        public int fistUpgrade;
         private bool playersTurn;
         private bool enemyTurn;
         private bool playersAnimation;
@@ -96,7 +96,7 @@ namespace BPA__Game
                 playerCoins = Convert.ToInt32(file.ReadLine());
                 healPotion = Convert.ToInt32(file.ReadLine());
                 enemiesKilled = Convert.ToInt32(file.ReadLine());
-                fistUpgrade = Convert.ToBoolean(file.ReadLine());
+                fistUpgrade = Convert.ToInt32(file.ReadLine());
                 string line;
                 while ((line = file.ReadLine()) != null)
                 {
@@ -339,7 +339,7 @@ namespace BPA__Game
                 dmg = 0;
             }
             dmg += rand.Next(0, 5);
-            if (fistUpgrade)
+            if (fistUpgrade == 1)
             {
                 dmg += 5;
             }
@@ -351,9 +351,9 @@ namespace BPA__Game
             
             if(attackpts >= 20)
             {
-                int dmg= 20;
+                int dmg= 40;
                 enemyHealth = enemyHealth - dmg;
-                attackpts = 0;
+                attackpts -= 20;
             }
             
 
@@ -386,7 +386,7 @@ namespace BPA__Game
                     attackpts = attackpts + 2;
                     punchSound.Play();
 
-                    if (fistUpgrade)
+                    if (fistUpgrade == 1)
                     {
                         animationTexture = brassKnuckle;
                        
@@ -422,10 +422,11 @@ namespace BPA__Game
             if (healPotion > 0)
             {
                 healingSound.Play();
-                playerHealth += 10;
+                playerHealth += 20;
 
-                if (playerHealth <= 10)
+                if (playerHealth < 50)
                 {
+                    healingSound.Play();
                     playerHealth = 100;
                 }
                 healPotion--;

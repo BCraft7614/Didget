@@ -31,7 +31,7 @@ namespace BPA__Game
         public int playerStrength;
         public int healPotions;
         public int enemiesKilled;
-        public bool fistUpgrade;
+        public int fistUpgrade;
         private bool NoCoins = false;
         
         public ShopScreen()
@@ -49,10 +49,9 @@ namespace BPA__Game
             btnBuyP = new mButton(ContentMgr.Load<Texture2D>("BtnBuy"), graphics.GraphicsDevice);
             btnBuyF = new mButton(ContentMgr.Load<Texture2D>("BtnBuy"), graphics.GraphicsDevice);
             brassKnuckle = ContentMgr.Load<Texture2D>("BrassKnuckles");
-            //FistUpgrade = new 
             //potionBottle.setPosition(new Vector2(350, 300));
             btnBuyP.setPosition(new Vector2(350, 300 + btnBuyP.size.Y * 8));
-            btnBuyF.setPosition(new Vector2(379, 300 + btnBuyF.size.Y * 8));
+            btnBuyF.setPosition(new Vector2(450, 300 + btnBuyF.size.Y * 8));
             ////potionBottle.ButtonClicked += HandleButtonClicked;
             shopText = ContentMgr.Load<SpriteFont>("TutorialHelp");
             btnBack.ButtonClicked += HandleButtonClicked;
@@ -86,7 +85,7 @@ namespace BPA__Game
 
             spriteBatch.Draw(backGround, new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
             spriteBatch.Draw(potionBottle, new Vector2(350, 300), Color.White);
-            spriteBatch.Draw(brassKnuckle, new Vector2(379, 300), Color.White);
+            spriteBatch.Draw(brassKnuckle, new Vector2(450, 300), Color.White);
             btnBack.Draw(spriteBatch);
             btnBuyP.Draw(spriteBatch);
             btnBuyF.Draw(spriteBatch);
@@ -127,12 +126,16 @@ namespace BPA__Game
                 if (playerCoins >= 30)
                 {
                     playerCoins -= 30;
-                    fistUpgrade= true;
+                    fistUpgrade = 1;
                 }
                 else if (playerCoins < 30)
                 {
                     NoCoins = true;
-                    fistUpgrade = false;
+                    if (fistUpgrade == 1)
+                    {
+                        fistUpgrade = 1;
+                    }
+                    fistUpgrade = 0;
 
                 }
             }
@@ -169,7 +172,7 @@ namespace BPA__Game
                 healPotions = Convert.ToInt32(file.ReadLine());
                 enemiesKilled = Convert.ToInt32(file.ReadLine());
                 string line = file.ReadLine();
-                fistUpgrade = Convert.ToBoolean(line);
+                fistUpgrade = Convert.ToInt32(line);
             }
         }
 
@@ -187,8 +190,8 @@ namespace BPA__Game
                 writeFile.WriteLine(playerCoins);
                 writeFile.WriteLine(healPotions);
                 writeFile.WriteLine(enemiesKilled);
-                writeFile.Write(fistUpgrade);              
-                for (int i = 0; i < 6; i++)
+                writeFile.WriteLine(fistUpgrade);              
+                for (int i = 0; i < 7; i++)
                 {
                     readFile.ReadLine();
                 }
