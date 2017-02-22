@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using Microsoft.Xna.Framework.Media;
 
 namespace BPA__Game
 {
@@ -68,6 +68,7 @@ namespace BPA__Game
         protected int currentRow;
         protected int currentCol;
         public bool newGame;
+        //Song backMusic;
 
         public struct Level
         {
@@ -223,6 +224,8 @@ namespace BPA__Game
             downTransitionRect = new Entity(0, screenHeight - 1, screenWidth, 1);
             tutorialHelp = content.Load<SpriteFont>("TutorialHelp");
             Font = content.Load<SpriteFont>("HealthFont");
+            backMusic = ContentMgr.Load<Song>("BackgroundMusic");
+            MediaPlayer.Play(backMusic);
             player.LoadContent(content);
 
             LoadLevel(content);

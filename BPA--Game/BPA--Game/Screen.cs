@@ -8,12 +8,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace BPA__Game
 {
     public class Screen
     {
         protected SoundEffect btnSound;
+        protected Song backMusic;
         protected String nextScreen;
         protected bool ExitGame =false;
         public  string GetNextScreen()
