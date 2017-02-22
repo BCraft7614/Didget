@@ -94,6 +94,8 @@ namespace BPA__Game
                 spriteBatch.DrawString(shopText, "Not enough coins", new Vector2(100, 100), Color.DarkGoldenrod);
 
             }
+            spriteBatch.DrawString(shopText, "30 Coins", new Vector2(450, 320), Color.Gold);
+            spriteBatch.DrawString(shopText, "10 Coins", new Vector2(350, 320), Color.Gold);
             spriteBatch.DrawString(shopText, "Coins: " + playerCoins, new Vector2(700, 0), Color.Gold);
 
         }
